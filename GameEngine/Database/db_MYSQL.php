@@ -138,6 +138,12 @@
                     $result = mysql_query($q, $this->connection);
                     return $this->mysql_fetch_all($result);
             }
+            
+            function getStarvation2(){
+                    $q = "SELECT * FROM ".TB_PREFIX."vdata WHERE crop<0";
+                    $result = mysql_query($q, $this->connection);
+                    return $this->mysql_fetch_all($result);
+            }
 
         	function getActivateField($ref, $field, $mode) {
         		if(!$mode) {
