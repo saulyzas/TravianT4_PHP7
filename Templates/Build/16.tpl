@@ -89,7 +89,7 @@ if($units_walking >= 1){
 				echo "<table class=\"troop_details\" cellpadding=\"1\" cellspacing=\"1\"><thead><tr><td class=\"role\">
 				<a href=\"karte.php?d=".$enforce['from']."&c=".$generator->getMapCheck($enforce['from'])."\">".$database->getVillageField($enforce['from'],"name")."</a></td>";
                 if($enforce['hero'] > 0){ echo "<td colspan=\"11\">"; }else{ echo "<td colspan=\"10\">"; }
-				echo "<a href=\"spieler.php?uid=".$database->getVillageField($enforce['from'],"owner")."\">".$database->getUserField($database->getVillageField($enforce['from'],"owner")."'s units","username",0)."</a>";
+				echo "<a href=\"spieler.php?uid=".$database->getVillageField($enforce['from'],"owner")."\">".$database->getUserField($database->getVillageField($enforce['from'],"owner"),"username",0)."'s units</a>";
 				echo "</td></tr></thead><tbody class=\"units\">";
 				$tribe = $database->getUserField($database->getVillageField($enforce['from'],"owner"),"tribe",0);
 				$start = ($tribe-1)*10+1;
@@ -97,9 +97,9 @@ if($units_walking >= 1){
 				$coor = $database->getCoor($enforce['from']);
 				echo "<tr><th class=\"coords\">
 				<span class=\"coordinates coordinatesAligned\">
-				<span class=\"coordinateY\">(".$coor['y']."</span>
+				<span class=\"coordinateY\">(".$coor['x']."</span>
 				<span class=\"coordinatePipe\">|</span>
-				<span class=\"coordinateX\">".$coor['x'].")</span>
+				<span class=\"coordinateX\">".$coor['y'].")</span>
 				</span>
 				<span class=\"clear\"></span></th>";
 				for($i=$start;$i<=($end);$i++) {
