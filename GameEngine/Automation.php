@@ -598,7 +598,7 @@ class Automation {
 		$iron = $getvillage['iron'];
 		}
 		if($getvillage['crop'] < 0){
-		$crop = 0;
+		//$crop = 0;
 		}else{
 		$crop = $getvillage['crop'];
 		}
