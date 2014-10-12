@@ -189,7 +189,7 @@ break;
                 $tname =  "wheat";
                 break;
             }
-            echo "<a href=\"karte.php?d=".$row2['id']."&c=".$generator->getMapCheck($row2['id'])."\">".$tname."</a></td>";
+            echo "<a href=\"position_details.php?x=".$row2['x']."&y=".$row2['y']."\">".$tname."</a></td>";
             
             if($basearray['owner']==3){
                 $oOwner = "-";
@@ -205,7 +205,7 @@ break;
             }
             echo "<td class=\"vil\">".$oVillage."</td>";
             echo "<td class=\"coords\">";
-            echo "<a href=\"karte.php?z=".$row2['id']."\">
+            echo "<a href=\"karte.php?d=".$row2['id']."&c=".$generator->getMapCheck($row2['id'])."\">
                   <span class=\"coordinates coordinatesAligned\"><span class=\"coordinatesWrapper\">
                   <span class=\"coordinateY\">(".$row2['x']."</span>
                   <span class=\"coordinatePipe\">|</span>
