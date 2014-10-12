@@ -41,7 +41,7 @@ $totalproduction += $heroData['r0']*3*SPEED*$heroData['product'];
 		<li class="r4" title="<div style=color:#FFF><b><?php echo CROP; ?></b></div>Production: <?php echo $village->getProd("crop"); ?>"> 
 		<p> 
         	<img src="img/x.gif" alt="<?php echo CROP; ?>"/> 
-			<span id="l4" class="value "><?php echo round($village->acrop)."/".$village->maxcrop; ?></span>
+			<span id="l4" class="value "><?php if(($village->acrop)<0){echo "0";}else{echo round($village->acrop);}echo "/".$village->maxcrop; ?></span>
           <div class="bar-bg">
 	      <div id="lbar4" class="bar" style="width: 0%; background-color: rgb(0, 105, 0); "></div>
       	  </div>
