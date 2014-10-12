@@ -673,7 +673,7 @@ img.accept{width:12px;height:12px;background-image:url(../../img/a/acc.gif);}img
 img.clock.inactive{background-position:0 -22px;}img.carry{height:12px;width:13px;background-image:url(../../img/a/carry.gif);}
 img.carry.half{background-position:0 -15px;}img.carry.empty{background-position:0 -30px;}
 img.carry.impossible{background-position:0 -45px;}img.npc{width:18px;height:12px;background-image:url(../../img/a/npc.gif);background-position:top;left:-3px;}
-img.npc_inactive{width:18px;height:12px;background-image:url(../../img/a/npc.gif);background-position:bottom;}
+img.npc_inactive{width:18px;height:12px;background-image:url(../../img/a/npc.gif);background-position:bottom;left:-3px}
 img.gold,img.gold_g{width:12px;height:12px;background-image:url(../../img/a/gold-rtl.gif);}
 img.gold{background-position:0 0;}img.gold_g{background-position:0 -15px;}img.silver,img.silver_g{width:10px;height:9px;background-image:url(../../img/a/silver-rtl.gif);}
 img.silver{background-position:0 0;}img.silver_g{background-position:0 -19px;}img.bids{width:16px;height:16px;background-image:url(../../img/hero/bids.png);}
