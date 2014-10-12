@@ -27,7 +27,7 @@ while($row = mysql_fetch_array($sql)){
     <tr>
 				<td class="type">
 					<a onclick="return (function(){
-				('آیا مطمئن هستید؟').dialog(
+				('Are you sure?').dialog(
 				{
 					onOkay: function(dialog, contentElement)
 					{
@@ -108,9 +108,9 @@ break;
                 <a class="" href="karte.php?x=<?php echo $coor['y']; ?>&amp;y=<?php echo $coor['x']; ?>">
                 <span class="coordinates coordinatesAligned">
                 <span class="coordinatesWrapper">
-                <span class="coordinateY">(<?php echo $coor['y']; ?></span>
+                <span class="coordinateY">(<?php echo $coor['x']; ?></span>
                 <span class="coordinatePipe">|</span>
-                <span class="coordinateX"><?php echo $coor['x']; ?>)</span>
+                <span class="coordinateX"><?php echo $coor['y']; ?>)</span>
                 </span></span>
                 <span class="clear"></span></a>
                 </td>
@@ -207,9 +207,9 @@ break;
             echo "<td class=\"coords\">";
             echo "<a href=\"karte.php?z=".$row2['id']."\">
                   <span class=\"coordinates coordinatesAligned\"><span class=\"coordinatesWrapper\">
-                  <span class=\"coordinateY\">(".$row2['y']."</span>
+                  <span class=\"coordinateY\">(".$row2['x']."</span>
                   <span class=\"coordinatePipe\">|</span>
-                  <span class=\"coordinateX\">".$row2['x'].")</span></span></span><span class=\"clear\">‎</span></a>";
+                  <span class=\"coordinateX\">".$row2['y'].")</span></span></span><span class=\"clear\">‎</span></a>";
             echo "</td>";
             switch($basearray['type']) {
                 case 1:
