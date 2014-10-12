@@ -690,7 +690,6 @@ class Building {
 		}
 		if($ww == 0){
 		$database->finishDemolition($village->wid);
-		$technology->finishTech();
 		$logging->goldFinLog($village->wid);
 		$database->modifyGold($session->uid,2,0);
 		$stillbuildingarray = $database->getJobs($village->wid);
