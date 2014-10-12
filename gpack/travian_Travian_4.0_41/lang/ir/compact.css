@@ -789,6 +789,7 @@ div.village1 table#movements td.wrap{line-height:10px;}div.village1 table#moveme
 div.village1 table#movements .a1{color:#F00;}div.village1 table#movements .d1{color:#228B22;}
 div.village1 table#movements .a2,div.village1 table#movements .d2{color:#F2C700;}
 div.village1 table#movements .a3,div.village1 table#movements .d3{color:#B500A3;}
+div.village1 table#movements .a4,div.village1 table#movements .d3{color:#0022af;}
 div.village1 table#production td.res{width:30%;}div.village1 table#production td.per{width:30%;}
 div.village1 table#troops td.un{width:80%;white-space:nowrap;}div.village1 table#building_contract{width:100%;clear:both;margin:0;}
 div.village1 #building_contract img.gold{position:relative;top:2px;}div.village1 #building_contract img.gold_g{position:relative;top:2px;}
