@@ -729,7 +729,7 @@ class Automation {
 				}
 				$q = "DELETE FROM ".TB_PREFIX."bdata where id = ".$indi['id'];
 				$database->query($q);
-				$crop = $database->getCropProdstarv($indi['wid']);
+				/* $crop = $database->getCropProdstarv($indi['wid']);
 				$unitarrays = $this->getAllUnits($indi['wid']);
 				$village = $database->getVillage($indi['wid']);
 				$upkeep = $village['pop'] + $this->getUpkeep($unitarrays, 0);
@@ -737,7 +737,7 @@ class Automation {
 					// add starv data
 					$database->setVillageField($indi['wid'], 'starv', $upkeep);
 					$database->setVillageField($indi['wid'], 'starvupdate', $time);
-				}
+				} */
         }
         if(file_exists("GameEngine/Prevention/build.txt")) {
             unlink("GameEngine/Prevention/build.txt");
@@ -2914,7 +2914,7 @@ $info_cata=" damaged from level <b>".$tblevel."</b> to level <b>".$totallvl."</b
 
 				}
 			}
-				$crop = $database->getCropProdstarv($to['wref']);
+				/* $crop = $database->getCropProdstarv($to['wref']);
 				$unitarrays = $this->getAllUnits($to['wref']);
 				$getvillage = $database->getVillage($to['wref']);
 				$village_upkeep = $getvillage['pop'] + $this->getUpkeep($unitarrays, 0);
@@ -2922,7 +2922,7 @@ $info_cata=" damaged from level <b>".$tblevel."</b> to level <b>".$totallvl."</b
 					// add starv data
 					$database->setVillageField($to['wref'], 'starv', $village_upkeep);
 					$database->setVillageField($to['wref'], 'starvupdate', time());
-				}
+				} */
 				unset($crop,$unitarrays,$getvillage,$village_upkeep);
 
         }
@@ -3863,7 +3863,7 @@ $info_cata=" damaged from level <b>".$tblevel."</b> to level <b>".$totallvl."</b
 					if($new_amt == 0){
 					$database->trainUnit($train['id'],0,0,0,0,1,1);
 					}
-				$crop = $database->getCropProdstarv($train['vref']);
+				/* $crop = $database->getCropProdstarv($train['vref']);
 				$unitarrays = $this->getAllUnits($train['vref']);
 				$village = $database->getVillage($train['vref']);
 				$upkeep = $village['pop'] + $this->getUpkeep($unitarrays, 0);
@@ -3871,7 +3871,7 @@ $info_cata=" damaged from level <b>".$tblevel."</b> to level <b>".$totallvl."</b
 					// add starv data
 					$database->setVillageField($train['vref'], 'starv', $upkeep);
 					$database->setVillageField($train['vref'], 'starvupdate', $time);
-				}
+				} */
 			}
 		}
 		if(file_exists("GameEngine/Prevention/training.txt")) {
