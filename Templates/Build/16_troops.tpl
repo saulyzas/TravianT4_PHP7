@@ -5,9 +5,9 @@
                   $coor = $database->getCoor($village->wid);
                   echo "<tr><th class=\"coords\">
 					<span class=\"coordinates coordinatesAligned\">
-                    <span class=\"coordinateY\">(".$coor['y']."</span>
+                    <span class=\"coordinateY\">(".$coor['x']."</span>
                     <span class=\"coordinatePipe\">|</span>
-                    <span class=\"coordinateX\">".$coor['x'].")</span>
+                    <span class=\"coordinateX\">".$coor['y'].")</span>
                     </span>
                     <span class=\"clear\"></span></th>";
                   for($i=$start;$i<=($end);$i++) {
