@@ -138,8 +138,8 @@ $aantal = count($database->getMovement2(9,$village->wid,0));
 $aantal2 = $database->getMovement2(9,$village->wid,0);
 	if($aantal > 0){
 			foreach($aantal2 as $receive) {
-				$action = 'att3';
-				$aclass = 'a3';
+				$action = 'att4';
+				$aclass = 'a4';
 				$title = 'Adventure';
 				$short = 'Adventure';
 			}
