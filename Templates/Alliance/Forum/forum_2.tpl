@@ -148,7 +148,7 @@ if($arr['forum_area']==0){
 		}
 	}else{
 		$lpost = "";
-		$owner = "";
+		$owner = array();
 	}
 echo	'<tr><td class="ico">';
 if($database->CheckEditRes($aid)=="1"){
