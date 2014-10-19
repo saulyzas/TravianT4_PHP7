@@ -279,7 +279,7 @@ if($sawmill == 0 && $woodcutter <= 9 && $woodcutter >= 5 && $mainbuilding >= 2 &
 if($ironfoundry == 0 && $ironmine <= 9 && $ironmine >= 5 && $mainbuilding >= 2 && $mainbuilding <= 4) {
    include("soon/ironfoundry.tpl");
 }
-if($workshop == 0 && $academy <= 9 && $academy >= 5 && $mainbuilding >= 2 && $mainbuilding <= 4) {
+if($workshop == 0 && $academy <= 9 && $academy >= 5 && $mainbuilding >= 2) {
    include("soon/workshop.tpl");
 }
 if($tournamentsquare == 0 && $rallypoint <= 14 && $rallypoint >= 7) {
