@@ -58,16 +58,16 @@ $lala = count($units_type);
 
 	}
 
-/* Units send to reinf. (to my town) */
-$aantal = count($database->getMovement2('7',$village->wid,0)); $lala=$aantal;
-
-$aantal2 = $database->getMovement2('7',$village->wid,0);
+/* Units send to reinf. (from my town) */
+$aantal = count($database->getMovement2(7,$village->wid,0));
+$aantal2 = $database->getMovement2(7,$village->wid,0);
+print_r($aantal2);
 for($i=0;$i<$aantal;$i++){
-	if(($aantal2[$i]['attack_type']==1) or ($aantal2[$i]['sort_type']==9)){
-		$lala -= 1; }
+	if(($aantal2[$i]['attack_type']==1) or ($aantal2[$i]['attack_type']==9)){
+		$aantal -= 1;}
 }
-	if($lala > 0){
-			foreach($aantal2 as $receive) {
+	if($aantal > 0){
+			foreach($aantal2 as $receive) {				
 				$action = 'def2';
 				$aclass = 'd2';
 				$title = ''.OWN_REINFORCING_TROOPS.'';
