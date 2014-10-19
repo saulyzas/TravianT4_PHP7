@@ -37,7 +37,7 @@ $totalunits=$process['t1']+$process['t2']+$process['t3']+$process['t5']+$process
 
  }
 
-if ($scout==1 && $totalunits==0) {
+if (($process['c'] == 3 || $process['c'] == 4) && $totalunits== 0) {
 $process['c'] = 1;
 }
 
