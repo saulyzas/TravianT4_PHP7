@@ -101,7 +101,7 @@ if($message->unread) {
 					});
 				</script>
 <?php
-if($_GET['uid'] == $session->uid) {
+if($_GET['uid'] == $session->uid || isset($_GET['s'])) {
 include("Templates/Profile/menu.tpl");
 }
 if(isset($_GET['uid'])) {
