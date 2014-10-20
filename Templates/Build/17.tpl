@@ -91,7 +91,7 @@ if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST[
 		<td><a href="spieler.php?uid=<?php echo $getvilowner; ?>"><?php echo $database->getUserField($getvilowner,username,0); ?></a></td>
 	</tr>
 	<tr>
-		<th>duration:</th>
+		<th>Duration:</th>
 		<td><?php echo $generator->getTimeFormat($time); ?></td>
 	</tr>
 	<tr>
@@ -204,13 +204,13 @@ $coor['x'] = "";
 $coor['y'] = "";
 }
 ?>			<div class="coordinatesInput">
-				<div class="xCoord">
-					<label for="xCoordInput">Y:</label>
-                    <input class="text coordinates y " type="text" name="y" value="<?php echo $coor['y']; ?>" maxlength="4" tabindex="6">
+				<<div class="xCoord">
+					<label for="xCoordInput">X:</label>
+                    <input class="text coordinates x " type="text" name="x" value="<?php echo $coor['x']; ?>" maxlength="4" tabindex="7">
 				</div>
 				<div class="yCoord">
-					<label for="yCoordInput">X:</label>
-                    <input class="text coordinates x " type="text" name="x" value="<?php echo $coor['x']; ?>" maxlength="4" tabindex="7">
+					<label for="yCoordInput">Y:</label>
+                    <input class="text coordinates y " type="text" name="y" value="<?php echo $coor['y']; ?>" maxlength="4" tabindex="6">
 				</div>
 				<div class="clear"></div>
 			</div>
@@ -243,7 +243,7 @@ $error = '';
 if(isset($_POST['ft'])=='check'){
 
 	if(!$checkexist){
-		$error = '<span class="error"><b>No Coordinates selected</b></span>';
+		$error = '<span class="error"><b>There is no village at these coordinates.</b></span>';
     }elseif($_POST['r1']==0 && $_POST['r2']==0 && $_POST['r3']==0 && $_POST['r4']==0){
 		$error = '<span class="error"><b>Resources not selected.</b></span>';
     }elseif(!$_POST['x'] && !$_POST['y'] && !$_POST['dname']){
