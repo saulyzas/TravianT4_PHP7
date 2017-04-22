@@ -11,14 +11,14 @@ The resources wood, clay, and iron are stored in the warehouse. The higher the l
     <tr>
 			<th>
 Current storage capacity:</th>
-			<td><b><?php echo $bid10[$village->resarray['f'.$id]]['attri']; ?></b></td>
+			<td><b><?php echo $bid10[$village->resarray['f'.$id]]['attri']*STORAGE_MULTIPLIER; ?></b></td>
 		</tr>
     	<tr>
         <?php 
         if(!$building->isMax($village->resarray['f'.$id.'t'],$id)) {
         ?>
 			<th>Capacity at level <?php echo $village->resarray['f'.$id]+1; ?> </th>
-			<td><b><?php echo $bid10[$village->resarray['f'.$id]+1]['attri']; ?></b></td>
+			<td><b><?php echo $bid10[$village->resarray['f'.$id]+1]['attri']*STORAGE_MULTIPLIER; ?></b></td>
         <?php
         }
         ?>
