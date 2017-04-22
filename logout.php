@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 include("GameEngine/Account.php");
 if(isset($_GET['del_cookie'])) {
