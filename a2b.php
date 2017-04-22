@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 include("GameEngine/Village.php");
 include("GameEngine/Units.php");
