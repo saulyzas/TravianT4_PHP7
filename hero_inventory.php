@@ -387,7 +387,7 @@ if($gi['bag']!=0){
     <div id="itemsToSale"><?php
 $prefix = "".TB_PREFIX."heroitems";
 
-$sql = mysql_query("SELECT * FROM ".TB_PREFIX."heroitems WHERE (proc = 0 OR ((btype = 7 OR btype = 8 OR btype = 9) && num - type != 0)) AND uid = $session->uid");
+$sql = mysql_query("SELECT * FROM ".TB_PREFIX."heroitems WHERE (proc = 0 OR ((btype = 7 OR btype = 8 OR btype = 9) && num != 0)) AND uid = $session->uid");
 $query = mysql_num_rows($sql);
 
 $outputList = '';

@@ -3275,7 +3275,7 @@ class Automation {
                     } else {
                         $tp = 80;
                     }
-                    $health = round((3.007 / ((100 + $tp * $getHero['power']) + $hero['itempower'])) * $sgh);
+                    $health = round((3.007 / ((100 + $tp * $getHero['power']) + $getHero['itempower'])) * $sgh);
                     
                     if($helmet['proc'] == 1 && $helmet['type'] <= 3) $exp += $exp * (10 + $helmet['type'] * 5) / 100;
                     $database->modifyHero2('experience', $exp, $ownerID, 1);
@@ -3340,7 +3340,7 @@ class Automation {
                     } else {
                         $tp = 80;
                     }
-                    $health = round((3.007 / ((100 + $tp * $getHero['power']) + $hero['itempower'])) * $sgh);
+                    $health = round((3.007 / ((100 + $tp * $getHero['power']) + $getHero['itempower'])) * $sgh);
                     
                     if($helmet['proc'] == 1 && $helmet['type'] <= 3) $exp += $exp * (10 + $helmet['type'] * 5) / 100;
                     $database->modifyHero2('experience', $exp, $ownerID, 1);
@@ -3378,7 +3378,7 @@ class Automation {
                 } else {
                     $tp = 80;
                 }
-                $health = round((3.007 / ((100 + $tp * $getHero['power']) + $hero['itempower'])) * $sgh);
+                $health = round((3.007 / ((100 + $tp * $getHero['power']) + $getHero['itempower'])) * $sgh);
                 
                 if($helmet['proc'] == 1 && $helmet['type'] <= 3) $exp += $exp * (10 + $helmet['type'] * 5) / 100;
                 $database->modifyHero2('experience', $exp, $ownerID, 1);
