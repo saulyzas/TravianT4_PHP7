@@ -5,7 +5,22 @@ class AutomationSinglePlayer {
     
     public function AutomationSinglePlayer() {
         if(!file_exists("GameEngine/Prevention/adventures.txt") or time() - filemtime("GameEngine/Prevention/adventures.txt") > 50) {
-            $this->sendAdventuresComplete();
+            if( $this->checkAdventures() ){
+                $this->sendAdventuresComplete();
+            }
+            
+        }
+    }
+    private function checkAdventures() {
+        global $database, $session;
+        $time = time();
+        $adv_time = 86400 / ADVENTURE_SPEED;
+        $q = "SELECT * FROM ".TB_PREFIX."hero where $time - lastadv > $adv_time AND uid = ".$session->uid;
+        $result = $database->query($q);
+        if( mysql_num_rows($result) ){
+            return true;
+        } else {
+            return false;
         }
     }
     
@@ -29,9 +44,9 @@ class AutomationSinglePlayer {
            // echo "session uid is ".$session->uid;
         //$from = $database->getMInfo($data['from']);
         $tribe = $database->getUserField($session->uid, 'tribe', 0);
-        /*if($tribe < 1 || $tribe > 3) {
+        if($tribe < 1 || $tribe > 3) {
             $tribe = 1;
-        }*/
+        }
         //$tribe = $database->getUserField($from['owner'], 'tribe', 0);
         $ownerID = $traderUid ;//Natars uid =2
         //$ownerID = $from['owner'];
@@ -131,17 +146,22 @@ class AutomationSinglePlayer {
                             $database->addHeroItem($ownerID, $btype, $nntype, $num);
                         }
                     } else {*/
-                        //$database->addHeroItem($ownerID, $btype, $nntype, $num);
+                        $database->addHeroItem($ownerID, $btype, $nntype, $num);
                     /*}*/
                 } else {
                     if($btype == 1 or $btype > 2) {
                         $num = 1;
                         $s2 = rand(1, count($ntype));
                         $nntype = $ntype[$s2];
-                        //$database->addHeroItem($ownerID, $btype, $nntype, $num);
+                        $database->addHeroItem($ownerID, $btype, $nntype, $num);
                     }
                 }
-            
+        $q = "SELECT * FROM ".TB_PREFIX."heroitems WHERE uid = '$ownerID' and proc = 0";
+        $dataarray = $database->query_return($q);
+        foreach ($dataarray as $data) {
+            $database->addAuction($ownerID, $data['id'], $data['btype'], $data['type'], $data['num']);
+        }
+        
         
         
         if(file_exists("GameEngine/Prevention/adventures.txt")) {
