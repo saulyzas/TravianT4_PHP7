@@ -3,13 +3,13 @@
 #################################################################################
 ##              -= YOU MAY NOT REMOVE OR CHANGE THIS NOTICE =-                 ##
 ## --------------------------------------------------------------------------- ##
-##  Filename       Generator.php                                               ##
+##  Filename       GeneratorX.phpp                                               ##
 ##  License:       TravianX Project                                            ##
 ##  Copyright:     TravianX (c) 2010-2011. All rights reserved.                ##
 ##                                                                             ##
 #################################################################################
 
-class Generator {
+class GeneratorX {
 	
 	public function generateRandID(){
 		return md5($this->generateRandStr(16));
@@ -152,4 +152,4 @@ class Generator {
 	}
 	
 };
-$generator = new Generator;
+$generator = new GeneratorX;

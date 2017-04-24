@@ -16,7 +16,7 @@ ob_start(); //this is enough
         include ("Mailer.php");
         include ("Battle.php");
         include ("Form.php");
-        include ("Generator.php");
+        include ("GeneratorX.php");
 		include ("Multisort.php");
 		include ("Ranking.php");
         include ("Lang/" . LANG . ".php");

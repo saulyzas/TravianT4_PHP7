@@ -18,7 +18,7 @@ class AutomationSinglePlayer {
         $adv_time = 86400 / ADVENTURE_SPEED;
         $q = "SELECT * FROM ".TB_PREFIX."hero where $time - lastadv > $adv_time AND uid = ".$session->uid;
         $result = $database->query($q);
-        if(mysql_num_rows($result)) {
+        if($result && mysql_num_rows($result)) {
             return true;
         } else {
             return false;
