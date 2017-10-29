@@ -352,7 +352,18 @@ echo "<div class=\"headline\"><span class=\"f10 c5\">Error creating constant.php
             <font class="none" size="1" face="Trebuchet MS">Hour : minute</font></td>
 		</tr>
 
-</table>
+</table><br />
+
+<h4 class="round small  top top10_offs">Singleplayer Settings</h4>
+<table cellpadding="1" cellspacing="1" id="top10_raiders" class="top10 row_table_data">
+    <tr class="hover">
+        <td>Singleplayer mode:</td>
+        <td><select name="singleplayer_mode" dir="ltr" class="text">
+                <option value="0" selected="selected">disabled</option>
+                <option value="1" >enabled</option>
+            </select></td>
+
+</table><br />
 
 <div align="left">
 <button type="submit" value="Upgrade level" class="build">

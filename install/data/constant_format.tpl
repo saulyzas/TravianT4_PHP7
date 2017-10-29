@@ -271,4 +271,9 @@ define("DOMAIN", $result['server_url']);
 define("HOMEPAGE", $result['server_url']);
 define("SERVER", $result['server_url']);
 
+////////////////////////////////////////
+// *****  SIMGLEPLAYER SETTINGS  *****//
+////////////////////////////////////////
+
+define("SINGLEPLAYER_ENABLED", "%SINGLEPLAYERMODE%");
 ?>

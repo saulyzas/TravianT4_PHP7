@@ -185,7 +185,7 @@ ob_start(); //this is enough
         $form = new Form;
         $message = new Message;
 
-        if( SINGLEPLAYER ){
+        if( SINGLEPLAYER_ENABLED ){
             include("AutomationSinglePlayer.php");
         }
 
