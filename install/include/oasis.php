@@ -1,5 +1,5 @@
 <?php
-        include ("../../GameEngine/Database/connection.php");
+        include ("../../config/connection.php");
         include ("../../GameEngine/Database.php");
         include ("../../GameEngine/Admin/database.php");
         include ("../../GameEngine/config.php");

@@ -12,7 +12,7 @@
 ini_set('max_execution_time', 1000);
 error_reporting(E_ALL);
 
-include_once("../../Database/connection.php");
+include_once("../../../config/connection.php");
 include_once("../../config.php");
 include_once("../../Database/db_MYSQL.php");
 

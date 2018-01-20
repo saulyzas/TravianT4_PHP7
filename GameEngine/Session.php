@@ -1,10 +1,10 @@
 <?php
 ob_start(); //this is enough 
-        if(!file_exists('GameEngine/config.php') && !file_exists('GameEngine/Database/connection.php')) {
+        if(!file_exists('GameEngine/config.php') && !file_exists('config/connection.php')) {
         	header("Location: install/");
         }
         
-        include ("Database/connection.php");
+        include ("config/connection.php");
         include ("config.php");
         include ("Database.php");
 		include ("Data/buidata.php");

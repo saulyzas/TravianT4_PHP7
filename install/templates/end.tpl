@@ -1,9 +1,6 @@
 ﻿<?php
-include("../GameEngine/Database/connection.php");
-include("../GameEngine/config.php");
-if( !file_exists ("../config") ){
-    mkdir("../config", 0775);
-}
+include("../config/connection.php");
+include("../config/config.php");
 $time = time();
 $installedFlagFile = file_put_contents("../config/installed", "".$time.PHP_EOL , FILE_APPEND | LOCK_EX);
 ?>

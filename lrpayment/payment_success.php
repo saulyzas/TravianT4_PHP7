@@ -2,7 +2,7 @@
 ob_start();
 session_start();
 error_reporting(0);
-include ("../GameEngine/Database/connection.php");
+include ("../config/connection.php");
 include ("../GameEngine/config.php");
 mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
 mysql_select_db(SQL_DB);
