@@ -1,7 +1,8 @@
 ﻿<?php
-	rename("include/constant.php","../GameEngine/config.php");
-    rename("include/connection.php","../GameEngine/Database/connection.php");
-	$time = time();
+    rename("installconfig/constant.php","../GameEngine/config.php");
+    rename("installconfig/connection.php","../GameEngine/Database/connection.php");
+    $time = time();
+    rmdir("installconfig")
 ?>
 <div id="content" class="login">
 

@@ -1,8 +1,8 @@
 <?php
 
 set_time_limit(0);
-include("connection.php");
-include("constant.php");
+include dirname(__FILE__).'/../installconfig/connection.php';
+include dirname(__FILE__).'/../installconfig/constant.php';
 
 class MYSQLi_DB {
 
