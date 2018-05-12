@@ -1,7 +1,7 @@
 <?php
 
 include_once(dirname(__FILE__).'/../config/connection.php');
-include_once("config.php");
+include_once(dirname(__FILE__).'/../config/config.php');
 
 switch(DB_TYPE) {
 	case 1:
