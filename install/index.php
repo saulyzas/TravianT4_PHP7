@@ -13,7 +13,7 @@
         <meta name="content-language" content="en" />
         <link href="../gpack/travian_Travian_4.0_41/lang/ir/compact.css" rel="stylesheet" type="text/css" />
         <link href="../gpack/travian_Travian_4.0_41/lang/ir/lang.css" rel="stylesheet" type="text/css" />
-        <link href="../img/travian_basics2.css" rel="stylesheet" type="text/css" />
+        <link href="../img/travian_basics.css" rel="stylesheet" type="text/css" />
         <script src="../mt-core.js?0faaa" type="text/javascript"></script>
         <script src="../mt-more.js?0faaa" type="text/javascript"></script>
         <script src="../unx.js?0faaa" type="text/javascript"></script>
@@ -21,9 +21,9 @@
     </head>
     <body class="v35 webkit chrome login">
         <div id="wrapper">
-            <img id="staticElements" src="img\x.gif" alt="" />
+            <img id="staticElements" src="..\img\x.gif" alt="" />
             <div class="bodyWrapper">
-                <img style="filter:chroma();" src="img\x.gif" id="msfilter" alt="" />
+                <img style="filter:chroma();" src="..\img\x.gif" id="msfilter" alt="" />
                 <div id="header">
                     <div id="mtop">
                         <a id="logo" href="#" target="_blank" title="Travian"></a>

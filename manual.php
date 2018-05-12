@@ -12,7 +12,7 @@
 #################################################################################
 
 include("config/connection.php");
-include("GameEngine/config.php");
+include("config/config.php");
 ?>
 
 <html>

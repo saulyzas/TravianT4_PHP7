@@ -3,7 +3,7 @@ ob_start();
 session_start();
 error_reporting(0);
 include ("../config/connection.php");
-include ("../GameEngine/config.php");
+include ("../config/config.php");
 error_log("SQL_PASS\n".SQL_PASS);
 error_log(SQL_PASS);
 mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);

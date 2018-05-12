@@ -1,7 +1,7 @@
 <?php
 if($_GET){
 	include_once ("config/connection.php");
-	include_once ("GameEngine/config.php");
+	include_once ("config/config.php");
 	mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
 	mysql_select_db(SQL_DB);
 	switch($_GET['f']) {

@@ -13,7 +13,7 @@
 session_start();
 include("../GameEngine/Database.php");
 include("../GameEngine/Admin/database.php");
-include("../GameEngine/config.php");
+include("../config/config.php");
 include("../GameEngine/Data/buidata.php");
 
 class timeFormatGenerator

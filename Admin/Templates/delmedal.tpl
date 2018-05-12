@@ -10,7 +10,7 @@
 #################################################################################
 
 if($_SESSION['access'] < ADMIN) die("Access Denied: You are not Admin!");
-include("../GameEngine/config.php");
+include("../config/config.php");
 $id = $_SESSION['id'];
 
 $sql = mysql_query("SELECT * FROM ".TB_PREFIX."medal");

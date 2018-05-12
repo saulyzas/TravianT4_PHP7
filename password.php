@@ -1,5 +1,5 @@
 ﻿<?php
-include('GameEngine/config.php');
+include('config/config.php');
 include('GameEngine/database.php');
 include('GameEngine/lang/'.LANG.'.php');
 mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);

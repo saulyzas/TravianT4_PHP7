@@ -17,7 +17,7 @@
 ##                                                                             ##
 #################################################################################
 
-include("GameEngine/config.php");
+include("config/config.php");
 include("GameEngine/Data/buidata.php");
 
 class adm_DB {

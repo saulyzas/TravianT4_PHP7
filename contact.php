@@ -1,7 +1,7 @@
 ﻿<?php
 
 include("GameEngine/Database.php");
-include("GameEngine/config.php");
+include("config/config.php");
 include "Templates/html.tpl";
 ?>
 <body class="v35 webkit chrome support">

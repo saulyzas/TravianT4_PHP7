@@ -4,7 +4,7 @@ if(!file_exists ("../config")){
         die("<br/><br/><br/>Can't create root config folder: DOCUMENT_ROOT\config");
     }
 }
-rename("installconfig/constant.php","../GameEngine/config.php");
+rename("installconfig/constant.php","../config/config.php");
 rename("installconfig/connection.php","../config/connection.php");
 $time = time();
 rmdir("installconfig")
