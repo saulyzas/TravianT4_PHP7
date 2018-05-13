@@ -17,7 +17,7 @@
 ##                                                                             ##
 #################################################################################
 ?>
-<div align="center"><img src="img/admin/admin.gif" width="468" height="60" border="0"></div>
+<div align="center"><img src="../img/admin/admin.gif" width="468" height="60" border="0"></div>
 <p>Login to Admin Control Panel:</p>
 <form method="post" action="admin.php">
 	<input type="hidden" name="action" value="login">
@@ -32,7 +32,7 @@
             </tr>
 		</table>
 	<p align="center">
-    <input type="image" border="0" src="img/admin/b/l1.gif" width="80" height="20">
-	<img align="right" src="img/admin/senator_roemer.png" width="450" height="500">
+    <input type="image" border="0" src="../img/admin/b/l1.gif" width="80" height="20">
+	<img align="right" src="../img/admin/senator_roemer.png" width="450" height="500">
     </p>
 </form>
