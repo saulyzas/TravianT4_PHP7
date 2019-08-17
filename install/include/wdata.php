@@ -1,5 +1,6 @@
 <?php
-
+include_once('../installconfig/connection.php');
+include_once('../installconfig/constant.php');
 include("database.php");
 
 function isgrayfield($x, $y) {

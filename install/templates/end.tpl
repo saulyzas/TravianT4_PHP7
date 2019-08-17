@@ -3,6 +3,7 @@ include("../config/connection.php");
 include("../config/config.php");
 $time = time();
 $installedFlagFile = file_put_contents("../config/installed", "".$time.PHP_EOL , FILE_APPEND | LOCK_EX);
+chmod($installedFlagFile, 0777);
 ?>
 <div id="content" class="login">
 <div class="headline"><h2>TravianT4 Installation Script</h2></div><br>

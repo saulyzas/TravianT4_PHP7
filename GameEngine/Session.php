@@ -4,8 +4,6 @@ ob_start(); //this is enough
         	header("Location: install/");
         }
         
-        include ("config/connection.php");
-        include ("config/config.php");
         include ("Database.php");
 		include ("Data/buidata.php");
         include ("Data/cp.php");
