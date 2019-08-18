@@ -1,5 +1,5 @@
-//author: https://github.com/Lorex
 <?php
+//author: https://github.com/Lorex
         class mysqli_DB {
         	var $connection;
 
@@ -419,7 +419,7 @@
 				}
 
         		$time = time();
-        		$q = "INSERT into " . TB_PREFIX . "vdata (wref, owner, name, capital, pop, cp, celebration, wood, clay, iron, maxstore, crop, maxcrop, lastupdate, created) values
+        		$q = "INSERT IGNORE into " . TB_PREFIX . "vdata (wref, owner, name, capital, pop, cp, celebration, wood, clay, iron, maxstore, crop, maxcrop, lastupdate, created) values
         ('$wid', '$uid', '$vname', '$capital', 2, 1, 0, 780, 780, 780, 800, 780, 800, '$time', '$time')";
         		return mysqli_query($this->connection,$q) or die(mysqli_error());
         	}
@@ -545,6 +545,7 @@
         	function getVillageState($wref) {
         		$q = "SELECT oasistype,occupied FROM " . TB_PREFIX . "wdata where id = $wref";
         		$result = mysqli_query($this->connection,$q);
+        		//echo $result ;
         		$dbarray = mysqli_fetch_array($result);
         		if($dbarray['occupied'] != 0 || $dbarray['oasistype'] != 0) {
         			return true;
@@ -925,7 +926,7 @@
         		$qs = "DELETE from " . TB_PREFIX . "forum_topic where id = '$id'";
         		//  $q = "DELETE from ".TB_PREFIX."forum_post where topic = '$id'";//
         		return mysqli_query($this->connection, $qs); //
-        		// mysqli_query($con,$q,$this->connection);
+        		// mysqli_query($this->connection,$q);
         	}
 
         	function DeletePost($id) {
@@ -1618,18 +1619,18 @@
                 } else {
                     if($jobs[$jobDeleted]['field'] >= 19) {
                         $x = "SELECT f" . $jobs[$jobDeleted]['field'] . " FROM " . TB_PREFIX . "fdata WHERE vref=" . $jobs[$jobDeleted]['wid'];
-                        $result = mysqli_query($con,$x, $this->connection) or die(mysqli_error());
+                        $result = mysqli_query($this->connection,$x) or die(mysqli_error());
                         $fieldlevel = mysqli_fetch_row($result);
                         if($fieldlevel[0] == 0) {
                             $x = "UPDATE " . TB_PREFIX . "fdata SET f" . $jobs[$jobDeleted]['field'] . "t=0 WHERE vref=" . $jobs[$jobDeleted]['wid'];
-                            mysqli_query($con,$x, $this->connection) or die(mysqli_error());
+                            mysqli_query($this->connection,$x) or die(mysqli_error());
                         }
                     }
                     if(($jobLoopconID >= 0) && ($jobs[$jobDeleted]['loopcon'] != 1)) {
                         if(($jobs[$jobLoopconID]['field'] <= 18 && $jobs[$jobDeleted]['field'] <= 18) || ($jobs[$jobLoopconID]['field'] >= 19 && $jobs[$jobDeleted]['field'] >= 19) || sizeof($jobs) < 3) {
                             $uprequire = $building->resourceRequired($jobs[$jobLoopconID]['field'], $jobs[$jobLoopconID]['type']);
                             $x = "UPDATE " . TB_PREFIX . "bdata SET loopcon=0,timestamp=" . (time() + $uprequire['time']) . " WHERE wid=" . $jobs[$jobDeleted]['wid'] . " AND loopcon=1 AND master=0";
-                            mysqli_query($con,$x, $this->connection) or die(mysqli_error());
+                            mysqli_query($this->connection,$x) or die(mysqli_error());
                         }
                     }
                 }
@@ -1680,7 +1681,7 @@
             function FinishWoodcutter($wid) {
 				$time = time()-1;
                 $q = "SELECT * FROM " . TB_PREFIX . "bdata where wid = $wid and type = 1 order by master,timestamp ASC";
-                $result = mysqli_query($con,$q);
+                $result = mysqli_query($this->connection,$q);
 				$dbarray = mysqli_fetch_array($result);
 				$q = "UPDATE ".TB_PREFIX."bdata SET timestamp = $time WHERE id = '".$dbarray['id']."'";
                 $this->query($q);
@@ -1691,7 +1692,7 @@
 				}else{
 				$q2 = "SELECT * FROM " . TB_PREFIX . "bdata where wid = $wid and loopcon = 1 order by master,timestamp ASC";
 				}
-				$result2 = mysqli_query($con,$q2);
+				$result2 = mysqli_query($this->connection,$q2);
 				if(mysqli_num_rows($result2) > 0){
 				$dbarray2 = mysqli_fetch_array($result2);
 				$wc_time = $dbarray['timestamp'];
@@ -1703,7 +1704,7 @@
 			function FinishRallyPoint($wid) {
 				$time = time()-1;
                 $q = "SELECT * FROM " . TB_PREFIX . "bdata where wid = $wid and type = 16 order by master,timestamp ASC";
-                $result = mysqli_query($con,$q);
+                $result = mysqli_query($this->connection,$q);
 				$dbarray = mysqli_fetch_array($result);
 				$q = "UPDATE ".TB_PREFIX."bdata SET timestamp = $time WHERE id = '".$dbarray['id']."'";
                 $this->query($q);
@@ -1714,7 +1715,7 @@
 				}else{
 				$q2 = "SELECT * FROM " . TB_PREFIX . "bdata where wid = $wid and loopcon = 1 order by master,timestamp ASC";
 				}
-				$result2 = mysqli_query($con,$q2);
+				$result2 = mysqli_query($this->connection,$q2);
 				if(mysqli_num_rows($result2) > 0){
 				$dbarray2 = mysqli_fetch_array($result2);
 				$wc_time = $dbarray['timestamp'];
@@ -1899,10 +1900,10 @@
         		$result = mysqli_query($this->connection,$q);
         		$row = mysqli_fetch_row($result);
         		$q2 = "SELECT sum(ref) from " . TB_PREFIX . "movement where sort_type = 2 and " . TB_PREFIX . "movement.to = $vid and proc = 0";
-        		$result2 = mysqli_query($con,$q2, $this->connection);
+        		$result2 = mysqli_query($this->connection,$q2);
         		$row2 = mysqli_fetch_row($result2);
         		$q3 = "SELECT sum(merchant) from " . TB_PREFIX . "market where vref = $vid and accept = 0";
-        		$result3 = mysqli_query($con,$q3, $this->connection);
+        		$result3 = mysqli_query($this->connection,$q3);
         		$row3 = mysqli_fetch_row($result3);
         		return $row[0] + $row2[0] + $row3[0];
         	}
@@ -2596,7 +2597,7 @@
         	References: Query
         	***************************/
         	function query($query) {
-        		return mysqli_query($con,$query, $this->connection);
+        		return mysqli_query($this->connection,$query);
         	}
 
         	function RemoveXSS($val) {
@@ -2634,7 +2635,7 @@
 
         	function Getowner($vid) {
         		$s = "SELECT owner FROM " . TB_PREFIX . "vdata where wref = $vid";
-        		$result1 = mysqli_query($con,$s, $this->connection);
+        		$result1 = mysqli_query($this->connection, $s);
         		$row1 = mysqli_fetch_row($result1);
         		return $row1[0];
         	}
@@ -2649,7 +2650,7 @@
         	}
         	function poulateOasisdata() {
         		$q2 = "SELECT * FROM " . TB_PREFIX . "wdata where oasistype != 0";
-        		$result2 = mysqli_query($con,$q2, $this->connection);
+        		$result2 = mysqli_query($this->connection, $q2);
         		while($row = mysqli_fetch_array($result2)) {
         			$wid = $row['id'];
 switch($row['oasistype']) {
@@ -2883,7 +2884,7 @@ break;
 
 			function populateOasisUnitsLow() {
         		$q2 = "SELECT * FROM " . TB_PREFIX . "wdata where oasistype != 0";
-        		$result2 = mysqli_query($con,$q2, $this->connection);
+        		$result2 = mysqli_query($this->connection, $q2);
         		while($row = mysqli_fetch_array($result2)) {
         			$wid = $row['id'];
         			$basearray = $this->getMInfo($wid);
@@ -3491,7 +3492,7 @@ break;
 				$time = time()+(3600*120);
 				$ddd = rand(0,3);
 				if($ddd == 1){ $dif = 1; }else{ $dif = 0; }
-				$sql = mysqli_query($con,"SELECT * FROM ".TB_PREFIX."wdata ORDER BY id DESC LIMIT 1");
+				$sql = mysqli_query($this->connection,"SELECT * FROM ".TB_PREFIX."wdata ORDER BY id DESC LIMIT 1");
 				$lastw = 641601;
 				if(($wref-10000)<=10){
 					$w1 = rand(10,($wref+10000));
@@ -3600,7 +3601,7 @@ break;
 				$result = mysqli_query($this->connection,$q);
 				if(mysqli_num_rows($result) == 0){
 					$q2 = "SELECT * FROM ".TB_PREFIX."diplomacy WHERE alli2 = '$aid' AND type = '$type' AND accepted = '1'";
-					$result2 = mysqli_query($con,$q2, $this->connection);
+					$result2 = mysqli_query($this->connection,$q2);
 					while($row = mysqli_fetch_array($result2)){
 						$alliance = $this->getAlliance($row['alli1']);
 						$text = "";
@@ -3780,9 +3781,9 @@ break;
 		$y1 = intval($coor['y']);
 		$prevdist = 0;
 		$q2 = "SELECT * FROM " . TB_PREFIX . "vdata where owner = 4";
-		$array2 = mysqli_fetch_array(mysqli_query($con,$q2));
+		$array2 = mysqli_fetch_array(mysqli_query($this->connection,$q2));
 		$vill = $array2['wref'];
-		if(mysqli_num_rows(mysqli_query($con,$q)) > 0){
+		if(mysqli_num_rows(mysqli_query($this->connection,$q)) > 0){
 		foreach($array as $village){
 		$coor2 = $this->getCoor($village['wref']);
 				$max = 2 * WORLD_MAX + 1;

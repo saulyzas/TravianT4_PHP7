@@ -161,15 +161,15 @@ echo "<div class=\"headline\"><span class=\"f10 c5\">Error creating constant.php
             </tr>
             <tr class="hover">
                 <td>Username:</td>
-                <td><input name="suser" dir="ltr" class="text" type="text" id="suser" value=""></td>
+                <td><input name="suser" dir="ltr" class="text" type="text" id="suser" value="travian"></td>
             </tr>
             <tr class="hover">
                 <td>Password:</td>
-                <td><input type="text" dir="ltr" class="text" name="spass" id="spass"></td>
+                <td><input type="text" dir="ltr" class="text" name="spass" id="spass" value="travian"></td>
             </tr>
             <tr class="hover">
                 <td>DB name:</td>
-                <td><input type="text" dir="ltr" class="text" name="sdb" id="sdb"></td>
+                <td><input type="text" dir="ltr" class="text" name="sdb" id="sdb" value="travian"></td>
             </tr>
             <tr class="hover">
                 <td>Prefix:</td>
@@ -178,8 +178,8 @@ echo "<div class=\"headline\"><span class=\"f10 c5\">Error creating constant.php
             <tr class="hover">
                 <td>Type:</td>
                 <td><select name="connectt" dir="ltr" class="text">
-                        <option value="0" selected="selected">MYSQL</option>
-                        <option value="1" disabled="disabled">MYSQLi</option>
+                        <option value="0" >MYSQL(deprecated)</option>
+                        <option value="1" selected="selected">MYSQLi</option>
                     </select></td>
             </tr>
             <tr class="empty"><td></td><td></td></tr>

@@ -16,7 +16,7 @@ if (DB_TYPE) {
         }
     }
     $database->query('SET foreign_key_checks = 1');
-    $database->close();
+    $database->connection->close();
 } else {
    if ($result = $database->query("SHOW TABLES")) {
         while($row = mysql_fetch_array($result, MYSQL_NUM)) {
@@ -30,4 +30,5 @@ if (DB_TYPE) {
 unlink(dirname(__FILE__).'/../config/connection.php');
 unlink(dirname(__FILE__).'/../config/config.php');
 unlink(dirname(__FILE__).'/../config/installed');
+echo "Uninstall success!";
 ?>
