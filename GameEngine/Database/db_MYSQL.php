@@ -3912,6 +3912,17 @@ break;
 		$q = "DELETE from " . TB_PREFIX . "prisoners where id = '$id'";
 		mysql_query($q, $this->connection);
 	}
+
+	function hasActiveAdventures($adv_time, $uid) {
+        $time = time();
+        $q = "SELECT * FROM " . TB_PREFIX . "hero where $time - lastadv > $adv_time AND uid = " . $uid;
+        $result = mysql_query($q, $this->connection);
+        if (mysql_num_rows($result)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 };
 
         $database = new MYSQL_DB;

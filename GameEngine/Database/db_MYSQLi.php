@@ -1206,13 +1206,13 @@
         	function getFieldLevel($vid, $field) {
         		$q = "SELECT f" . $field . " from " . TB_PREFIX . "fdata where vref = $vid";
         		$result = mysqli_query($this->connection,$q);
-        		return mysqli_result($result, 0);
+        		return $this->mysqli_result($result, 0);
         	}
 
         	function getFieldType($vid, $field) {
         		$q = "SELECT f" . $field . "t from " . TB_PREFIX . "fdata where vref = $vid";
         		$result = mysqli_query($this->connection,$q);
-        		return mysqli_result($result, 0);
+        		return $this->mysqli_result($result, 0);
         	}
 
         	function getVSumField($uid, $field) {
@@ -1998,6 +1998,8 @@
         			case 9:
         				$q = "SELECT * FROM " . TB_PREFIX . "movement where " . TB_PREFIX . "movement." . $where . " = $village and sort_type = 9 and proc = 0";
         				break;
+        			default:
+        				return;
 
         		}
         		$result = mysqli_query($this->connection,$q);
@@ -3905,6 +3907,25 @@ break;
 		$q = "DELETE from " . TB_PREFIX . "prisoners where id = '$id'";
 		mysqli_query($this->connection,$q);
 	}
+
+	function hasActiveAdventures($adv_time, $uid) {
+        $time = time();
+        $q = "SELECT * FROM " . TB_PREFIX . "hero where $time - lastadv > $adv_time AND uid = " . $uid;
+        $result = mysqli_query($this->connection,$q);
+        if (mysqli_num_rows($result)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function mysqli_result($result, $row, $field = 0) {
+        // Adjust the result pointer to that specific row
+        $result->data_seek($row);
+        // Fetch result array
+        $data = $result->fetch_array();
+        return $data[$field];
+    }
 };
 
         $database = new mysqli_DB;

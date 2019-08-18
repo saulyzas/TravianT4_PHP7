@@ -3,24 +3,13 @@
 class AutomationSinglePlayer {
 
     public function AutomationSinglePlayer() {
+        global $database, $session;
         //send NPC hero to adventure and sell items on auction
         if (!file_exists("GameEngine/Prevention/adventures.txt") or time() - filemtime("GameEngine/Prevention/adventures.txt") > 50) {
-            if ($this->checkAdventures()) {
+            $adv_time = 86400 / ADVENTURE_SPEED;
+            if ($database->hasActiveAdventures( $adv_time, $session->uid )) {
                 $this->sendAdventuresComplete();
             }
-        }
-    }
-
-    private function checkAdventures() {
-        global $database, $session;
-        $time = time();
-        $adv_time = 86400 / ADVENTURE_SPEED;
-        $q = "SELECT * FROM " . TB_PREFIX . "hero where $time - lastadv > $adv_time AND uid = " . $session->uid;
-        $result = $database->query($q);
-        if ($result && mysql_num_rows($result)) {
-            return true;
-        } else {
-            return false;
         }
     }
 
