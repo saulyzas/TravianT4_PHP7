@@ -1991,9 +1991,10 @@
         			case 5:
         				$q = "SELECT * FROM " . TB_PREFIX . "movement where " . TB_PREFIX . "movement." . $where . " = $village and sort_type = 5 and proc = 0";
         				break;
-					case 7:
+        			case 7:
         				$q = "SELECT * FROM " . TB_PREFIX . "movement, " . TB_PREFIX . "attacks where " . TB_PREFIX . "movement." . $where . " = $village and " . TB_PREFIX . "movement.ref = " . TB_PREFIX . "attacks.id and " . TB_PREFIX . "movement.proc = 0 and " . TB_PREFIX . "movement.sort_type = 3 and " . TB_PREFIX . "attacks.attack_type = 2 ORDER BY endtime DESC";
-					case 9:
+        				break;
+        			case 9:
         				$q = "SELECT * FROM " . TB_PREFIX . "movement where " . TB_PREFIX . "movement." . $where . " = $village and sort_type = 9 and proc = 0";
         				break;
 
@@ -3269,14 +3270,17 @@ break;
 			function delAuction($id) {
 				$aucData = $this->getAuctionData($id);
 				$btype = $aucData['btype'];
-				if($btype>=7 || $btype!=12 || $btype!=13){
-					$this->editHeroNum($aucData['itemid'], $aucData['num'], 1);
-					$this->editProcItem($aucData['itemid'], 0);
-					$q = "DELETE FROM " . TB_PREFIX . "auction where id = $id and finish = 0";
+				if($btype>=7 && $btype!=12 && $btype!=13){
+				    if($this->checkHeroItem($aucData['owner'], $btype)) {
+                        $this->editHeroNum($this->getHeroItemID($aucData['owner'], $btype), $aucData['num'], 1);
+                    } else {
+                        $this->addHeroItem($aucData['owner'], $aucData['btype'], $aucData['type'], $aucData['num']);
+                    }
 				}else{
-					$this->editProcItem($aucData['itemid'], 0);
-        			$q = "DELETE FROM " . TB_PREFIX . "auction where id = $id and finish = 0";
-				}
+                    $this->addHeroItem($aucData['owner'], $aucData['btype'], $aucData['type'], $aucData['num']);
+                }
+				$q = "DELETE FROM " . TB_PREFIX . "auction where id = $id and finish = 0";
+
         		return mysqli_query($this->connection,$q);
         	}
 
@@ -3293,8 +3297,10 @@ break;
 
 					$itemData = $this->getItemData($itemid);
 					if($amount == $itemData['num']){
+                        $q = "DELETE FROM ".TB_PREFIX."heroitems where id = ".$itemid;
+                        mysqli_query($this->connection, $q);
 						$q = "INSERT INTO " . TB_PREFIX . "auction (`owner`, `itemid`, `btype`, `type`, `num`, `uid`, `bids`, `silver`, `newsilver`, `time`, `finish`) VALUES ('$owner', '$itemid', '$btype', '$type', '$amount', 0, 0, '$silver', '$silver', '$time', 0)";
-						$this->editProcItem($itemid, 1);
+						//$this->editProcItem($itemid, 1);
 					}else{
 						$this->editHeroNum($itemid, $amount, 0);
 						$q = "INSERT INTO " . TB_PREFIX . "auction (`owner`, `itemid`, `btype`, `type`, `num`, `uid`, `bids`, `silver`, `newsilver`, `time`, `finish`) VALUES ('$owner', '$itemid', '$btype', '$type', '$amount', 0, 0, '$silver', '$silver', '$time', 0)";
@@ -3302,8 +3308,10 @@ break;
 					}
 				}else{
 					$silver = 100;
+                    $q = "DELETE FROM ".TB_PREFIX."heroitems where id = ".$itemid;
+                    mysqli_query($this->connection, $q);
 					$q = "INSERT INTO " . TB_PREFIX . "auction (`owner`, `itemid`, `btype`, `type`, `num`, `uid`, `bids`, `silver`, `time`, `finish`) VALUES ('$owner', '$itemid', '$btype', '$type', '$amount', 0, 0, '$silver', '$time', 0)";
-					$this->editProcItem($itemid, 1);
+					//$this->editProcItem($itemid, 1);
 				}
 
         		return mysqli_query($this->connection,$q);
