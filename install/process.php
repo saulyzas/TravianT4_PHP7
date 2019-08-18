@@ -1,7 +1,4 @@
 <?php
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(E_ALL & E_NOTICE);
 date_default_timezone_set('Asia/Tehran');
 if (file_exists("installconfig/constant.php") && file_exists("installconfig/connection.php")) {
 set_time_limit(0);
@@ -38,7 +35,6 @@ class Process {
         global $database;
         $myFile = "installconfig/constant.php";
         $fh = fopen($myFile, 'w') or die("<br/><br/><br/>Can't open or create file: install\installconfig\constant.php");
-        chmod($myFile, 0777);
         $text = file_get_contents("data/constant_format.tpl");
         $text = preg_replace("'%TRADERCAP%'", $_POST['tradercap'], $text);
         $text = preg_replace("'%CRANNYCAP%'", $_POST['crannycap'], $text);
@@ -69,7 +65,6 @@ class Process {
 
         $myFile = "installconfig/connection.php";
         $fh = fopen($myFile, 'w') or die("<br/><br/><br/>Can't open or create file: install\installconfig\connection.php");
-        chmod($myFile, 0777);
         $text = file_get_contents("data/connection.tpl");
         $text = preg_replace("'%SSERVER%'", $_POST['sserver'], $text);
         $text = preg_replace("'%SUSER%'", $_POST['suser'], $text);
