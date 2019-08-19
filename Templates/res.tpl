@@ -7,7 +7,8 @@ $totalproduction += $heroData['r0']*3*SPEED*$heroData['product'];
 }
 ?>
 <ul id="res">
-		<li class="r1" title="<div style=color:#FFF><b><?php echo WOOD; ?></b></div>Production: <?php echo $village->getProd("wood"); ?>"> 
+		<li class="r1" title="<div style=color:#FFF><b><?php echo WOOD; ?></b></div>Production: <?php echo $village->getProd("wood"); ?>
+				<br>Full in <?php echo round(($village->maxstore-$village->awood)*60/$village->getProd("wood")); ?> minutes">
 		<p> 
         	<img src="img/x.gif" alt="<?php echo WOOD; ?>"/> 
 
@@ -18,7 +19,8 @@ $totalproduction += $heroData['r0']*3*SPEED*$heroData['product'];
 	    </p>
         </li> 
         
-		<li class="r2" title="<div style=color:#FFF><b><?php echo CLAY; ?></b></div>Production: <?php echo $village->getProd("clay"); ?>"> 
+		<li class="r2" title="<div style=color:#FFF><b><?php echo CLAY; ?></b></div>Production: <?php echo $village->getProd("clay"); ?>
+				<br>Full in <?php echo round(($village->maxstore-$village->aclay)*60/$village->getProd("clay")); ?> minutes">
 		<p> 
         	<img src="img/x.gif" alt="<?php echo CLAY; ?>"/> 
 			<span id="l2" class="value "><?php echo round($village->aclay)."/".$village->maxstore; ?></span> 
@@ -28,7 +30,8 @@ $totalproduction += $heroData['r0']*3*SPEED*$heroData['product'];
 		</p> 
 
         	</li> 
-		<li class="r3" title="<div style=color:#FFF><b><?php echo IRON; ?></b></div>Production: <?php echo $village->getProd("iron"); ?>"> 
+		<li class="r3" title="<div style=color:#FFF><b><?php echo IRON; ?></b></div>Production: <?php echo $village->getProd("iron"); ?>
+				<br>Full in <?php echo round(($village->maxstore-$village->airon)*60/$village->getProd("iron")); ?> minutes">
 		<p> 
         	<img src="img/x.gif" alt="<?php echo IRON; ?>"/> 
 			<span id="l3" class="value "><?php echo round($village->airon)."/".$village->maxstore; ?></span>
@@ -38,7 +41,8 @@ $totalproduction += $heroData['r0']*3*SPEED*$heroData['product'];
 		</p> 
 
         	</li> 
-		<li class="r4" title="<div style=color:#FFF><b><?php echo CROP; ?></b></div>Production: <?php echo $village->getProd("crop"); ?>"> 
+		<li class="r4" title="<div style=color:#FFF><b><?php echo CROP; ?></b></div>Production: <?php echo $village->getProd("crop"); ?>
+				<br>Full in <?php echo round(($village->maxcrop-$village->acrop)*60/$village->getProd("crop")); ?> minutes">
 		<p> 
         	<img src="img/x.gif" alt="<?php echo CROP; ?>"/> 
 			<span id="l4" class="value "><?php if(($village->acrop)<0){echo "0";}else{echo round($village->acrop);}echo "/".$village->maxcrop; ?></span>
