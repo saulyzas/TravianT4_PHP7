@@ -17,9 +17,9 @@ foreach($memberlist as $member) {
 }
 echo "<h1 class=\"titleInHeader\">Alliance - ".$allianceinfo['tag']."</h1>";
 
-$profiel="".$allianceinfo['notice']."".md5(skJkev3)."".$allianceinfo['desc']."";
+$profiel="".$allianceinfo['notice']."".md5('skJkev3')."".$allianceinfo['desc']."";
 require("medal.php");
-$profiel=explode("".md5(skJkev3)."", $profiel);
+$profiel=explode("".md5('skJkev3')."", $profiel);
 
 include("alli_menu.tpl"); 
 

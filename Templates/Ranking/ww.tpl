@@ -14,7 +14,7 @@ if(WW == True){
         $cont = 1;
     while($row = mysql_fetch_array($result))
       { 
-      $ally = $database->getAlliance($row[alliance]);
+      $ally = $database->getAlliance($row['alliance']);
       ?>
 			<tr class="hover">
 				<td class="ra"><?php echo $cont; $cont++;?>.</td>
