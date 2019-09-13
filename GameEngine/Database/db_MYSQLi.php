@@ -3,9 +3,9 @@
         class mysqli_DB {
         	var $connection;
 
-        	function mysqli_DB() {
-        		$this->connection = mysqli_connect(SQL_SERVER, SQL_USER, SQL_PASS) or die(mysqli_error());
-        		mysqli_select_db($this->connection,SQL_DB) or die(mysqli_error());
+        	function __construct() {
+				$this->connection = mysqli_connect(SQL_SERVER, SQL_USER, SQL_PASS);
+				mysqli_select_db($this->connection, SQL_DB);
         	}
 
         	function register($username, $password, $email, $tribe, $locate, $act) {
@@ -1999,7 +1999,7 @@
         				$q = "SELECT * FROM " . TB_PREFIX . "movement where " . TB_PREFIX . "movement." . $where . " = $village and sort_type = 9 and proc = 0";
         				break;
         			default:
-        				return;
+        				return array();
 
         		}
         		$result = mysqli_query($this->connection,$q);
@@ -2585,8 +2585,8 @@
         			while($row = mysqli_fetch_assoc($result)) {
         				$all[] = $row;
         			}
-        			return $all;
         		}
+        		return $all;
         	}
 
         	function query_return($q) {
@@ -3928,6 +3928,28 @@ break;
     }
 };
 
-        $database = new mysqli_DB;
+		$database = new mysqli_DB;
+
+function mysql_query($sql) {
+	global $database;
+	return mysqli_query($database->connection, $sql);
+}
+
+function mysql_fetch_assoc($var) {
+	return mysqli_fetch_assoc($var);
+}
+
+function mysql_real_escape_string($var) {
+	global $database;
+	return mysqli_real_escape_string($database->connection, $var);
+}
+
+function mysql_num_rows($var) {
+	return mysqli_num_rows($var);
+}
+
+function mysql_fetch_array($var) {
+	return mysqli_fetch_array($var);
+}
 
 ?>

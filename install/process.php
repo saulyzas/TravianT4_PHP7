@@ -35,7 +35,14 @@ class Process {
         global $database;
         $myFile = "installconfig/constant.php";
         $fh = fopen($myFile, 'w') or die("<br/><br/><br/>Can't open or create file: install\installconfig\constant.php");
-        $text = file_get_contents("data/constant_format.tpl");
+        switch(DB_TYPE) {
+			case 1:
+			$text = file_get_contents("data/constant_format.tpl");
+			break;
+			default:
+			$text = file_get_contents("data/constant_format_mysqli.tpl");
+			break;
+		}
         $text = preg_replace("'%TRADERCAP%'", $_POST['tradercap'], $text);
         $text = preg_replace("'%CRANNYCAP%'", $_POST['crannycap'], $text);
         $text = preg_replace("'%TRAPPERCAP%'", $_POST['trappercap'], $text);
