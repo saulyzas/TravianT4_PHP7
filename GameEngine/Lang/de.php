@@ -60,7 +60,7 @@ define("TRAVIAN_PLUS","Travian <b><span class=\"plus_g\">P</span><span class=\"p
 define("CONTACT","Kontaktiere uns!");
 
 define("HEADER_MESSAGES","Nachrichten");
-defend("HEADER_MESSAGES_NEW","Neue Nachrichten");
+define("HEADER_MESSAGES_NEW","Neue Nachrichten");
 define("HEADER_PLUS","Plus");
 define("HEADER_ADMIN","Admin");
 define("HEADER_PLUSMENU","Plus Men&uuml");
@@ -322,6 +322,7 @@ define("U27","Rammholz");
 define("U28","Kriegskatapult");
 define("U29","H&auml;uptling");
 define("U30","Siedler");
+define("U99","Falle");
 
 //NATURE UNITS
 define("U31","Ratte");
@@ -820,7 +821,7 @@ define("MASS_SENT","Mass IGM was sent");
 	$lang['index2']['shop'] = 'Zum Shop';
 	$lang['index2']['shop link'] = '#';
 	$lang['index2']['facebook'] = 'http://www.facebook.com/ZravianX';
-	$lang['index2']['strategy game'] = 'TRAVIAN – das Multiplayer-Strategiespiel';
+	$lang['index2']['strategy game'] = 'TRAVIAN - das Multiplayer-Strategiespiel';
 	$lang['index2']['what is'] = 'TRAVIAN ist eines der erfolgreichsten Browserspiele weltweit. Als Spieler in TRAVIAN baust du dein Imperium mit vielen D&oumlrfern auf, rekrutierst eine m&aumlchtige Armee und k&aumlmpfst mit deiner Allianz um die Vorherrschaft in deiner Spiel-Welt.';
 	$lang['index2']['register free'] = 'Hier gratis registrieren';
 	$lang['index2']['title1'] = 'Neueste Welt';

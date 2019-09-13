@@ -8,6 +8,12 @@ include('menu.tpl');
 <tbody>
 <?php
 
+$siedlerp = '<img src="img/un/u/'.($tribe*10).'.gif" title="تعداد: '.$gessied.'" />' . '&nbsp;';
+$senatorp = '<img src="img/un/u/'.(($tribe-1)*10+9).'.gif" title="تعداد: '.$gessen.'" />' . '&nbsp;';
+
+$siedlerTotal = 0;
+$senatorTotal = 0;
+
 $timer = 0;
 $varray = $database->getProfileVillages($session->uid); 
 foreach($varray as $vil){
@@ -34,20 +40,20 @@ foreach($varray as $vil){
 	$unit = $database->getUnit($vid);
 	$tribe = $session->tribe;
 	$siedler = $unit['u'.$tribe*10];
-	$siedlerp = '<img src="img/un/u/'.($tribe*10).'.gif" title="تعداد: '.$gessied.'" />';
-	$senator = $unit['u'.($tribe-1)*10+9];
-	$senatorp = '<img src="img/un/u/'.(($tribe-1)*10+9).'.gif" title="تعداد: '.$gessen.'" />';
+	$senator = $unit['u'.(($tribe-1)*10+9)];
 	$i=1;
-	while($i <=$siedler) {
+	while($i <= $siedler) {
 		echo $siedlerp;
 		$i++;
+		$siedlerTotal++;
 	}
 	$s=1;
-	while($s <=$senator) {
+	while($s <= $senator) {
 		echo $senatorp;
 		$s++;
-	}		
-		
+		$senatorTotal++;
+	}
+
 	echo '</span></td>';
 	echo '<td class="slo lc">'.$exp.'/'.$maxslots.'</td>';
 	$gesexp = $gesexp + $exp;
@@ -67,10 +73,17 @@ foreach($varray as $vil){
 	<td class="cel none">-</td>
 
 	<td class="tro">
-	<?php 	
-	echo $siedlerp;
-	echo '&nbsp;';
-	echo $senatorp;
+	<?php
+	$i=1;
+	while($i <= $siedlerTotal) {
+		echo $siedlerp;
+		$i++;
+	}
+	$s=1;
+	while($s <= $senatorTotal) {
+		echo $senatorp;
+		$s++;
+	}
 	?></td>
 	<td class="slo"><?php echo $gesexp;echo '/';echo $gesdorf;?></td>
 </tr></tbody></table>

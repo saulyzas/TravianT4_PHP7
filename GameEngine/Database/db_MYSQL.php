@@ -1398,6 +1398,12 @@
 				}
 			}
 
+			function getUnreadMessageCount($id) {
+				$q = "SELECT COUNT(1) 'count' FROM " . TB_PREFIX . "mdata where target = $id and viewed = 0";
+				$result = mysql_query($this->connection,$q);
+				return mysql_fetch_assoc($result)['count'];
+			}
+
 			function getDelSent($uid) {
 				$q = "SELECT * FROM " . TB_PREFIX . "mdata WHERE owner = $uid and delowner = 1 ORDER BY time DESC";
 				$result = mysql_query($q, $this->connection);
@@ -1473,6 +1479,12 @@
 				$q = "SELECT * FROM " . TB_PREFIX . "ndata where uid = $uid and viewed = 0 ORDER BY time DESC";
 				$result = mysql_query($q, $this->connection);
 				return $this->mysql_fetch_all($result);
+			}
+
+			function getUnreadNoticeCount($uid) {
+				$q = "SELECT COUNT(1) 'count' FROM " . TB_PREFIX . "ndata where uid = $uid and viewed = 0";
+				$result = mysql_query($this->connection,$q);
+				return mysql_fetch_assoc($result)['count'];
 			}
 
 			function createTradeRoute($uid,$wid,$from,$r1,$r2,$r3,$r4,$start,$deliveries,$merchant,$time) {
