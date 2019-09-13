@@ -60,6 +60,7 @@ define("TRAVIAN_PLUS","Travian <b><span class=\"plus_g\">P</span><span class=\"p
 define("CONTACT","Kontaktiere uns!");
 
 define("HEADER_MESSAGES","Nachrichten");
+defend("HEADER_MESSAGES_NEW","Neue Nachrichten");
 define("HEADER_PLUS","Plus");
 define("HEADER_ADMIN","Admin");
 define("HEADER_PLUSMENU","Plus Men&uuml");

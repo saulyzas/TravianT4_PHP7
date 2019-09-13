@@ -33,6 +33,7 @@ define("TRAVIAN_PLUS","Travian <b><span class=\"plus_g\">P</span><span class=\"p
 define("CONTACT","Contact us!");
 
 define("HEADER_MESSAGES","Messages");
+define("HEADER_MESSAGES_NEW","New Messages");
 define("HEADER_PLUS","Plus");
 define("HEADER_ADMIN","Admin");
 define("HEADER_PLUSMENU","Plus menu");

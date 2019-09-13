@@ -119,10 +119,6 @@ if($palace == 0 && !$database->getBuildList(26) && !$database->getBuildList(25) 
 //id user
 $user = $session->uid;
 
-//connect to DB
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
-
 //loop search village user
 $query = mysql_query("SELECT * FROM ".TB_PREFIX."vdata WHERE owner = ".$user."");
 while($villaggi_array = mysql_fetch_array($query)){
@@ -230,10 +226,6 @@ if($embassy == 0 || $mainbuilding >= 2 && $mainbuilding <= 4) {
 //id user
 $user = $session->uid;
 
-//connect to DB
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
-
 //loop search village user
 $query = mysql_query("SELECT * FROM ".TB_PREFIX."vdata WHERE owner = ".$user."");
 while($villaggi_array = mysql_fetch_array($query)){
@@ -328,10 +320,6 @@ if($greatworkshop == 0 && $workshop >= 15 && $village->capital == 0 && GREAT_WKS
 	//Fix Castle
 	//id user
 	$user = $session->uid;
-
-	//connect to DB
-	mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-	mysql_select_db(SQL_DB);
 
 	//loop search village user
 	$query = mysql_query("SELECT * FROM ".TB_PREFIX."vdata WHERE owner = ".$user."");
