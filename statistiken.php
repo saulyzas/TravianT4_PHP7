@@ -163,7 +163,6 @@ if(isset($_GET['tid'])) {
         include("Templates/Ranking/general.tpl");
         break;
         case 1:
-        default:
         include("Templates/Ranking/overview.tpl");
         break;
         case 99:

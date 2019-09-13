@@ -109,13 +109,13 @@ class Units {
                     if ($post['t11'] > $village->unitarray['hero'])
                             {
                                 $form->addError("error","You can't send more units than you have");
-                                break;
+                                //break;
                             }
                             
                             if($post['t11']<0)
                             {
                                 $form->addError("error","You can't send negative units.");
-                                break;
+                                //break;
                             }
 				}
                 if ($database->isVillageOases($id) == 0) {
@@ -198,13 +198,13 @@ class Units {
                     if ($data['u11'] > $village->unitarray['hero'])
                             {
                                 $form->addError("error","You can't send more units than you have");
-                                break;
+                                //break;
                             }
                             
                             if($data['u11']<0)
                             {
                                 $form->addError("error","You can't send negative units.");
-                                break;
+                                //break;
                             }
 				if($form->returnErrors() > 0) {
 					$_SESSION['errorarray'] = $form->getErrors();

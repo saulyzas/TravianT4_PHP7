@@ -38,7 +38,7 @@ ob_start(); //this is enough
         	private $userarray = array();
         	var $villages = array();
 
-        	function Session() {
+        	function __construct() {
         		$this->time = time();
         		session_start();
 

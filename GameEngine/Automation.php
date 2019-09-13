@@ -140,7 +140,7 @@ class Automation {
         return $popT;
     }
     
-    public function Automation() {
+    public function __construct() {
         if(!file_exists("GameEngine/Prevention/cleardeleting.txt") or time() - filemtime("GameEngine/Prevention/cleardeleting.txt") > 50) {
             $this->clearDeleting();
         }
