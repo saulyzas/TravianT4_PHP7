@@ -32,7 +32,7 @@ if (mysql_num_rows($MyGold)) {
 	}
 }
 
-if($_GET['action']==FinishBuilding){
+if($_GET['action']=='FinishBuilding'){
 	$golds = $database->getUserArray($session->uid, 1);
 
     $MyVilId = mysql_query("SELECT * FROM ".TB_PREFIX."bdata WHERE `wid`='".$village->wid."'") or die(mysql_error());

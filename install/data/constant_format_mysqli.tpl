@@ -284,5 +284,6 @@ define("SINGLEPLAYER_ENABLED", "%SINGLEPLAYERMODE%");
 define("MODERATOR", 1);
 define("AUTO_DEL_INACTIVE", false);
 define("UN_ACT_TIME ", 0);
+define("ZRAVIANX4", false);
 
 ?>

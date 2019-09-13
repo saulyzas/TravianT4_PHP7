@@ -39,7 +39,7 @@ $nummedals = mysql_num_rows($sql);
 			$sql = mysql_query("SELECT * FROM ".TB_PREFIX."allimedal");
 			$tot = mysql_num_rows($sql);
 			$sql = mysql_query("SELECT week FROM ".TB_PREFIX."allimedal ORDER BY week DESC LIMIT 1");
-			$week = mysql_result($sql, 0);
+			$week = mysql_fetch_assoc($sql)['week'];
 			echo "<tr><td><center>$week</center></td><td><center>$tot</center></td></tr>";
 		?>
 	</tbody>
@@ -127,7 +127,7 @@ $nummedals = mysql_num_rows($sql);
 				$allyid = $row['allyid'];
 				
 				$unq = "SELECT name FROM ".TB_PREFIX."alidata WHERE id = ".$allyid."";
-				$user = mysql_result(mysql_query($unq), 0);
+				$user = mysql_fetch_assoc(mysql_query($unq))['name'];
 				$allyname = $user;
 				
 				$alliance = '<a href="admin.php?p=alliance&aid='.$allyid.'">'.$allyname.'</a>';

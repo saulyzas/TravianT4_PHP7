@@ -26,7 +26,7 @@
 class adm_DB {
 	var $connection;
 	
-	function adm_DB(){
+	function __construct(){
 		global $database;
 		$this->connection = $database->connection;        		
 	}

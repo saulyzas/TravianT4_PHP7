@@ -14,7 +14,7 @@
 	<table id="member" cellpadding="1" cellspacing="1" >
 		<thead>
 			<tr>
-				<th colspan="2">Reset All Players Plus</th>
+				<th colspan="2">Reset All Players Resource Bonus</th>
 			</tr> 
 		</thead>
 		<tbody> 

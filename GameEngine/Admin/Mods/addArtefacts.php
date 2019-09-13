@@ -12,12 +12,8 @@
 ini_set('max_execution_time', 1000);
 error_reporting(E_ALL);
 
-include_once("../../../config/connection.php");
 include_once("../../config.php");
-include_once("../../Database/db_MYSQL.php");
-
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
+include_once("../../Database.php"); 
 
 $session = $_POST['admid'];
 

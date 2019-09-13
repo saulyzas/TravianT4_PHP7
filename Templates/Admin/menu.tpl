@@ -16,7 +16,7 @@
 ##                                                                             ##
 #################################################################################
 
-include_once ("GameEngine/Database/db_MYSQL.php");
+include_once ("GameEngine/Database.php");
 include_once ("GameEngine/Ranking.php");
 ?>
 <div id="side_navi">
