@@ -121,7 +121,7 @@ if ($_SESSON['access'] == MULTIHUNTER) die("<br /><br /><br /><br /><br /><br />
     </tr>    
     <tr>
         <td>Log Gold</td>
-        <td><?php if(LOG_GOLD_FIN == true) { echo "<b><font color='Green'>Enabled</font></b>"; } else { echo "<b><font color='Red'>Disabled</font></b>"; } ?></td> 
+        <td><?php if(LOG_GOLD_FIN == true) { echo "<b><font color='Green'>Enabled</font></b>"; } else if(LOG_GOLD_FIN == false) { echo "<b><font color='Red'>Disabled</font></b>"; } ?></td> 
     </tr>    
     <tr>
         <td>Log Admin</td>
