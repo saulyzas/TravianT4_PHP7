@@ -8,11 +8,14 @@ include('menu.tpl');
 <tbody>
 <?php
 
-$siedlerp = '<img src="img/un/u/'.($tribe*10).'.gif" title="تعداد: '.$gessied.'" />' . '&nbsp;';
-$senatorp = '<img src="img/un/u/'.(($tribe-1)*10+9).'.gif" title="تعداد: '.$gessen.'" />' . '&nbsp;';
+$tribe = $session->tribe;
+$style = 'style="padding: 0px 2px;"';
 
-$siedlerTotal = 0;
-$senatorTotal = 0;
+$siedlerID = $tribe*10;
+$senatorID = $tribe*10-1;
+
+$gesSiedler = 0;
+$gesSenator = 0;
 
 $timer = 0;
 $varray = $database->getProfileVillages($session->uid); 
@@ -38,20 +41,15 @@ foreach($varray as $vil){
 	echo '<td class="cel">'.($lvlTH>0?'<a href="build.php?newdid='.$vid.'&amp;gid=24">'.($hasCel<>0?'<span id="timer'.$timer.'">'.$generator->getTimeFormat($hasCel-time()).'</span>':'<span class="dot">●</span>').'</a>':'<span class="none">-</span>').'</td>';
 	echo '<td class="tro"><span class="">';
 	$unit = $database->getUnit($vid);
-	$tribe = $session->tribe;
-	$siedler = $unit['u'.$tribe*10];
-	$senator = $unit['u'.(($tribe-1)*10+9)];
-	$i=1;
-	while($i <= $siedler) {
-		echo $siedlerp;
-		$i++;
-		$siedlerTotal++;
+	$siedler = $unit['u'.$siedlerID];
+	$senator = $unit['u'.$senatorID];
+	if ($siedler > 0)
+	{
+		echo '<img '.$style.' src="img/un/u/'.$siedlerID.'.gif" title="'.constant('U'.$siedlerID).' ('.$siedler.')" />';
 	}
-	$s=1;
-	while($s <= $senator) {
-		echo $senatorp;
-		$s++;
-		$senatorTotal++;
+	if ($senator > 0)
+	{
+		echo '<img '.$style.' src="img/un/u/'.$senatorID.'.gif" title="'.constant('U'.$senatorID).' ('.$senator.')" />';
 	}
 
 	echo '</span></td>';
@@ -59,8 +57,8 @@ foreach($varray as $vil){
 	$gesexp = $gesexp + $exp;
 	$gesdorf = $gesdorf + $maxslots;
 	$gescp = $gescp + $cp;
-	$gessied = $gessied + $siedler;
-	$gessen = $gessen + $senator;
+	$gesSiedler = $gesSiedler + $siedler;
+	$gesSenator = $gesSenator + $senator;
 	echo '</tr>';    
 }
 ?>
@@ -74,15 +72,13 @@ foreach($varray as $vil){
 
 	<td class="tro">
 	<?php
-	$i=1;
-	while($i <= $siedlerTotal) {
-		echo $siedlerp;
-		$i++;
+	if ($gesSiedler > 0)
+	{
+		echo '<img '.$style.' src="img/un/u/'.$siedlerID.'.gif" title="'.constant('U'.$siedlerID).' ('.$gesSiedler.')" />';
 	}
-	$s=1;
-	while($s <= $senatorTotal) {
-		echo $senatorp;
-		$s++;
+	if ($gesSenator > 0)
+	{
+		echo '<img '.$style.' src="img/un/u/'.$senatorID.'.gif" title="'.constant('U'.$senatorID).' ('.$gesSenator.')" />';
 	}
 	?></td>
 	<td class="slo"><?php echo $gesexp;echo '/';echo $gesdorf;?></td>

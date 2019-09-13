@@ -157,7 +157,7 @@ $end = ($tribe*10);
 							{
 								if ($var == 0)
 								{
-									echo '<td class=\"none\">0</td>';
+									echo '<td class="none">0</td>';
 								}
 								else
 								{
