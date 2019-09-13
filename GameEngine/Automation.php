@@ -1402,13 +1402,13 @@ class Automation {
                         if($data['t'.$i] < $traps1) {
                             $traps1 = $data['t'.$i];
                         }
-                        ${traped.$i} = $traps1;
+                        ${'traped'.$i} = $traps1;
                         $traps -= $traps1;
                         $database->modifyUnit($data['to'], "99o", $traps1, 1);
                     }
                     for ($i = $start; $i <= $end; $i++) {
                         $j = $i - $start + 1;
-                        $Attacker['u'.$i] -= ${traped.$j};
+                        $Attacker['u'.$i] -= ${'traped'.$j};
                     }
                     $Attacker['uhero'] -= $traped11;
                     $totaltraped_att = $traped1 + $traped2 + $traped3 + $traped4 + $traped5 + $traped6 + $traped7 + $traped8 + $traped9 + $traped10 + $traped11;
@@ -1659,12 +1659,12 @@ class Automation {
                         $healmax = floor($totalsend_att / 4);
                         $totalheal = 0;
                         for ($i = 1; $i <= 10; $i++) {
-                            ${heal.$i} = 0;
+                            ${'heal'.$i} = 0;
                         }
                         while($smallbandage['type'] > 0 && $totalheal < $healmax && $totalheal < $totaldead_att) {
                             for ($i = 1; $i <= 10; $i++) {
-                                if(${heal.$i} < ${dead.$i} && $totalheal < $healmax && $totalheal < $totaldead_att) {
-                                    ${heal.$i}++;
+                                if(${'heal'.$i} < ${'dead'.$i} && $totalheal < $healmax && $totalheal < $totaldead_att) {
+                                    ${'heal'.$i}++;
                                     $smallbandage['type']--;
                                     $smallbandage['num']--;
                                     $totalheal++;
@@ -1688,12 +1688,12 @@ class Automation {
                         $healmax = floor($totalsend_att / 100 * 33);
                         $totalheal = 0;
                         for ($i = 1; $i <= 10; $i++) {
-                            ${heal.$i} = 0;
+                            ${'heal'.$i} = 0;
                         }
                         while($bandage['type'] > 0 && $totalheal < $healmax && $totalheal < $totaldead_att) {
                             for ($i = 1; $i <= 10; $i++) {
-                                if(${heal.$i} < ${dead.$i} && $totalheal < $healmax && $totalheal < $totaldead_att) {
-                                    ${heal.$i}++;
+                                if(${'heal'.$i} < ${'dead'.$i} && $totalheal < $healmax && $totalheal < $totaldead_att) {
+                                    ${'heal'.$i}++;
                                     $bandage['type']--;
                                     $bandage['num']--;
                                     $totalheal++;
@@ -1718,7 +1718,7 @@ class Automation {
                         //find slowest unit.
                         $tribeunit = ($targettribe - 1) * 10;
                         for ($i = 1; $i <= 10; $i++) {
-                            if(${heal.$i} > 0) {
+                            if(${'heal'.$i} > 0) {
                                 if($unitarray) {
                                     reset($unitarray);
                                 }
@@ -2882,7 +2882,7 @@ class Automation {
                 for ($i = 31; $i <= 40; $i++) {
                     $animals += $Defender['u'.$i];
                     $j = $i - 30;
-                    ${captured.$j} = 0;
+                    ${'captured'.$j} = 0;
                 }
                 while($cage['type'] > 0 && $animals > 0) {
                     for ($i = 31; $i <= 40; $i++) {
@@ -2892,7 +2892,7 @@ class Automation {
                             $cage['type']--;
                             $cage['num']--;
                             $j = $i - 30;
-                            ${captured.$j}++;
+                            ${'captured'.$j}++;
                         }
                     }
                 }
@@ -2907,7 +2907,7 @@ class Automation {
                     $database->query($q);
                 }
                 for ($i = 1; $i <= 10; $i++) {
-                    $total_captured += ${captured.$i};
+                    $total_captured += ${'captured'.$i};
                 }
                 if($total_captured > 0) {
                     
@@ -2915,7 +2915,7 @@ class Automation {
                     
                     for ($i = 31; $i <= 40; $i++) {
                         $j = $i - 30;
-                        $database->modifyUnit($to['wref'], $i, ${captured.$j}, 0);
+                        $database->modifyUnit($to['wref'], $i, ${'captured'.$j}, 0);
                     }
                     
                     //find slowest unit.

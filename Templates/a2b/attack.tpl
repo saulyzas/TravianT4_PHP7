@@ -16,26 +16,41 @@ $time = $generator->procDistanceTime($from,$to,300,0);
 
 $ckey= $generator->generateRandStr(6);
 
+function resolve_valid_value($var)
+{
+	if (isset($var) && $var != '' && is_numeric($var))
+	{
+		return $var;
+	}
+	else
+	{
+		return 0;
+	}
+}
 
- if (!isset($process['t1']) || $process['t1'] == ''){  $t1='0'; }else{  $t1=$process['t1']; }
- if (!isset($process['t2']) || $process['t2'] == ''){  $t2='0'; }else{  $t2=$process['t2']; } 
- if (!isset($process['t3']) || $process['t3'] == ''){  $t3='0'; }else{  $t3=$process['t3']; if ($session->tribe == 3){ $scout=1; } } 
- if (!isset($process['t4']) || $process['t4'] == ''){  $t4='0'; }else{  $t4=$process['t4']; if ($session->tribe == 1 || $session->tribe == 2 || $session->tribe == 4 || $session->tribe == 5){ $scout=1;} } 
- if (!isset($process['t5']) || $process['t5'] == ''){  $t5='0'; }else{  $t5=$process['t5']; } 
- if (!isset($process['t6']) || $process['t6'] == ''){  $t6='0'; }else{  $t6=$process['t6']; } 
- if (!isset($process['t7']) || $process['t7'] == ''){  $t7='0'; }else{  $t7=$process['t7']; } 
- if (!isset($process['t8']) || $process['t8'] == ''){  $t8='0'; }else{  $t8=$process['t8']; } 
- if (!isset($process['t9']) || $process['t9'] == ''){  $t9='0'; }else{  $t9=$process['t9']; } 
- if (!isset($process['t10']) || $process['t10'] == ''){  $t10='0'; }else{  $t10=$process['t10']; } 
- if (!isset($process['t11']) || $process['t11'] == ''){  $t11='0'; }else{  $t11=$process['t11']; $showhero=1;} 
- if ($session->tribe == 3){
- $totalunits =$process['t1']+$process['t2']+$process['t4']+$process['t5']+$process['t6']+$process['t7']+$process['t8']+$process['t9']+$process['t10']+$process['t11'];
- 
- }else{
- 
-$totalunits=$process['t1']+$process['t2']+$process['t3']+$process['t5']+$process['t6']+$process['t7']+$process['t8']+$process['t9']+$process['t10']+$process['t11'];
+$t1  = resolve_valid_value($process['t1']);
+$t2  = resolve_valid_value($process['t2']);
+$t3  = resolve_valid_value($process['t3']);
+$t4  = resolve_valid_value($process['t4']);
+$t5  = resolve_valid_value($process['t5']);
+$t6  = resolve_valid_value($process['t6']);
+$t7  = resolve_valid_value($process['t7']);
+$t8  = resolve_valid_value($process['t8']);
+$t9  = resolve_valid_value($process['t9']);
+$t10 = resolve_valid_value($process['t10']);
+$t11 = resolve_valid_value($process['t11']);
 
- }
+if ($session->tribe == 3){ 
+
+	$scout = $t3 > 0;
+	$totalunits = $t1 + $t2 + $t4 + $t5 + $t6 + $t7 + $t8 + $t9 + $t10 + $t11;
+
+} else {
+
+	$scout = $t4 > 0;
+	$totalunits = $t1 + $t2 + $t3 + $t5 + $t6 + $t7 + $t8 + $t9 + $t10 + $t11;
+
+}
 
 if (($process['c'] == 3 || $process['c'] == 4) && $totalunits== 0) {
 $process['c'] = 1;
@@ -111,7 +126,7 @@ $end = ($tribe*10);
 
                         <td><?php echo $village->vname; ?></td>
 
-                        <td colspan="<?php if($process['t11'] != ''){ echo"11"; }else{ echo"10"; } ?>"><?php echo $actionType." ".$process['1']; ?> (<?php echo $coor['x']; ?>|<?php echo $coor['y']; ?>)</td>
+                        <td colspan="<?php if($t11 > 0){ echo"11"; }else{ echo"10"; } ?>"><?php echo $actionType." ".$process['1']; ?> (<?php echo $coor['x']; ?>|<?php echo $coor['y']; ?>)</td>
 
                     </tr>
 
@@ -125,7 +140,7 @@ $end = ($tribe*10);
                  <?php 
                 for($i=$start;$i<=($end);$i++) {
                       echo "<td><img src=\"img/x.gif\" class=\"unit u$i\" title=\"".$technology->getUnitName($i)."\" alt=\"".$technology->getUnitName($i)."\" /></td>";    
-                  } if ($process['t11'] != ''){
+                  } if ($t11 > 0){
                   echo "<td><img src=\"img/x.gif\" class=\"unit uhero\" title=\"Hero\" alt=\"Hero\" /></td>";    
                   
                   }?>
@@ -136,27 +151,33 @@ $end = ($tribe*10);
 
                         <th>Units</th>
 
-                        <td <?php if (!isset($process['t1']) || $process['t1'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t1'];} ?></td>
+						<?php
 
-                        <td <?php if (!isset($process['t2']) || $process['t2'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t2'];} ?></td>
+							function print_column($var)
+							{
+								if ($var == 0)
+								{
+									echo '<td class=\"none\">0</td>';
+								}
+								else
+								{
+									echo '<td>'.$var.'</td>';
+								}
+							}
 
-                        <td <?php if (!isset($process['t3']) || $process['t3'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t3'];} ?></td>
+							print_column($t1);
+							print_column($t2);
+							print_column($t3);
+							print_column($t4);
+							print_column($t5);
+							print_column($t6);
+							print_column($t7);
+							print_column($t8);
+							print_column($t9);
+							print_column($t10);
+							if ($t11 > 0) { echo '<td>'.$t11.'</td>'; }
 
-                        <td <?php if (!isset($process['t4']) || $process['t4'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t4'];} ?></td>
-
-                        <td <?php if (!isset($process['t5']) || $process['t5'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t5'];} ?></td>
-
-                        <td <?php if (!isset($process['t6']) || $process['t6'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t6'];} ?></td>
-
-                        <td <?php if (!isset($process['t7']) || $process['t7'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t7'];} ?></td>
-
-                        <td <?php if (!isset($process['t8']) || $process['t8'] == ''){ echo "class=\"none\">0"; }else{ $kata='1'; echo ">".$process['t8'];} ?></td>
-
-                        <td <?php if (!isset($process['t9']) || $process['t9'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t9'];} ?></td>
-
-                        <td <?php if (!isset($process['t10']) || $process['t10'] == ''){ echo "class=\"none\">0"; }else{ echo ">".$process['t10'];} ?></td>
-
-                        <?php if (!isset($process['t11']) || $process['t11'] == ''){ echo ""; }else{ echo "<td>".$process['t11']."</td>";} ?>
+						?>
 
                      </tr>
 
@@ -178,7 +199,7 @@ $end = ($tribe*10);
             <?php if($process['c']=='3'){ ?><tbody class="cata">
                 <tr>
                     <th>Catapults</th>
-                    <td colspan="<?php if($process['t11'] != ''){ echo"11"; }else{ echo"10"; } ?>">
+                    <td colspan="<?php if($t11 > 0){ echo"11"; }else{ echo"10"; } ?>">
                     
                         <select name="ctar1" class="dropdown">
                             <option value="0">Random</option>
@@ -295,7 +316,7 @@ $end = ($tribe*10);
                 ?><tbody class="infos">  
                 <th>Destination:</th>
 
-            <td colspan="<?php if($process['t11'] != ''){ echo"11"; }else{ echo"10"; } ?>">
+            <td colspan="<?php if($t11 > 0){ echo"11"; }else{ echo"10"; } ?>">
                 <?PHP
                 
                 echo"Warning: Catapult will <b>ONLY</b> shoot with a normal attack (they dont shoot with raids!)";
@@ -349,7 +370,7 @@ $end = ($tribe*10);
 
             
 
-            <td colspan="<?php if($process['t11'] != ''){ echo"11"; }else{ echo"10"; } ?>">
+            <td colspan="<?php if($t11 > 0){ echo"11"; }else{ echo"10"; } ?>">
 
             <div class="in">In <?php echo $generator->getTimeFormat($time); ?> hour</div>
 
