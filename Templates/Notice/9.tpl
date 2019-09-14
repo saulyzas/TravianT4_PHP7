@@ -121,7 +121,7 @@ for($i=$start;$i<=$end;$i++) {
            	if($dataarray[1]){
             	$typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","bandage25","bandage33","cage","scroll","ointment","bucketOfWater","bookOfWisdom","lawTables","artWork");
                 $btype = $dataarray[1];
-                $type = $dataarray[2];
+                $utype = (($session->tribe - 1) * 10) + $dataarray[2];
 				if($btype < 16){
 				include "Templates/Auction/alt.tpl";
 				$typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","bandage25","bandage33","cage","scroll","ointment","bucketOfWater","bookOfWisdom","lawTables","artWork");
@@ -129,9 +129,9 @@ for($i=$start;$i<=$end;$i++) {
 				echo '<img src="img/x.gif" class="reportInfo itemCategory itemCategory_'.$typeArray[$btype].'" title="'.$title.'">';
 				echo ' '.$name.' ('.$dataarray[3].'x)';
 				}else if($btype == 16){
-				echo '<img src="img/x.gif" class="unit u'.$type.'" title="'.$technology->getUnitName($type).'">';
-				echo ' '.$technology->getUnitName($type).' ('.$dataarray[3].'x)';
-							$outputList .= "<div class=\"reportInfoIcon\"><img title=\"".$technology->getUnitName($type)." (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"unit u".$type."\"\"></div>";
+				echo '<img src="img/x.gif" class="unit u'.$utype.'" title="'.$technology->getUnitName($utype).'">';
+				echo ' '.$technology->getUnitName($utype).' ('.$dataarray[3].'x)';
+							$outputList .= "<div class=\"reportInfoIcon\"><img title=\"".$technology->getUnitName($utype)." (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"unit u".$utype."\"\"></div>";
 				}else{
 				echo '<img src="img/x.gif" class="silver" title="silver">';
 				echo ' Silver ('.$dataarray[3].'x)';

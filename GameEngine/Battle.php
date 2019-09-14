@@ -26,23 +26,28 @@ class Battle {
 				if(isset($post['a1_1'])) {
 					$sum = $sum2 = 0;
 					for($i=1;$i<=10;$i++) {
-						$sum += $post['a1_'.$i];
+						$var = $post['a1_'.$i];
+						if(is_numeric($var)) {
+							$sum += $var;
+						}
 					}
 					if($sum > 0) {
-						if($post['palast'] == "") {
+						if(!isset($post['palast']) || $post['palast'] == "") {
 							$post['palast'] = 0;
 						}
-						if(isset($post['wall1']) && $post['wall1'] == "") {
+						if(!isset($post['wall1']) || $post['wall1'] == "") {
 							$post['wall1'] = 0;
 						}
-						if(isset($post['wall2']) && $post['wall2'] == "") {
+						if(!isset($post['wall2']) || $post['wall2'] == "") {
 							$post['wall2'] = 0;
 						}
-						if(isset($post['wall3']) && $post['wall3'] == "") {
+						if(!isset($post['wall3']) || $post['wall3'] == "") {
 							$post['wall3'] = 0;
-						}if(isset($post['wall4']) && $post['wall4'] == "") {
+						}
+						if(!isset($post['wall4']) || $post['wall4'] == "") {
                             $post['wall4'] = 0;
-                        }if(isset($post['wall5']) && $post['wall5'] == "") {
+                        }
+						if(!isset($post['wall5']) || $post['wall5'] == "") {
                             $post['wall5'] = 0;
                         }
 						$post['tribe'] = $target[0];
@@ -143,15 +148,15 @@ class Battle {
 		}
 
 		if(!$scout){
-			return $this->calculateBattle($attacker,$defender,$wall,$post['a1_v'],$deftribe,$post['palast'],$post['ew1'],$post['ew2'],$post['ktyp']+3,$def_ab,$att_ab,$post['kata'],1);
+			return $this->calculateBattle($attacker,$defender,$wall,$post['a1_v'],$deftribe,$post['palast'],$post['ew1'],$post['ew2'],$post['ktyp']+3,$def_ab,$att_ab,$post['kata'],$post['stonemason']);
 		}else{
-			return $this->calculateBattle($attacker,$defender,$wall,$post['a1_v'],$deftribe,$post['palast'],$post['ew1'],$post['ew2'],1,$def_ab,$att_ab,$post['kata'],1);
+			return $this->calculateBattle($attacker,$defender,$wall,$post['a1_v'],$deftribe,$post['palast'],$post['ew1'],$post['ew2'],1,$def_ab,$att_ab,$post['kata'],$post['stonemason']);
 		}
 	}
 
 
 	//1 raid 0 normal
-	function calculateBattle($Attacker,$Defender,$def_wall,$att_tribe,$def_tribe,$residence,$attpop,$defpop,$type,$def_ab,$att_ab,$tblevel,$stonemason,$walllevel) {
+	function calculateBattle($Attacker,$Defender,$def_wall,$att_tribe,$def_tribe,$residence,$attpop,$defpop,$type,$def_ab,$att_ab,$tblevel,$stonemason) {
 		global $bid34,$database;
 		// Definieer de array met de eenheden
 		$calvary = array(4,5,6,15,16,23,24,25,26,35,36,45,46);
@@ -206,32 +211,37 @@ class Battle {
 		}else{
 			for($i=$start;$i<=$end;$i++) {
 				global ${'u'.$i};
+				
+				$varAttackerUnit = $Attacker['u'.$i];
+				if(!is_numeric($varAttackerUnit)) { $varAttackerUnit = 0; }
+
+				$varAtk = ${'u'.$i}['atk'];
 
 				if($abcount <= 8 && $att_ab['a'.$abcount] > 0) {
 					if(in_array($i,$calvary)) {
-						$cap += (${'u'.$i}['atk'] + (${'u'.$i}['atk'] + 300 * ${'u'.$i}['pop'] / 7) * (pow(1.007, $att_ab['a'.$abcount]) - 1)) * $Attacker['u'.$i];
+						$cap += ($varAtk + ($varAtk + 300 * ${'u'.$i}['pop'] / 7) * (pow(1.007, $att_ab['a'.$abcount]) - 1)) * $varAttackerUnit;
 					} else {
-						$ap += (${'u'.$i}['atk'] + (${'u'.$i}['atk'] + 300 * ${'u'.$i}['pop'] / 7) * (pow(1.007, $att_ab['a'.$abcount]) - 1)) * $Attacker['u'.$i];
+						$ap += ($varAtk + ($varAtk + 300 * ${'u'.$i}['pop'] / 7) * (pow(1.007, $att_ab['a'.$abcount]) - 1)) * $varAttackerUnit;
 					}
 				}else {
 					if(in_array($i,$calvary)) {
-						$cap += $Attacker['u'.$i]*${'u'.$i}['atk'];
+						$cap += $varAttackerUnit * $varAtk;
 					}else {
-						$ap += $Attacker['u'.$i]*${'u'.$i}['atk'];
+						$ap += $varAttackerUnit * $varAtk;
 					}
 				}
 				
 				$abcount +=1;
 				// Punten van de catavult van de aanvaller
 				if(in_array($i,$catapult)) {
-					$catp += $Attacker['u'.$i];
+					$catp += $varAttackerUnit;
 				}
 				 // Punten van de Rammen van de aanvaller
                 if(in_array($i,$rams)) {
-                    $ram += $Attacker['u'.$i];
+                    $ram += $varAttackerUnit;
                 }
-                $involve += $Attacker['u'.$i]; 
-                $units['Att_unit'][$i] = $Attacker['u'.$i];
+                $involve += $varAttackerUnit; 
+                $units['Att_unit'][$i] = $varAttackerUnit;
             }
 			
 			if($Attacker['hero']) {
@@ -423,7 +433,8 @@ class Battle {
 			$result[2] = round($result[2],8);
 			// Als aangevallen met "Hero"
 			$ku = ($att_tribe-1)*10+9;
-            $kings = $Attacker['u'.$ku];    
+            $kings = $Attacker['u'.$ku];   
+			if (!is_numeric($kings)) { $kings = 0; }
             
             $aviables= $kings-round($kings*$result[1]);
 			if ($aviables>0){
@@ -464,12 +475,12 @@ class Battle {
             $result[5] = $moralbonus;
             $result[6] = $att_ab['a8'];
         }
-        if($ram > 0 && $walllevel != 0) {
+        if($ram > 0 && $def_wall != 0) {
             $wctp = pow(($rap/$rdp),1.5);
             $wctp = ($wctp >= 1)? 1-0.5/$wctp : 0.5*$wctp;
             $wctp *= $ram;
 
-            $need = round((($moralbonus * (pow($walllevel,2) + $walllevel + 1)) / (8 * (round(200 * pow(1.0205,$att_ab['a7']))/200) / (1 * $bid34[$stonemason]['attri']/100))) + 0.5);
+            $need = round((($moralbonus * (pow($def_wall,2) + $def_wall + 1)) / (8 * (round(200 * pow(1.0205,$att_ab['a7']))/200) / (1 * $bid34[$stonemason]['attri']/100))) + 0.5);
             // Aantal katapulten om het gebouw neer te halen
             $result[7] = $need;
             
@@ -553,8 +564,12 @@ class Battle {
         $max_bounty = 0;
 
 		for($i=$start;$i<=$end;$i++) {
+						
+			$varAttackerUnit = $Attacker['u'.$i];
+			if(!is_numeric($varAttackerUnit)) { $varAttackerUnit = 0; }
+			
             $y = $i-(($att_tribe-1)*10);  
-			$max_bounty += ($Attacker['u'.$i]-$result['casualties_attacker'][$y])*${'u'.$i}['cap'];
+			$max_bounty += ($varAttackerUnit-$result['casualties_attacker'][$y])*${'u'.$i}['cap'];
 		}
 
 		$result['bounty'] = $max_bounty;

@@ -96,7 +96,7 @@
 
         	unset($reqlvl);
         	unset($effect);
-        	$arts = mysql_query("SELECT * FROM " . TB_PREFIX . "ereklyék");
+        	$arts = mysql_query("SELECT * FROM " . TB_PREFIX . "artefacts");
         	$rows = array();
         	while($row = mysql_fetch_array($arts)) {
         		$query = mysql_query('SELECT * FROM `' . TB_PREFIX . 'wdata` WHERE `id` = ' . $row['vref']);

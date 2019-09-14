@@ -2,6 +2,9 @@
 include("GameEngine/Village.php");
 $start = $generator->pageLoadTimeStart();
 include "Templates/html.tpl";
+
+// avoid division by zero
+mysql_query("DELETE FROM ".TB_PREFIX."auction WHERE silver < 1 and owner = '".$session->uid."'");
 ?>
 <body class="v35 webkit chrome hero_auction">
 	<div id="wrapper"> 

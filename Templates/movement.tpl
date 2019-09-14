@@ -1,8 +1,23 @@
 <?php
-$aantal=(count($database->getMovement2(4,$village->wid,1))+count($database->getMovement2(34,$village->wid,1))+count($database->getMovement2(3,$village->wid,1))+count($database->getMovement2(3,$village->wid,0))+count($database->getMovement2(9,$village->wid,0))+count($database->getMovement2(5,$village->wid,0)));
-if($aantal > 0){
-}
-if($aantal != "") { $class = ''; } else { $class = 'hide'; }
+
+$moveSendAttack = $database->getMovement2(3,$village->wid,0);
+$countSendAttack = count($moveSendAttack);
+$moveIncommingAttack = $database->getMovement2(3,$village->wid,1);
+$countIncommingAttack = count($moveIncommingAttack);
+
+$moveSendReinforcement = $database->getMovement2(7,$village->wid,0);
+$countSendReinforcement = count($moveSendReinforcement);
+$moveIncommingReinforcement = $database->getMovement2(34,$village->wid,1);
+$countIncommingReinforcement = count($moveIncommingReinforcement);
+
+$moveNewVillage = $database->getMovement2(5,$village->wid,0);
+$countNewVillage = count($moveNewVillage);
+$moveAdventure = $database->getMovement2(9,$village->wid,0);
+$countAdventure = count($moveAdventure);
+
+$aantal= $countSendAttack + $countIncommingAttack + $countSendReinforcement + $countIncommingReinforcement + $countNewVillage + $countAdventure;
+
+if($aantal > 0) { $class = ''; } else { $class = 'hide'; }
 ?>
 <div class="movements <?php echo $class ?>"><div class="boxes villageList movements"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div>
     <div class="boxes-contents">
@@ -11,8 +26,8 @@ if($aantal != "") { $class = ''; } else { $class = 'hide'; }
 <?php
 
 /* attack/raid on you! */
-$aantal = count($database->getMovement2(3,$village->wid,1));
-$aantal2 = $database->getMovement2(3,$village->wid,1);
+$aantal = $countIncommingAttack;
+$aantal2 = $moveIncommingAttack;
 for($i=0;$i<$aantal;$i++){
 	if($aantal2[$i]['attack_type'] == 2)
 		$aantal -= 1;
@@ -38,11 +53,11 @@ $timer += 1;
 ?>
 <?php
 /* Units send to reinf. (to my town) */
-$units_type = $database->getMovement2("34",$village->wid,1);
-$lala = count($units_type);
+$aantal = $countIncommingReinforcement;
+$aantal2 = $moveIncommingReinforcement;
 
-	if($lala > 0){
-			foreach($units_type as $receive) {
+	if($aantal > 0){
+			foreach($aantal2 as $receive) {
 				$action = 'def1';
 				$aclass = 'd1';
 				$title = ''.OWN_REINFORCING_TROOPS.'';
@@ -51,7 +66,7 @@ $lala = count($units_type);
 			
 		echo '<tr>
 			<td class="typ"><a href="build.php?id=39"><img src="img/x.gif" class="'.$action.'" alt="'.$title.'" title="'.$title.'" /></a><span class="'.$aclass.'">&raquo;</span></td>
-			<td><div class="mov"><span class="'.$aclass.'">'.$lala.'&nbsp;'.$short.'</span></div><div class="dur_r">&nbsp;<span id="timer'.$timer.'">'.$generator->getTimeFormat($receive['endtime']-time()).'</span>&nbsp;'.HOURS.'</div></div></td>
+			<td><div class="mov"><span class="'.$aclass.'">'.$aantal.'&nbsp;'.$short.'</span></div><div class="dur_r">&nbsp;<span id="timer'.$timer.'">'.$generator->getTimeFormat($receive['endtime']-time()).'</span>&nbsp;'.HOURS.'</div></div></td>
 		</tr>';
 		
 	$timer += 1;
@@ -59,9 +74,9 @@ $lala = count($units_type);
 	}
 
 /* Units send to reinf. (from my town) */
-$aantal = count($database->getMovement2(7,$village->wid,0));
-$aantal2 = $database->getMovement2(7,$village->wid,0);
-print_r($aantal2);
+$aantal = $countSendReinforcement;
+$aantal2 = $moveSendReinforcement;
+
 for($i=0;$i<$aantal;$i++){
 	if(($aantal2[$i]['attack_type']==1) or ($aantal2[$i]['attack_type']==9)){
 		$aantal -= 1;}
@@ -87,8 +102,8 @@ $timer += 1;
 ?>
 <?php
 /* on attack, raid */
-$aantal = count($database->getMovement2(3,$village->wid,0));
-$aantal2 = $database->getMovement2(3,$village->wid,0);
+$aantal = $countSendAttack;
+$aantal2 = $moveSendAttack;
 for($i=0;$i<$aantal;$i++){
 	if($aantal2[$i]['attack_type'] == 2)
 		$aantal -= 1;
@@ -114,8 +129,8 @@ $timer += 1;
 ?>
 
 <?php
-$aantal = count($database->getMovement2(5,$village->wid,0));
-$aantal2 = $database->getMovement2(5,$village->wid,0);
+$aantal = $countNewVillage;
+$aantal2 = $moveNewVillage;
 	if($aantal > 0){
 			foreach($aantal2 as $receive) {
 				$action = 'att3';
@@ -134,8 +149,8 @@ $timer += 1;
 
 }
 
-$aantal = count($database->getMovement2(9,$village->wid,0));
-$aantal2 = $database->getMovement2(9,$village->wid,0);
+$aantal = $countAdventure;
+$aantal2 = $moveAdventure;
 	if($aantal > 0){
 			foreach($aantal2 as $receive) {
 				$action = 'att4';
