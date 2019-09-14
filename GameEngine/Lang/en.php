@@ -358,6 +358,8 @@ define("ARRIVING_ATTACKING_TROOPS","Arriving attacking troops");
 define("ATTACK","Attack");
 define("OWN_REINFORCING_TROOPS","Own reinforcing troops");
 define("TROOPS_DORF","Troops:");
+define("FOUND_NEW_VILLAGE","Found new Village");
+define("FOUND_NEW_VILLAGE_SHORT","New Village");
 
 
 //LOGIN.php

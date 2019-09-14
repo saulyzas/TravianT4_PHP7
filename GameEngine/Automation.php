@@ -1726,7 +1726,7 @@ class Automation {
                                 $speeds[] = $unitarray['speed'];
                             }
                         }
-                        $time = $this->procDistanceTime($from['wref'], $to['wref'], min($speeds), 1);
+                        $time = $this->procDistanceTime($from, $to, min($speeds), 1);
                         if($time < (86400 / HEAL_SPEED)) {
                             $time = 86400 / HEAL_SPEED;
                         }
@@ -2926,7 +2926,7 @@ class Automation {
                         $unitarray = $GLOBALS["u".(30 + $i)];
                         $speeds[] = $unitarray['speed'];
                     }
-                    $time = $this->procDistanceTime($from['wref'], $to['wref'], min($speeds), 1);
+                    $time = $this->procDistanceTime($from, $to, min($speeds), 1);
                     $reference = $database->addAttack($to['wref'], $captured1, $captured2, $captured3, $captured4, $captured5, $captured6, $captured7, $captured8, $captured9, $captured10, 0, 2, 0, 0, 0, 0);
                     $database->addMovement(3, 0, $from['wref'], $reference, $datar, ($time + time()));
                     

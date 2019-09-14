@@ -36,8 +36,8 @@ for($i=0;$i<$aantal;$i++){
 			foreach($aantal2 as $receive) {
 				$action = 'att1';
 				$aclass = 'a1';
-				$title = ''.ARRIVING_ATTACKING_TROOPS.'';
-				$short = ''.ATTACK.'';
+				$title = ARRIVING_ATTACKING_TROOPS;
+				$short = ATTACK;
 			}
 			
 		echo '
@@ -60,8 +60,8 @@ $aantal2 = $moveIncommingReinforcement;
 			foreach($aantal2 as $receive) {
 				$action = 'def1';
 				$aclass = 'd1';
-				$title = ''.OWN_REINFORCING_TROOPS.'';
-				$short = ''.ARRIVING_REINF_TROOPS_SHORT.'';
+				$title = ARRIVING_REINF_TROOPS;
+				$short = ARRIVING_REINF_TROOPS_SHORT;
 			}
 			
 		echo '<tr>
@@ -85,8 +85,8 @@ for($i=0;$i<$aantal;$i++){
 			foreach($aantal2 as $receive) {				
 				$action = 'def2';
 				$aclass = 'd2';
-				$title = ''.OWN_REINFORCING_TROOPS.'';
-				$short = ''.ARRIVING_REINF_TROOPS_SHORT.'';
+				$title = OWN_REINFORCING_TROOPS;
+				$short = ARRIVING_REINF_TROOPS_SHORT;
 				}
 			
 		echo '
@@ -112,8 +112,8 @@ for($i=0;$i<$aantal;$i++){
 			foreach($aantal2 as $receive) {
 				$action = 'att2';
 				$aclass = 'a2';
-				$title = ''.OWN_ATTACKING_TROOPS.'';
-				$short = ''.ATTACK.'';
+				$title = OWN_ATTACKING_TROOPS;
+				$short = ATTACK;
 			}
 			
 		echo '
@@ -135,8 +135,8 @@ $aantal2 = $moveNewVillage;
 			foreach($aantal2 as $receive) {
 				$action = 'att3';
 				$aclass = 'a3';
-				$title = 'Found new village';
-				$short = 'Found new village';
+				$title = FOUND_NEW_VILLAGE;
+				$short = FOUND_NEW_VILLAGE_SHORT;
 			}
 			
 		echo '
