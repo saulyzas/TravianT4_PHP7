@@ -188,7 +188,8 @@ else if (is_numeric($btype))
 {
 	if ($btype < 16)
 	{
-		include_once("Templates/Auction/alt.tpl");
+		$type = $dataarray[2];
+		include("Templates/Auction/alt.tpl");
 		$typeArray = array("","helmet","body","leftHand","rightHand","shoes","horse","bandage25","bandage33","cage","scroll","ointment","bucketOfWater","bookOfWisdom","lawTables","artWork");
 
 		$outputList .= "<div class=\"reportInfoIcon\"><img title=\"".$name." (".$dataarray[3]."x)\" src=\"img/x.gif\" class=\"reportInfo itemCategory itemCategory_".$typeArray[$btype]."\"></div>";
