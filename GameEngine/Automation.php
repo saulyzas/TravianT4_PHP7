@@ -4721,5 +4721,16 @@ class Automation {
     
 }
 
+$lockName = "GameEngine/Prevention/automation_lock";
+
+while (file_exists($lockName))
+{
+    sleep(1);
+}
+
+fopen($lockName, 'w');
+
 $automation = new Automation;
+
+unlink($lockName);
 ?>
