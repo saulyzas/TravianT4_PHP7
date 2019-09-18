@@ -135,8 +135,9 @@ if ($page <= 1 && $lastPage <= 1) {
 }
 
 $paginationDisplay = "";
-$nextPage = $_GET['page'] + 1;
-$previous = $_GET['page'] - 1;
+
+$nextPage = $page + 1;
+$previous = $page - 1;
 
 if ($page == "1" && $lastPage == "1"){
 $paginationDisplay .=  '<img alt="صفحه اول" src="img/x.gif" class="first disabled"> ';
@@ -235,7 +236,7 @@ include "Templates/Auction/alt.tpl";
     $outputList .= "<input type=\"hidden\" name=\"a\" value=\"".$_GET['a']."\">";
     $outputList .= "<div class=\"bidHeadline\">Bid for ".$num." × ".$name."</div><div>";
     $outputList .= "Current bid: <img title=\"silver\" class=\"silver\" src=\"img/x.gif\"> <span>".$silver."</span><br>The highest bidder: ";
-    if($uid!=0){ $outputList .= "".$database->getUserField($uid,username,0).""; }
+    if($uid!=0){ $outputList .= "".$database->getUserField($uid,'username',0).""; }
     if($session->uid == $uid){ $bidvalue = $newsilver; }else{ $bidvalue = ""; }
 	$minimum = $silver;
 	if($session->uid != $uid){ $minimum++; }

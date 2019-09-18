@@ -3382,6 +3382,12 @@ break;
         		return $dbarray['id'];
         	}
 
+			function getEquippedHeroItem($uid, $btype) {
+        		$q = "SELECT * FROM " . TB_PREFIX . "heroitems where uid = ".$uid." AND btype = ".$btype." AND proc = 1";
+				$result = mysqli_query($this->connection,$q);
+        		return mysqli_fetch_array($result);
+        	}
+
 			function getItemData($id) {
         		$q = "SELECT * FROM " . TB_PREFIX . "heroitems WHERE id = $id";
         		$result = mysqli_query($this->connection,$q);

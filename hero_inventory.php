@@ -351,7 +351,14 @@ $outputList = '';
 
 $inv = 1;
 while($row = mysql_fetch_array($sql)){ 
-$id = $row["id"];$uid = $row["uid"];$btype = $row["btype"];$type = $row["type"];$num = $row["num"];$proc = $row["proc"];
+
+$id = $row["id"];
+$uid = $row["uid"];
+$btype = $row["btype"];
+$type = $row["type"];
+$num = $row["num"];
+$proc = $row["proc"];
+
 include "Templates/Auction/alt.tpl";
 	if($btype<=10 or $btype==11 or $btype==13){
 		if($hero['dead']==1){
@@ -367,12 +374,15 @@ include "Templates/Auction/alt.tpl";
 		$deadTitle = '';
 	}
 	if($btype >= 7 && $btype <= 9){
-	$amount = '('.$num.') ';
+		$var = $num - $type;
+		if ($var > 0) {
+	$amount = '('.$var.') ';
 	$outputList .= "<div id=\"inventory_".$inv."\" class=\"inventory draggable\">";
 	$outputList .= "<div id=\"item_".$id."\" title=\"".$amount."".$name."||".$deadTitle."".$title."\" class=\"item item_".($btype+105)."".$dis."\" style=\"position:relative;left:0px;top:0px;\">";
-	$outputList .= "<div class=\"amount\">".($num)."</div>";
+	$outputList .= "<div class=\"amount\">".$var."</div>";
 	$outputList .= "</div>";
 	$outputList .= '</div>';
+		}
 	}else{
 	if($num==1){$amount = '';}else{$amount = '('.$num.') ';}
 	$outputList .= "<div id=\"inventory_".$inv."\" class=\"inventory draggable\">";

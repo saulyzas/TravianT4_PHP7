@@ -1248,13 +1248,15 @@ class Automation {
                 $from = $database->getMInfo($data['from']);
                 $toF = $database->getOasisV($data['to']);
                 $fromF = $database->getVillage($data['from']);
-                $cageID = $database->getHeroItemID($AttackerID, 9);
-                if($cageID != 0) {
-                    $cage = $database->getItemData($cageID);
+
+                $cage = $database->getEquippedHeroItem($AttackerID, 9);
+				$cageID = $cage['id'];
+                
+				if($cageID != 0) {
+					// ignore
                 } else {
                     $cage['type'] = 0;
                 }
-                
                 
                 //get defence units
                 $Defender = array();
@@ -1652,10 +1654,12 @@ class Automation {
                 //top 10 attack and defence update
                 $totaldead_att = $dead1 + $dead2 + $dead3 + $dead4 + $dead5 + $dead6 + $dead7 + $dead8 + $dead9 + $dead10 + $dead11;
                 $totalattackdead += $totaldead_att;
-                if($totaldead_att > 0 && $dead11 == 0) {
-                    $smallbandageID = $database->getHeroItemID($AttackerID, 7);
+                if($totaldead_att > 0 && $dead11 == 0 && $Attacker['hero'] > 0) {
+
+                    $smallbandage = $database->getEquippedHeroItem($AttackerID, 7);
+					$smallbandageID = $smallbandage['id'];
+
                     if($smallbandageID != 0) {
-                        $smallbandage = $database->getItemData($smallbandageID);
                         $healmax = floor($totalsend_att / 4);
                         $totalheal = 0;
                         for ($i = 1; $i <= 10; $i++) {
@@ -1663,6 +1667,9 @@ class Automation {
                         }
                         while($smallbandage['type'] > 0 && $totalheal < $healmax && $totalheal < $totaldead_att) {
                             for ($i = 1; $i <= 10; $i++) {
+								if($smallbandage['type'] == 0) {
+									break;
+								}
                                 if(${'heal'.$i} < ${'dead'.$i} && $totalheal < $healmax && $totalheal < $totaldead_att) {
                                     ${'heal'.$i}++;
                                     $smallbandage['type']--;
@@ -1671,20 +1678,25 @@ class Automation {
                                 }
                             }
                         }
-                        $database->editHeroType($smallbandageID, $smallbandage['type'], 2);
-                        $database->editHeroNum2($smallbandageID, $smallbandage['num'], 2);
-                        if($smallbandage['type'] == 0) {
+                        if($smallbandage['type'] <= 0) {
                             $database->setHeroInventory($AttackerID, "bag", 0);
                             $database->editProcItem($smallbandageID, 0);
                         }
-                        if($smallbandage['num'] == 0) {
+						// remove or update item depending on quantity
+                        if($smallbandage['num'] <= 0) {
                             $q = "DELETE FROM ".TB_PREFIX."heroitems where id = ".$smallbandageID;
                             $database->query($q);
                         }
+						else {
+							$database->editHeroType($smallbandageID, $smallbandage['type'], 2);
+							$database->editHeroNum2($smallbandageID, $smallbandage['num'], 2);
+						}
                     }
-                    $bandageID = $database->getHeroItemID($AttackerID, 8);
+
+                    $bandage = $database->getEquippedHeroItem($AttackerID, 8);
+                    $bandageID = $bandage['id'];
+
                     if($bandageID != 0) {
-                        $bandage = $database->getItemData($bandageID);
                         $healmax = floor($totalsend_att / 100 * 33);
                         $totalheal = 0;
                         for ($i = 1; $i <= 10; $i++) {
@@ -1692,6 +1704,9 @@ class Automation {
                         }
                         while($bandage['type'] > 0 && $totalheal < $healmax && $totalheal < $totaldead_att) {
                             for ($i = 1; $i <= 10; $i++) {
+								if($bandage['type'] == 0) {
+									break;
+								}
                                 if(${'heal'.$i} < ${'dead'.$i} && $totalheal < $healmax && $totalheal < $totaldead_att) {
                                     ${'heal'.$i}++;
                                     $bandage['type']--;
@@ -1700,16 +1715,19 @@ class Automation {
                                 }
                             }
                         }
-                        $database->editHeroType($bandageID, $bandage['type'], 2);
-                        $database->editHeroNum2($bandageID, $bandage['num'], 2);
-                        if($bandage['type'] == 0) {
+                        if($bandage['type'] <= 0) {
                             $database->setHeroInventory($AttackerID, "bag", 0);
                             $database->editProcItem($bandageID, 0);
                         }
-                        if($bandage['num'] == 0) {
+						// remove or update item depending on quantity
+                        if($bandage['num'] <= 0) {
                             $q = "DELETE FROM ".TB_PREFIX."heroitems where id = ".$bandageID;
                             $database->query($q);
                         }
+						else {
+							$database->editHeroType($bandageID, $bandage['type'], 2);
+							$database->editHeroNum2($bandageID, $bandage['num'], 2);
+						}
                     }
                     if($totalheal > 0) {
                         
@@ -2896,16 +2914,19 @@ class Automation {
                         }
                     }
                 }
-                $database->editHeroType($cageID, $cage['type'], 2);
-                $database->editHeroNum2($cageID, $cage['num'], 2);
-                if($cage['type'] == 0) {
+                if($cage['type'] <= 0) {
                     $database->setHeroInventory($AttackerID, "bag", 0);
                     $database->editProcItem($cageID, 0);
                 }
-                if($cage['num'] == 0) {
+				// remove or update item depending on quantity
+                if($cage['num'] <= 0) {
                     $q = "DELETE FROM ".TB_PREFIX."heroitems where id = ".$cageID;
                     $database->query($q);
                 }
+				else {
+					$database->editHeroType($cageID, $cage['type'], 2);
+					$database->editHeroNum2($cageID, $cage['num'], 2);
+				}
                 for ($i = 1; $i <= 10; $i++) {
                     $total_captured += ${'captured'.$i};
                 }
@@ -3296,14 +3317,23 @@ class Automation {
                             } else {
                                 $num = rand(20, 50);
                             }
-                            if($btype <= 11 or $btype >= 14) {
+							if($btype == 7 || $btype == 8 || $btype == 9) {
+								$id = $database->getHeroItemID($ownerID, $btype);
+								if($id != 0) {
+                                    $database->editHeroNum2($id, $num, 1);
+                                } else {
+                                    $database->addHeroItem($ownerID, $btype, 0, $num);
+                                }
+							} 
+							else if($btype == 10 || $btype == 11 || $btype == 14 || $btype == 15) {
                                 if($database->checkHeroItem($ownerID, $btype)) {
                                     $id = $database->getHeroItemID($ownerID, $btype);
                                     $database->editHeroNum($id, $num, 1);
                                 } else {
                                     $database->addHeroItem($ownerID, $btype, $nntype, $num);
                                 }
-                            } else {
+                            } 
+							else {
                                 $database->addHeroItem($ownerID, $btype, $nntype, $num);
                             }
                         } else {
@@ -4155,9 +4185,18 @@ class Automation {
             $newsilver = $data['newsilver'];
             $btype = $data['btype'];
             if($data['finish'] != 1) {
-                if($btype == 7 || $btype == 8 || $btype == 9 || $btype == 10 || $btype == 11 || $btype == 14 || $btype == 15) {
+				if($btype == 7 || $btype == 8 || $btype == 9) {
+					$id = $database->getHeroItemID($biderID, $btype);
+					if($id != 0) {
+						$database->editHeroNum2($id, $data['num'], 1);
+					} else {
+						$database->addHeroItem($biderID, $btype, 0, $data['num']);
+					}
+				} 
+                else if($btype == 10 || $btype == 11 || $btype == 14 || $btype == 15) {
                     if($database->checkHeroItem($biderID, $btype)) {
-                        $database->editHeroNum($database->getHeroItemID($biderID, $btype), $data['num'], 1);
+						$id = $database->getHeroItemID($biderID, $btype);
+                        $database->editHeroNum($id, $data['num'], 1);
                     } else {
                         $database->addHeroItem($biderID, $data['btype'], $data['type'], $data['num']);
                     }
