@@ -18,6 +18,12 @@ var carry = <?php echo $market->maxcarry; ?>;
 <div class="boxes boxesColor gray traderCount"><div class="boxes-tl"></div><div class="boxes-tr"></div><div class="boxes-tc"></div><div class="boxes-ml"></div><div class="boxes-mr"></div><div class="boxes-mc"></div><div class="boxes-bl"></div><div class="boxes-br"></div><div class="boxes-bc"></div><div class="boxes-contents">Merchants <?php echo $market->merchantAvail(); ?> / <?php echo $market->merchant; ?></div>
 				</div><div class="clear"></div>
 <?php
+
+if (!is_numeric($_POST['r1'])) { $_POST['r1'] = 0; }
+if (!is_numeric($_POST['r2'])) { $_POST['r2'] = 0; }
+if (!is_numeric($_POST['r3'])) { $_POST['r3'] = 0; }
+if (!is_numeric($_POST['r4'])) { $_POST['r4'] = 0; }
+
 $allres = $_POST['r1']+$_POST['r2']+$_POST['r3']+$_POST['r4'];
 if($_POST['x']!="" && $_POST['y']!=""){
 	$getwref = $database->getVilWref($_POST['x'],$_POST['y']);
@@ -88,7 +94,7 @@ if(isset($_POST['ft'])=='check' && $allres!=0 && $allres <= $canSend && ($_POST[
 	</tr>
 	<tr>
 		<th>Player:</th>
-		<td><a href="spieler.php?uid=<?php echo $getvilowner; ?>"><?php echo $database->getUserField($getvilowner,username,0); ?></a></td>
+		<td><a href="spieler.php?uid=<?php echo $getvilowner; ?>"><?php echo $database->getUserField($getvilowner,'username',0); ?></a></td>
 	</tr>
 	<tr>
 		<th>Duration:</th>

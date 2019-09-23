@@ -31,7 +31,7 @@ $uprequire = $building->resourceRequired($id,$bid);
 	<div class="contractLink">
     <div class="contractText">Required:</div>
     <span class="buildingCondition">
-    <a href="#" onclick="return Travian.Game.iPopup(18,4, 'gid');">Embassy</a> <span>Level 1</span></span>, <span class="buildingCondition"><a href="#" onclick="return Travian.Game.iPopup(15,4, 'gid');">Main Building</a> <span>Level 3</span></span>, <span class="buildingCondition"><a href="#" onclick="return Travian.Game.iPopup(25,4, 'gid');"><strike>Residence</strike></a></span>
+    <a href="#" onclick="return Travian.Game.iPopup(18,4, 'gid');">Embassy</a> <span>Level 1</span></span>, <span class="buildingCondition"><a href="#" onclick="return Travian.Game.iPopup(15,4, 'gid');">Main Building</a> <span>Level 5</span></span>, <span class="buildingCondition"><a href="#" onclick="return Travian.Game.iPopup(25,4, 'gid');"><strike>Residence</strike></a></span>
     </div>
 	<div class="clear"></div>
 </div>
