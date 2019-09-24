@@ -1273,10 +1273,10 @@ class Automation {
                 }
                 for ($i = 1; $i <= 50; $i++) {
                     if(!isset($Defender['u'.$i])) {
-                        $Defender['u'.$i] = '0';
+                        $Defender['u'.$i] = 0;
                     } else {
-                        if($Defender['u'.$i] == '' or $Defender['u'.$i] <= '0') {
-                            $Defender['u'.$i] = '0';
+                        if(!is_numeric($Defender['u'.$i]) or $Defender['u'.$i] <= 0) {
+                            $Defender['u'.$i] = 0;
                         } else {
                             if($i <= 10) {
                                 $rom = '1';
@@ -1293,10 +1293,10 @@ class Automation {
                     }
                 }
                 if(!isset($Defender['hero'])) {
-                    $Defender['hero'] = '0';
+                    $Defender['hero'] = 0;
                 } else {
-                    if($Defender['hero'] == '' or $Defender['hero'] <= '0') {
-                        $Defender['hero'] = '0';
+                    if(!is_numeric($Defender['hero']) or $Defender['hero'] <= 0) {
+                        $Defender['hero'] = 0;
                     }
                 }
                 //get attack units
@@ -1754,7 +1754,7 @@ class Automation {
                     }
                 }
                 for ($i = 1; $i <= 50; $i++) {
-                    $totalsend_def += $Defender[''.$i.''];
+                    $totalsend_def += $Defender['u'.$i];
                 }
                 $totalsend_def += $Defender['hero'];
                 
