@@ -326,7 +326,7 @@ $start=41; ?>
             <?php
             if($targettribe=='5'){
             echo '<a href="spieler.php?uid='.$database->getUserField($dataarray[30],"id",0).'">';
-            echo NATARS;
+            echo $database->getUserField($dataarray[30],"username",0);
             echo '</a> '.REPORT_FROM_VIL.' <a href="karte.php?d='.$dataarray[31].'&amp;c='.$generator->getMapCheck($dataarray[31]).'">
             '.stripslashes($dataarray[32]).'</a>';
             } else {
