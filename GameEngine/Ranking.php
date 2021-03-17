@@ -11,7 +11,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY totalpop DESC, userid DESC";
+				ORDER BY totalpop DESC, userid ASC";
 				$result = mysql_query($q);
 				$i = 1;
 				$myrank = 0;
@@ -28,7 +28,7 @@
 				$q = "SELECT " . TB_PREFIX . "users.id userid, " . TB_PREFIX . "users.username username, " . TB_PREFIX . "users.apall apall
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY apall DESC, userid DESC";
+				ORDER BY apall DESC, userid ASC";
 					
 				$result = mysql_query($q);
 				$i = 1;
@@ -46,7 +46,7 @@
 				$q = "SELECT " . TB_PREFIX . "users.id userid, " . TB_PREFIX . "users.username username, " . TB_PREFIX . "users.dpall dpall
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY dpall DESC, userid DESC";
+				ORDER BY dpall DESC, userid ASC";
 					
 				$result = mysql_query($q);
 				$i = 1;
@@ -66,7 +66,7 @@
 					if(count($this->rankarray) > 1) {
 						$key = key($this->rankarray);
 						if($this->rankarray[$key]["id"] == $id) {
-							return $key;
+							return $key + 1;
 							break;
 						} else {
 							if(!next($this->rankarray)) {
@@ -86,7 +86,7 @@
 					if(count($this->rankarray) > 1) {
 						$key = key($this->rankarray);
 						if($this->rankarray[$key]["id"] == $id) {
-							return $key;
+							return $key + 1;
 							break;
 						} else {
 							if(!next($this->rankarray)) {
@@ -106,7 +106,7 @@
 					if(count($this->rankarray) > 1) {
 						$key = key($this->rankarray);
 						if($this->rankarray[$key]["id"] == $id) {
-							return $key;
+							return $key + 1;
 							break;
 						} else {
 							if(!next($this->rankarray)) {
@@ -148,7 +148,7 @@
 					
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY totalpop DESC, totalraid DESC, userid DESC $limit";
+				ORDER BY totalpop DESC, totalraid DESC, userid ASC $limit";
 				return mysql_query($q);
 			}
 						
@@ -166,7 +166,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY apall DESC, userid DESC $limit";
+				ORDER BY apall DESC, userid ASC $limit";
 				return mysql_query($q);
 			}
 			
@@ -185,7 +185,7 @@
 					
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY dpall DESC, userid DESC $limit";
+				ORDER BY dpall DESC, userid ASC $limit";
 				return mysql_query($q);
 			}
 						
@@ -215,7 +215,7 @@
 					array_push($holder, $value);
 				}
 				$holder = $multisort->sorte($holder, "'totalpop'", false, 2);
-				$newholder = array("pad");
+				$newholder = array();
 				foreach($holder as $key) {
 					array_push($newholder, $key);
 				}
@@ -241,7 +241,7 @@
 					array_push($holder, $value);
 				}
 				$holder = $multisort->sorte($holder, "'totalap'", false, 2);
-				$newholder = array("pad");
+				$newholder = array();
 				foreach($holder as $key) {
 					array_push($newholder, $key);
 				}
@@ -266,7 +266,7 @@
 					array_push($holder, $value);
 				}
 				$holder = $multisort->sorte($holder, "'totaldp'", false, 2);
-				$newholder = array("pad");
+				$newholder = array();
 				foreach($holder as $key) {
 					array_push($newholder, $key);
 				}
@@ -394,7 +394,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY experience DESC, totalpop ASC, userid DESC";
+				ORDER BY experience DESC, totalpop ASC, userid ASC";
 				$result = mysql_query($q);
 				$i = 1;
 				$myrank = 0;
@@ -427,13 +427,10 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY experience DESC, totalpop ASC, userid DESC $limit";
+				ORDER BY experience DESC, totalpop ASC, userid ASC $limit";
 				
 				return mysql_query($q);
 			}
-
-
-
 			
 			public function getTop10AttRank($uid) {
 				$q = "SELECT " . TB_PREFIX . "users.id userid, " . TB_PREFIX . "users.username username, " . TB_PREFIX . "users.ap ap, (
@@ -449,7 +446,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY ap DESC, userid DESC";
+				ORDER BY ap DESC, userid ASC";
 					
 				$result = mysql_query($q);
 				$i = 1;
@@ -457,6 +454,7 @@
 				while($row = mysql_fetch_array($result)) {
 					if($row['userid'] == $uid){
 						$myrank = $i;
+						break;
 					}
 					$i++;
 				}
@@ -478,7 +476,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY dp DESC, userid DESC";
+				ORDER BY dp DESC, userid ASC";
 					
 				$result = mysql_query($q);
 				$i = 1;
@@ -486,6 +484,7 @@
 				while($row = mysql_fetch_array($result)) {
 					if($row['userid'] == $uid){
 						$myrank = $i;
+						break;
 					}
 					$i++;
 				}
@@ -507,7 +506,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4
-				ORDER BY clp DESC, userid DESC";
+				ORDER BY clp DESC, userid ASC";
 					
 				$result = mysql_query($q);
 				$i = 1;
@@ -515,6 +514,7 @@
 				while($row = mysql_fetch_array($result)) {
 					if($row['userid'] == $uid){
 						$myrank = $i;
+						break;
 					}
 					$i++;
 				}
@@ -535,7 +535,7 @@
 				
 				FROM " . TB_PREFIX . "users
 				WHERE " . TB_PREFIX . "users.id > 4 AND RR >= 0
-				ORDER BY RR DESC, userid DESC";
+				ORDER BY RR DESC, userid ASC";
 					
 				$result = mysql_query($q);
 				$i = 1;
@@ -543,6 +543,7 @@
 				while($row = mysql_fetch_array($result)) {
 					if($row['userid'] == $uid){
 						$myrank = $i;
+						break;
 					}
 					$i++;
 				}

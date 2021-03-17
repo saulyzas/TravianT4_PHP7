@@ -1,7 +1,7 @@
 <?php
         include ("GameEngine/Data/unitdata.php");
 		include ("GameEngine/Database.php");
-		include ("GameEngine/Generator.php");
+		include("GameEngine/GeneratorX.php");
 	function procDistanceTime2($coor,$thiscoor,$ref,$mode) {
 		$xdistance = ABS($thiscoor['x'] - $coor['x']);
 		if($xdistance > WORLD_MAX) {

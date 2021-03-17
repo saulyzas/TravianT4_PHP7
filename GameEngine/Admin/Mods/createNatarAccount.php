@@ -9,14 +9,10 @@
 ##                                                                             ##
 #################################################################################
 
-include_once("../../Database/connection.php");
 include_once("../../config.php");
-include_once("../../Database/db_MYSQL.php");
+include_once("../../Database.php"); 
 
 error_reporting(E_ALL);
-
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
 
 $session = $_POST['admid'];
 

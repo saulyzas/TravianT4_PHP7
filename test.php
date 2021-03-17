@@ -1,6 +1,6 @@
 <?php
 	include_once ("GameEngine/Database.php");
-	include_once ("GameEngine/Generator.php");
+	include_once("GameEngine/GeneratorX.php");
 	function addVillage($wid, $uid, $username, $capital) {
 		$vname = $name." Village";
 				

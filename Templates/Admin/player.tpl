@@ -121,7 +121,7 @@ if($deletion){
 			} else if($_SESSION['access'] == MULTIHUNTER){
 			echo '';
 			}
-            echo '<tr><td colspan="2"> <a href="nachrichten.php?t=1&id='.$user['id'].'">&raquo; Write message</a></td></tr>';
+            echo '<tr><td colspan="2"> <a href="../nachrichten.php?t=1&id='.$user['id'].'">&raquo; Write message</a></td></tr>';
 
 			 if($_SESSION['access'] == ADMIN){
             echo '<tr><td colspan="2"> <a class="rn3" href="?p=deletion&uid='.$user['id'].'">&raquo; Delete player</a></td></tr>';
@@ -242,10 +242,14 @@ if($deletion){
 		?>
 </tr>
 </table>
-<center><?php include ('punish.tpl'); ?></center>
+<?php include ('villages.tpl'); ?>
+<div style="float: left; width: 50%;">
+    <center> <?php include ('punish.tpl'); ?> </center>
+</div>
+<div style="float: right; width: 50%;">
+    <center> <?php include ('add_village.tpl'); ?> </center>
+</div>
 <?php
-include ('villages.tpl');
-include ('add_village.tpl');
 }else{
   echo "Not found...<a href=\"javascript: history.go(-1)\">Back</a>";
 }

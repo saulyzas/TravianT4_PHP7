@@ -1,4 +1,5 @@
 <?php 
+ob_start();
 include("GameEngine/Database.php");
 if(isset($_GET['uid'])){
     $uid =  $_GET['uid'];
@@ -74,10 +75,11 @@ if($getbeard!=5){
 $database->imagecopymerge_alpha($body, $beard, 0, 0, 0, 0, imagesx($beard), imagesy($beard),100);
 }
 
+ob_end_clean();
 
-// OUTPUT IMAGE: 
+// OUTPUT IMAGE:
 header("Content-Type: image/png"); 
 imagesavealpha($body, true); 
-imagepng($body, NULL); 
+imagepng($body); 
 
 ?>

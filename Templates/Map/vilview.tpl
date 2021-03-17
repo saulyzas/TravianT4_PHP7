@@ -139,7 +139,7 @@ if($database->getOasisV($d)){
 switch($basearray['fieldtype']) {
 case 1:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 3</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 3</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 3</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 3</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 9</td>";
@@ -147,77 +147,77 @@ $tt =  "
 break;
 case 2:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 3</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 3</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 4</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 5</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
 break;
 case 3:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 4</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 4</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 4</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 4</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
 break;
 case 4:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 4</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 4</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 5</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 3</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
 break;
 case 5:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 5</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 5</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 3</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 4</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
 break;
 case 6:
 $tt = "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 1</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 1</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 1</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 1</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 15</td>";
 break;
 case 7:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 4</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 4</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 4</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 3</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 7</td>";
 break;
 case 8:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 3</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 3</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 4</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 4</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 7</td>";
 break;
 case 9:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 4</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 4</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 3</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 4</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 7</td>";
 break;
 case 10:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 3</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 3</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 5</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 4</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
 break;
 case 11:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 4</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 4</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 3</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 5</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
 break;
 case 12:
 $tt =  "
-<td><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"> 5</td>
+<td><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"> 5</td>
 <td><img class=\"r2\" src=\"img/x.gif\" title=\"".CLAY."\"> 4</td>
 <td><img class=\"r3\" src=\"img/x.gif\" title=\"".IRON."\"> 3</td>
 <td><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"> 6</td>";
@@ -226,18 +226,18 @@ case 0:
 switch($basearray['oasistype']) {
 case 1:
 $tt =  "
-<td class=\"ico\"><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"></td>
-<td class=\"val\">25%</td><td class=\"desc\">".LUMBER."</td>";
+<td class=\"ico\"><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"></td>
+<td class=\"val\">25%</td><td class=\"desc\">".WOOD."</td>";
 break;
 case 2:
 $tt =  "
-<td class=\"ico\"><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"></td>
-<td class=\"val\">50%</td><td class=\"desc\">".LUMBER."</td>";
+<td class=\"ico\"><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"></td>
+<td class=\"val\">50%</td><td class=\"desc\">".WOOD."</td>";
 break;
 case 3:
 $tt =  "
-<tr><td class=\"ico\"><img class=\"r1\" src=\"img/x.gif\" title=\"".LUMBER."\"></td>
-<td class=\"val\">25%</td><td class=\"desc\">".LUMBER."</td></tr>
+<tr><td class=\"ico\"><img class=\"r1\" src=\"img/x.gif\" title=\"".WOOD."\"></td>
+<td class=\"val\">25%</td><td class=\"desc\">".WOOD."</td></tr>
 <tr><td class=\"ico\"><img class=\"r4\" src=\"img/x.gif\" title=\"".CROP."\"></td>
 <td class=\"val\">25%</td><td class=\"desc\">".CROP."</td></tr>";
 break;

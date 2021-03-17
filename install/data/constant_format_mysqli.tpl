@@ -1,8 +1,8 @@
 <?php
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
-$sql = mysql_query("SELECT * FROM ".TB_PREFIX."config");
-$result = mysql_fetch_array($sql);
+$connection = mysqli_connect(SQL_SERVER, SQL_USER, SQL_PASS);
+mysqli_select_db($connection, SQL_DB);
+$sql = mysqli_query($connection, "SELECT * FROM ".TB_PREFIX."config");
+$result = mysqli_fetch_array($sql);
 
 //////////////////////////////////
 /////// Gold coin prices ///////
@@ -276,4 +276,14 @@ define("SERVER", $result['server_url']);
 ////////////////////////////////////////
 
 define("SINGLEPLAYER_ENABLED", "%SINGLEPLAYERMODE%");
+
+////////////////////////////////////////
+//  *****  UNDEFINED SETTINGS  *****  //
+////////////////////////////////////////
+
+define("MODERATOR", 1);
+define("AUTO_DEL_INACTIVE", false);
+define("UN_ACT_TIME ", 0);
+define("ZRAVIANX4", false);
+
 ?>

@@ -66,7 +66,10 @@ class Units {
 				$form->addError("error","You need to mark min. one troop");				
 				}				
 
-				if(!$post['dname'] && !$post['x'] && !$post['y']){
+				$validX = is_numeric($post['x']) && floor($post['x']) == $post['x'];
+				$validY = is_numeric($post['y']) && floor($post['y']) == $post['y'];
+
+				if(!$post['dname'] && !$validX && !$validY){
 				$form->addError("error","Insert name or coordinates");			
 				}
 
@@ -80,19 +83,20 @@ class Units {
 				}
 				// Busqueda por coordenadas de pueblo
 				// Confirmamos y buscamos las coordenadas por coordenadas de pueblo				
-				if(isset($post['x']) && isset($post['y']) && $post['x'] != "" && $post['y'] != "") {
+				if($validX && $validY) {
 					$coor = array('x'=>$post['x'], 'y'=>$post['y']);
 					$id = $generator->getBaseID($coor['x'],$coor['y']);
 					if (!$database->getVillageState($id)){
 						$form->addError("error","Coordinates do not exist");
 					}
-					if ($session->tribe == 1){$Gtribe = "";}elseif ($session->tribe == 2){$Gtribe = "1";}elseif ($session->tribe == 3){$Gtribe = "2";}elseif ($session->tribe == 4){$Gtribe = "3";}elseif ($session->tribe == 5){$Gtribe = "4";}
+				}
+					$offset =($session->tribe - 1) * 10;
 					for($i=1; $i<10; $i++)
 					{
 						if(isset($post['t'.$i]))
 						{
                             
-							if ($post['t'.$i] > $village->unitarray['u'.$Gtribe.$i])
+							if ($post['t'.$i] > $village->unitarray['u'.($offset+$i)])
 							{
 								$form->addError("error","You can't send more units than you have");
 								break;
@@ -106,18 +110,21 @@ class Units {
 
 						}												
 					}
-                    if ($post['t11'] > $village->unitarray['hero'])
+					if(isset($post['t11']))
+					{
+							if ($post['t11'] > $village->unitarray['hero'])
                             {
                                 $form->addError("error","You can't send more units than you have");
-                                break;
+                                //break;
                             }
                             
                             if($post['t11']<0)
                             {
                                 $form->addError("error","You can't send negative units.");
-                                break;
+                                //break;
                             }
-				}
+					}
+
                 if ($database->isVillageOases($id) == 0) {
 				if($database->hasBeginnerProtection($id)==1) {
 	                $form->addError("error","Player is under beginners protection. You can't attack him");
@@ -198,13 +205,13 @@ class Units {
                     if ($data['u11'] > $village->unitarray['hero'])
                             {
                                 $form->addError("error","You can't send more units than you have");
-                                break;
+                                //break;
                             }
                             
                             if($data['u11']<0)
                             {
                                 $form->addError("error","You can't send negative units.");
-                                break;
+                                //break;
                             }
 				if($form->returnErrors() > 0) {
 					$_SESSION['errorarray'] = $form->getErrors();
@@ -276,7 +283,7 @@ class Units {
 		
   		$database->addMovement(3,$village->wid,$data['to_vid'],$reference,0,($time+time()));
    
-		$to_owner = $database->getVillageField($data['to_vid']);
+		$to_owner = $database->getVillageField($data['to_vid'],'owner');
 		if($post['del_protect'] == 1) {
 		$database->updateUserField($session->uid, "protect", (time()-1), 1);
 		}

@@ -41,10 +41,14 @@
                         $class = "g33Icon";
                         $name = "wall3";
                     }
+
+					$value = $form->getValue($name);
+					if (!is_numeric($value)) { $value = 0; }
+
                     echo "<tr>
 						    <td class=\"ico\"><img src=\"img/x.gif\" class=\"gebIcon ".$class."\" title=\"".$title."\" /></td>
 						    <td class=\"desc\">".$title."</td>
-						    <td class=\"value\"><input class=\"text\" type=\"text\" name=\"".$name."\" value=\"0\" maxlength=\"2\" title=\"??? ".$title."\" /></td>
+						    <td class=\"value\"><input class=\"text\" type=\"text\" name=\"".$name."\" value=\"".$value."\" maxlength=\"2\" title=\"??? ".$title."\" /></td>
 						    <td class=\"research\"></td>
 
 					    </tr>";

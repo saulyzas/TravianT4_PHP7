@@ -10,7 +10,7 @@
 #################################################################################
 
 if($_SESSION['access'] < ADMIN) die("Access Denied: You are not Admin!");
-include("../GameEngine/config.php");
+include("../config/config.php");
 $id = $_SESSION['id'];
 
 $sql = mysql_query("SELECT * FROM ".TB_PREFIX."medal");
@@ -40,7 +40,7 @@ $nummedals = mysql_num_rows($sql);
 			$sql = mysql_query("SELECT * FROM ".TB_PREFIX."medal");
 			$tot = mysql_num_rows($sql);
 			$sql = mysql_query("SELECT week FROM ".TB_PREFIX."medal ORDER BY week DESC LIMIT 1");
-			$week = mysql_result($sql, 0);
+			$week = mysqli_fetch_assoc($sql)['week'];
 			echo "<tr><td><center>$week</center></td><td><center>$tot</center></td></tr>";
 		?>
 	</tbody>
@@ -140,7 +140,7 @@ $nummedals = mysql_num_rows($sql);
 				$playerid = $row['userid'];
 				
 				$unq = "SELECT username FROM ".TB_PREFIX."users where id = $playerid";
-				$user = mysql_result(mysql_query($unq), 0);
+				$user = mysqli_fetch_assoc(mysql_query($unq))['username'];
 				$username = $user;
 				
 				$player = "<a href=\"admin.php?p=player&uid=".$playerid."\">$username</a>";

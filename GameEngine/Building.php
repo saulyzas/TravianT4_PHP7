@@ -8,7 +8,7 @@ class Building {
 	private $basic,$inner,$plus = 0;
 	public $buildArray = array();
 
-	public function Building() {
+	public function __construct() {
 		global $session;
 		$this->maxConcurrent = BASIC_MAX;
 		if(ALLOW_ALL_TRIBE || $session->tribe == 1) {
@@ -555,7 +555,10 @@ class Building {
 		$name = "bid".$id;
 		global $$name,$village;
 		$dataarray = $$name;
-		if($id <= 4) {
+		if(!is_array($dataarray)) {
+			return false;
+		}	
+		else if($id <= 4) {
 			if($village->capital == 1) {
 				return ($village->resarray['f'.$field] == (count($dataarray) - 1 - $loop));
 			}

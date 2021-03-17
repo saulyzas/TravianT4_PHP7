@@ -32,13 +32,27 @@
 
 <?php
 error_reporting(0);
-if($_GET['nid'] and ereg('^[0-9]', $_GET['nid']))
+if (isset($_GET['nid'])) 
 {
-	include('msg.tpl');
-}
-elseif($_GET['bid'] and ereg('^[0-9]', $_GET['bid']))
+	if (is_numeric($_GET['nid']))
+	{
+		include('msg.tpl');
+	} 
+	else 
+	{
+		echo '<font color="red">Provided value is not numeric!</font>';
+	}
+} 
+else if (isset($_GET['bid'])) 
 {
-	include('report.tpl');
+	if (is_numeric($_GET['bid'])) 
+	{
+		include('report.tpl');
+	} 
+	else 
+	{
+		echo '<font color="red">Provided value is not numeric!</font>';
+	}
 }
 ?>
 

@@ -1,11 +1,10 @@
 <?php
 ob_start(); //this is enough 
-        if(!file_exists('GameEngine/config.php') && !file_exists('GameEngine/Database/connection.php')) {
+        if(!file_exists('config/config.php') && !file_exists('config/connection.php')) {
         	header("Location: install/");
         }
-        
-        include ("Database/connection.php");
-        include ("config.php");
+        include ("config/connection.php");
+        include ("config/config.php");
         include ("Database.php");
 		include ("Data/buidata.php");
         include ("Data/cp.php");
@@ -16,16 +15,11 @@ ob_start(); //this is enough
         include ("Mailer.php");
         include ("Battle.php");
         include ("Form.php");
-        include ("Generator.php");
+        include ("GeneratorX.php");
 		include ("Multisort.php");
 		include ("Ranking.php");
-        include ("Automation.php");
         include ("Lang/" . LANG . ".php");
-        include ("Logging.php");
         include ("Message.php");
-        include ("Alliance.php");
-        include ("Profile.php");
-        include ("Protection.php");
 
 
         class Session {
@@ -44,7 +38,7 @@ ob_start(); //this is enough
         	private $userarray = array();
         	var $villages = array();
 
-        	function Session() {
+        	function __construct() {
         		$this->time = time();
         		session_start();
 
@@ -189,6 +183,16 @@ ob_start(); //this is enough
         $session = new Session;
         $form = new Form;
         $message = new Message;
+
+        if( SINGLEPLAYER_ENABLED ){
+            include("AutomationSinglePlayer.php");
+        }
+
+		include ("Automation.php");
+		include ("Logging.php");
+		include ("Alliance.php");
+		include ("Profile.php");
+		include ("Protection.php");
 
 if(LIMIT_TROOPS == True){
 mysql_query("UPDATE ".TB_PREFIX."units SET u1 = '0', u2 = '0', u3 = '0', u4 = '0', u5 = '0', u6 = '0', u7 = '0', u8 = '0', u9 = '0', u10 = '0', u11 = '0', u12 = '0', u13 = '0', u14 = '0', u15 = '0', u16 = '0', u17 = '0', u18 = '0', u19 = '0', u20 = '0', u21 = '0', u22 = '0', u23 = '0', u24 = '0', u25 = '0', u26 = '0', u27 = '0', u28 = '0', u29 = '0', u30 = '0', u31 = '0', u32 = '0', u33 = '0', u34 = '0', u35 = '0', u36 = '0', u37 = '0', u38 = '0', u39 = '0', u40 = '0', u41 = '0', u42 = '0', u43 = '0', u44 = '0', u45 = '0', u46 = '0', u47 = '0', u48 = '0', u49 = '0', u50 = '0' WHERE u1>10000000  or u2>10000000 or u3>100000000 or u4>10000000 or u5>10000000 or u6>10000000 or u7>10000000 or u8>10000000 or u9>10000000 or u10>10000000 or u11>10000000 or u12>10000000 or u13>10000000 or u14>10000000 or u15>10000000 or u16>10000000 or u17>10000000 or u18>10000000 or u19>10000000 or u20>10000000 or u21>10000000 or u22>10000000 or u23>10000000 or u24>10000000 or u25>10000000 or u26>10000000 or u27>10000000 or u28>10000000 or u29>10000000 or u30>10000000 or u31>10000000 or u32>10000000 or u33>10000000 or u34>10000000 or u35>10000000 or u36>10000000 or u37>10000000 or u38>10000000 or u39>10000000 or u40>10000000 or u41>10000000 or u42>10000000 or u43>10000000 or u44>10000000 or u45>10000000 or u46>10000000 or u47>10000000 or u48>10000000 or u49>10000000 or u50>10000000");

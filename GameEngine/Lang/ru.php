@@ -8,93 +8,92 @@
 //                                 DO NOT REMOVE COPYRIGHT NOTICE!                                  //
 //////////////////////////////////////////////////////////////////////////////////////////////////////
                                     //                         //
-									//         ENGLISH         //
-			                        //      Author: Dzoki      //
+									//         RUSSIAN         //
+			                        //      Author:       //
 									/////////////////////////////
 
 //MAIN MENU
-define("TRIBE1","Romans"); 
-define("TRIBE2","Teutons");
-define("TRIBE3","Gauls"); 
-define("TRIBE4","Nature"); 
-define("TRIBE5","Natars");
-define("TRIBE6","Monsters");
+define("TRIBE1","Римляне");
+define("TRIBE2","Германцы");
+define("TRIBE3","Галлы");
+define("TRIBE4","Природа");
+define("TRIBE5","Натары");
+define("TRIBE6","Монстры");
  
-define("HOME","Homepage"); 
-define("INSTRUCT","Instructions");
-define("ADMIN_PANEL","Admin Panel");
-define("MASS_MESSAGE","Mass Message");
+define("HOME","Главная");
+define("INSTRUCT","Инструкции");
+define("ADMIN_PANEL","Админка");
+define("MASS_MESSAGE","Массовая рассылка");
 define("LOGOUT","Logout");
-define("PROFILE","Profile");
-define("SUPPORT","Support");
+define("PROFILE","Профиль");
+define("SUPPORT","Поддержка");
 define("UPDATE_T_10","Update Top 10");
 define("SYSTEM_MESSAGE","System message");
 define("TRAVIAN_PLUS","Travian <b><span class=\"plus_g\">P</span><span class=\"plus_o\">l</span><span class=\"plus_g\">u</span><span class=\"plus_o\">s</span></span></span></b>");
-define("CONTACT","Contact us!");
+define("CONTACT","Свяжитесь с нами!");
 
-define("HEADER_MESSAGES","Messages");
-define("HEADER_MESSAGES_NEW","New Messages");
+define("HEADER_MESSAGES","Сообщения");
 define("HEADER_PLUS","Plus");
 define("HEADER_ADMIN","Admin");
 define("HEADER_PLUSMENU","Plus menu");
-define("HEADER_NOTICES","Reports");
-define("HEADER_STATS","Statistics");
-define("HEADER_MAP","Map");
-define("HEADER_DORF2","Village Center");
-define("HEADER_DORF1","Resource");
-define("HEADER_GOLD","Gold");
-define("HEADER_SILVER","Silver");
-define("HEADER_NIGHT","Night");
-define("HEADER_DAY","Day");
-define("HEADER_NOTICES_NEW","New Report");
+define("HEADER_NOTICES","Отчеты");
+define("HEADER_STATS","Статистика");
+define("HEADER_MAP","Карта");
+define("HEADER_DORF2","Центр деревни");
+define("HEADER_DORF1","Ресурсы");
+define("HEADER_GOLD","Золото");
+define("HEADER_SILVER","Серебро");
+define("HEADER_NIGHT","Ночь");
+define("HEADER_DAY","День");
+define("HEADER_NOTICES_NEW","Новый отчет");
 
 
-define("SIDEINFO_ADVENTURES","Adventure");
-define("SIDEINFO_AUCTIONS","Auction");
-define("SIDEINFO_PROFILE","Profile");
-define("SIDEINFO_ALLIANCE","Alliance");
-define("SIDEINFO_ALLY_FORUM","Alliance Forum");
-define("SIDEINFO_CHANGE_TITLE","Double-click to rename the village");
-define("SIDEINFO_CHANGEVIL_TITLE","Village name change");
-define("SIDEINFO_CHANGEVIL_LABEL","New village name");
-define("SIDEINFO_CHANGEVIL_BTN","Accept");
+define("SIDEINFO_ADVENTURES","Приключение");
+define("SIDEINFO_AUCTIONS","Аукцион");
+define("SIDEINFO_PROFILE","Профиль");
+define("SIDEINFO_ALLIANCE","Альянс");
+define("SIDEINFO_ALLY_FORUM","Форум альянса");
+define("SIDEINFO_CHANGE_TITLE","Двойной клик чтобы переименовать деревню");
+define("SIDEINFO_CHANGEVIL_TITLE","Переименование деревни");
+define("SIDEINFO_CHANGEVIL_LABEL","Новое название");
+define("SIDEINFO_CHANGEVIL_BTN","Подтвердить");
 
 define("LOGOUT_TITLE","Logout complete!");
-define("LOGOUT_H4","Thank you for visiting");
-define("LOGOUT_DESC","If multiple people use this PC, you should clear the cookie with your user name and password for security reasons");
-define("LOGOUT_LINK","Clear cookies");
+define("LOGOUT_H4","Спасибо за визит");
+define("LOGOUT_DESC","Если несколько человек используют этот компьютер, из соображений безопасности вы должны очистить cookie, содержащие имя пользователя и пароль.");
+define("LOGOUT_LINK","Очистить cookies");
 
-define("LOGIN_WELCOME","Welcome to server");
-define("LOGIN_USERNAME","Username");
-define("LOGIN_PASSWORD","Password");
-define("LOGIN_LOWRES_DESC","Low resolution");
+define("LOGIN_WELCOME","Добро пожаловать в игру");
+define("LOGIN_USERNAME","Пользователь");
+define("LOGIN_PASSWORD","Пароль");
+define("LOGIN_LOWRES_DESC","Низкое разрешение");
 define("LOGIN_LOWRES_OPTION","");
 define("LOGIN_LOWRES_NOTICE","");
-define("LOGIN_PW_FORGOTTEN","Password Forgotten");
+define("LOGIN_PW_FORGOTTEN","Восстановить пароль");
 
-define("LOGIN_PW_REQUEST","Request Password");
+define("LOGIN_PW_REQUEST","Запросить пароль");
 define("LOGIN_PW_EMAIL","Email");
-define("LOGIN_PW_BTN","Go");
+define("LOGIN_PW_BTN","Вперед");
 
-define("REGISTER_USERINFO","Register");
-define("REGISTER_USERNAME","Name");
+define("REGISTER_USERINFO","Регистрация");
+define("REGISTER_USERNAME","Имя");
 define("REGISTER_EMAIL","Email");
-define("REGISTER_PASSWORD","Password");
+define("REGISTER_PASSWORD","Пароль");
 define("REGISTER_STARTER","");
-define("REGISTER_SELECT_TRIBE","Select Tribe");
-define("REGISTER_LOCATION","Location");
-define("REGISTER_NE","North-East");
-define("REGISTER_NW","North-West");
-define("REGISTER_SE","South-East");
-define("REGISTER_SW","South-West");
-define("REGISTER_RANDOM","Random");
+define("REGISTER_SELECT_TRIBE","Выберите класс");
+define("REGISTER_LOCATION","Место расположения");
+define("REGISTER_NE","Северо-восток");
+define("REGISTER_NW","Северо-запад");
+define("REGISTER_SE","Юго-Восток");
+define("REGISTER_SW","Юго-запад");
+define("REGISTER_RANDOM","Случайно");
 define("REGISTER_MOREINFO","T&C");
-define("REGISTER_CLOSED","The register is closed. You can't register to this server.");
+define("REGISTER_CLOSED","Регистрация закрыта. Вы не можете зарегистрироваться на этом сервере.");
 
 //MENU
-define("REG","Register");
+define("REG","Регистрация");
 define("FORUM","Forum");
-define("CHAT","Chat");
+define("CHAT","Чат");
 define("IMPRINT","Imprint");
 define("MORE_LINKS","More Links");
 define("TOUR","Game Tour");
@@ -108,7 +107,8 @@ define("USRNM_CHAR","(Invalid Characters)");
 define("PW_EMPTY","(Password empty)");
 define("PW_SHORT","(min. ".PW_MIN_LENGTH." figures)");
 define("PW_INSECURE","(Password insecure. Please choose a more secure one.)");
-define("EMAIL_EMPTY","(Email Empty)");
+define("EMAIL_EMPTY","(Email не введен)");
+define("EMAIL_NOTEXIST","(Email введен неверно)");
 define("EMAIL_INVALID","(Invalid email address)");
 define("EMAIL_TAKEN","(Email is already in use)");
 define("TRIBE_EMPTY","<li>Please choose a tribe.</li>");
@@ -164,7 +164,7 @@ define("WAITING_LOOP","(waiting loop)");
 define("HRS","(hrs.)");
 define("DONE_AT","done at");
 define("CANCEL","cancel");
-define("LOYALTY","Loyalty:"); 
+define("LOYALTY","Лояльность:");
 define("CALCULATED_IN","Calculated in");
 define("SEVER_TIME","Server time:");  
 
@@ -354,12 +354,9 @@ define("TROOP_MOVEMENTS","Troop Movements:");
 define("ARRIVING_REINF_TROOPS","Arriving reinforcing troops");
 define("ARRIVING_REINF_TROOPS_SHORT","Reinf.");
 define("OWN_ATTACKING_TROOPS","Own attacking troops");
-define("ARRIVING_ATTACKING_TROOPS","Arriving attacking troops");
 define("ATTACK","Attack");
 define("OWN_REINFORCING_TROOPS","Own reinforcing troops");
 define("TROOPS_DORF","Troops:");
-define("FOUND_NEW_VILLAGE","Found new Village");
-define("FOUND_NEW_VILLAGE_SHORT","New Village");
 
 
 //LOGIN.php
@@ -398,7 +395,7 @@ define("MASS_SENT","Mass IGM was sent");
 // Menu items
 
 	define("GAME_TOUR","Game Tour");
-	define("FORUM","Forum");
+	define("FORUM","Форум");
 	define("FORUM_LINK","http://forum.travian.com");
 	define("MORE_GAMES","More games");
 	define("REGISTER","Register");

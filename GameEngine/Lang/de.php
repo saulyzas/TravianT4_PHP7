@@ -60,6 +60,7 @@ define("TRAVIAN_PLUS","Travian <b><span class=\"plus_g\">P</span><span class=\"p
 define("CONTACT","Kontaktiere uns!");
 
 define("HEADER_MESSAGES","Nachrichten");
+define("HEADER_MESSAGES_NEW","Neue Nachrichten");
 define("HEADER_PLUS","Plus");
 define("HEADER_ADMIN","Admin");
 define("HEADER_PLUSMENU","Plus Men&uuml");
@@ -321,6 +322,7 @@ define("U27","Rammholz");
 define("U28","Kriegskatapult");
 define("U29","H&auml;uptling");
 define("U30","Siedler");
+define("U99","Falle");
 
 //NATURE UNITS
 define("U31","Ratte");
@@ -728,9 +730,12 @@ define("TROOP_MOVEMENTS","Troop Movements:");
 define("ARRIVING_REINF_TROOPS","Arriving reinforcing troops");
 define("ARRIVING_REINF_TROOPS_SHORT","Reinf.");
 define("OWN_ATTACKING_TROOPS","Own attacking troops");
+define("ARRIVING_ATTACKING_TROOPS","Arriving attacking troops");
 define("ATTACK","Attack");
 define("OWN_REINFORCING_TROOPS","Own reinforcing troops");
 define("TROOPS_DORF","Truppen:");
+define("FOUND_NEW_VILLAGE","Found new Village");
+define("FOUND_NEW_VILLAGE_SHORT","New Village");
 
 
 //LOGIN.php
@@ -819,7 +824,7 @@ define("MASS_SENT","Mass IGM was sent");
 	$lang['index2']['shop'] = 'Zum Shop';
 	$lang['index2']['shop link'] = '#';
 	$lang['index2']['facebook'] = 'http://www.facebook.com/ZravianX';
-	$lang['index2']['strategy game'] = 'TRAVIAN – das Multiplayer-Strategiespiel';
+	$lang['index2']['strategy game'] = 'TRAVIAN - das Multiplayer-Strategiespiel';
 	$lang['index2']['what is'] = 'TRAVIAN ist eines der erfolgreichsten Browserspiele weltweit. Als Spieler in TRAVIAN baust du dein Imperium mit vielen D&oumlrfern auf, rekrutierst eine m&aumlchtige Armee und k&aumlmpfst mit deiner Allianz um die Vorherrschaft in deiner Spiel-Welt.';
 	$lang['index2']['register free'] = 'Hier gratis registrieren';
 	$lang['index2']['title1'] = 'Neueste Welt';

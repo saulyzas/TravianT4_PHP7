@@ -1,13 +1,10 @@
 ﻿<?php
 
-        include ("../../GameEngine/Database.php");
+		include ("../../config/connection.php");
+        include ("../../config/config.php");
         include ("../../GameEngine/Admin/database.php");
-		
-        include ("../../GameEngine/config.php");
-        include ("../../GameEngine/Lang/" . LANG . ".php");
-
-        mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-        mysql_select_db(SQL_DB);
+        include ("../../GameEngine/Database.php");
+        include ("../../GameEngine/Lang/".LANG.".php");
 		
 		$StartNatars = true;
 /**
@@ -57,7 +54,7 @@ if($StartNatars){
         } else {
         	$speed = SPEED;
         }
-        mysql_query("UPDATE " . TB_PREFIX . "units SET u41 = " . (94700 * $speed) . ", u42 = " . (295231 * $speed) . ", u43 = " . (180747 * $speed) . ", u44 = " . (1048 * $speed) . ", u45 = " . (364401 * $speed) . ", u46 = " . (217602 * $speed) . ", u47 = " . (2034 * $speed) . ", u48 = " . (1040 * $speed) . " , u49 = " . (1 * $speed) . ", u50 = " . (9 * $speed) . " WHERE vref = " . $wid['wref'] . "") or die(mysql_error());
+        mysql_query("UPDATE " . TB_PREFIX . "units SET u41 = " . (94700 * $speed) . ", u42 = " . (295231 * $speed) . ", u43 = " . (180747 * $speed) . ", u44 = " . (1048 * $speed) . ", u45 = " . (364401 * $speed) . ", u46 = " . (217602 * $speed) . ", u47 = " . (2034 * $speed) . ", u48 = " . (1040 * $speed) . " , u49 = " . (1 * $speed) . ", u50 = " . (9 * $speed) . " WHERE vref = " . $wid . "") or die(mysql_error());
 
 	for($i=1;$i<=14;$i++){
 		switch ($i) {

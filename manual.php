@@ -11,8 +11,8 @@
 ##                                                                             ##
 #################################################################################
 
-include("GameEngine/Database/connection.php");
-include("GameEngine/config.php");
+include("config/connection.php");
+include("config/config.php");
 ?>
 
 <html>
@@ -27,14 +27,30 @@ include("GameEngine/config.php");
 	<script src="mt-more.js?0faaa" type="text/javascript"></script>
 	<script src="unx.js?0faaa" type="text/javascript"></script>
 	<script src="new.js?0faaa" type="text/javascript"></script>
+
 <!--    TODO - We need a lang pack for en, only one there is ir -->
 <!--   	<link href="<?php echo GP_LOCATE; ?>lang/en/compact.css?f4b7c" rel="stylesheet" type="text/css" />-->
 <!--   	<link href="<?php echo GP_LOCATE; ?>lang/en/lang.css?f4b7c" rel="stylesheet" type="text/css" />-->
 <!--	<link href="<?php echo GP_LOCATE; ?>travian.css?f4b7c" rel="stylesheet" type="text/css" />-->
 <!--    	<link href="<?php echo GP_LOCATE; ?>lang/en/lang.css" rel="stylesheet" type="text/css" />	-->
-       </head>
+
+	<link href="gpack/travian_Travian_4.0_41/lang/ir/compact.css?asd423" rel="stylesheet" type="text/css" />
+
+	<style type="text/css">
+		img.building {
+			display: block;
+		}
+		body {
+			background-color: white;
+			background-image: none;
+			min-width: 0;
+			padding: 6px;
+		}
+	</style>
+
+    </head>
 <!--    <body class="manual">-->
-    <body style="background-color:white;">
+    <body>
 <?php
 
 if (!ctype_digit($_GET['s'])) {

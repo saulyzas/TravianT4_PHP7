@@ -26,10 +26,9 @@
 class adm_DB {
 	var $connection;
 	
-  function adm_DB(){
-    global $database;
-		$this->connection = mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS) or die(mysql_error());
-		mysql_select_db(SQL_DB, $this->connection) or die(mysql_error()); 	            		
+	function __construct(){
+		global $database;
+		$this->connection = $database->connection;        		
 	}
 	
 	function Login($username,$password){

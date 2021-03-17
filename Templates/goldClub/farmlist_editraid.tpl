@@ -8,16 +8,20 @@ $t1 = $eiddata['t1'];$t2 = $eiddata['t2'];$t3 = $eiddata['t3'];$t4 = $eiddata['t
 
 if(isset($_POST['action']) == 'editSlot' && $_POST['eid']) {
 
-$Wref = $database->getVilWref($_POST['x'], $_POST['y']);
-$type = $database->getVillageType2($Wref);
-$oasistype = $type['oasistype'];
-$vdata = $database->getVillage($Wref);
+    $troops = "".$_POST['t1']+$_POST['t2']+$_POST['t3']+$_POST['t4']+$_POST['t5']+$_POST['t6']+$_POST['t7']+$_POST['t8']+$_POST['t9']+$_POST['t10']."";
 
-$troops = "".$_POST['t1']+$_POST['t2']+$_POST['t3']+$_POST['t4']+$_POST['t5']+$_POST['t6']+$_POST['t7']+$_POST['t8']+$_POST['t9']+$_POST['t10']."";
+    $validX = is_numeric($_POST['x']) && floor($_POST['x']) == $_POST['x'];
+    $validY = is_numeric($_POST['y']) && floor($_POST['y']) == $_POST['y'];
 
-    if(!$_POST['x'] && !$_POST['y']){
+    if($validX && $validY){
+        $Wref = $database->getVilWref($_POST['x'], $_POST['y']);
+        $oasistype = $database->getVillageType2($Wref);
+        $vdata = $database->getVillage($Wref);
+    }
+
+    if(!$validX && !$validY){
     	$errormsg .= "Enter coordinates.";
-    }elseif(!$_POST['x'] || !$_POST['y']){
+    }elseif(!$validX || !$validY){
     	$errormsg .= "Enter the correct coordinates.";
     }elseif($oasistype == 0 && $vdata == 0){
     	$errormsg .= "There is no village on those coordinates.";
@@ -25,7 +29,6 @@ $troops = "".$_POST['t1']+$_POST['t2']+$_POST['t3']+$_POST['t4']+$_POST['t5']+$_
      	$errormsg .= "No troops has been selected.";
     }else{
     
-		$Wref = $database->getVilWref($_POST['x'], $_POST['y']);
 		$coor = $database->getCoor($village->wid);
 			
             function getDistance($coorx1, $coory1, $coorx2, $coory2) {

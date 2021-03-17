@@ -1,8 +1,8 @@
 ﻿<?php
-include("../GameEngine/Database/connection.php");
-include("../GameEngine/config.php");
+include("../config/connection.php");
+include("../config/config.php");
 $time = time();
-rename("../install/","../installed_".$time);
+$installedFlagFile = file_put_contents("../config/installed", "".$time.PHP_EOL , FILE_APPEND | LOCK_EX);
 ?>
 <div id="content" class="login">
 <div class="headline"><h2>TravianT4 Installation Script</h2></div><br>

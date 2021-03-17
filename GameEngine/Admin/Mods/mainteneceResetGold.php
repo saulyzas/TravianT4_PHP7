@@ -10,9 +10,7 @@
 #################################################################################
 
 include_once("../../config.php");
-
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
+include_once("../../Database.php"); 
 
 $session = $_POST['admid'];
 

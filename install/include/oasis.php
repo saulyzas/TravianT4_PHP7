@@ -1,11 +1,11 @@
 <?php
-        include ("../../GameEngine/Database/connection.php");
+        include ("../../config/connection.php");
+        include ("../../config/config.php");
         include ("../../GameEngine/Database.php");
-        include ("../../GameEngine/Admin/database.php");
-        include ("../../GameEngine/config.php");
+        //include ("../../GameEngine/Admin/database.php");
 
-        mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-        mysql_select_db(SQL_DB);
+        //mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
+        //mysql_select_db(SQL_DB);
 
         $database->poulateOasisdata();  
         $database->populateOasis();

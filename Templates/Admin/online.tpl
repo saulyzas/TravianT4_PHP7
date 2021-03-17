@@ -57,7 +57,7 @@ echo '
         <td>'.$tribe.'</td>
         <td>'.$totalpop.'</td>
         <td>'.count($varray).'</td>
-        <td><img src="img/admin/gold.gif" class="gold" alt="Gold" title="This user has: '.$active[$i]['gold'].' gold"/> '.$active[$i]['gold'].'</td>
+        <td><img src="../img/admin/gold.gif" class="gold" alt="Gold" title="This user has: '.$active[$i]['gold'].' gold"/> '.$active[$i]['gold'].'</td>
     </tr>  
 '; 
 } 

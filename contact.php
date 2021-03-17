@@ -1,8 +1,9 @@
 ﻿<?php
 
 include("GameEngine/Database.php");
-include("GameEngine/config.php");
-include "Templates/html.tpl";
+include("config/config.php");
+include("Templates/html.tpl");
+include("GameEngine/Lang/".$result['lang'].".php");
 ?>
 <body class="v35 webkit chrome support">
 	<div id="wrapper">
@@ -20,23 +21,23 @@ include "Templates/html.tpl";
 <div id="side_navi">
 	<ul>
 		<li>
-			<a href="<?php echo HOMEPAGE; ?>" title="<?php echo home; ?>"><?php echo HOME; ?></a>
+			<a href="<?php echo HOMEPAGE; ?>" title="<?php echo 'home'; ?>"><?php echo HOME; ?></a>
 		</li>
 
 		<li>
-			<a href="login.php" title="<?php echo login; ?>"><?php echo LOGIN; ?></a>
+			<a href="login.php" title="<?php echo 'login'; ?>"><?php echo LOGIN; ?></a>
 		</li>
 
 		<li>
-			<a href="anmelden.php" title="<?php echo registration; ?>"><?php echo REGISTRATION; ?></a>
+			<a href="anmelden.php" title="<?php echo 'registration'; ?>"><?php echo REGISTER; ?></a>
 		</li>
 
 		<li>
-			<a href="#" target="_blank" title="<?php echo Forum; ?>"><?php echo FORUM; ?></a>
+			<a href="#" target="_blank" title="<?php echo 'Forum'; ?>"><?php echo FORUM; ?></a>
 		</li>
 		
 		<li class="support active">
-			<a href="contact.php" title="<?php echo Support; ?>"><?php echo SUPPORT; ?></a>
+			<a href="contact.php" title="<?php echo 'Support'; ?>"><?php echo SUPPORT; ?></a>
 		</li>
 	</ul>
 </div>
@@ -84,10 +85,10 @@ Email: [b]".$_POST['email']."[/b]
 <div id="group_support_category">
 <table class="form_table form_tablel_support" width="100%"><tbody><tr>
 	<td class="form_table_label form_table_label_support_category">
-		<label class="form_label" for="category"><?php echo Category; ?></label></td>
+		<label class="form_label" for="category"><?php echo 'Category'; ?></label></td>
 	<td class="form_table_element form_table_element_support_category">
 		<select id="support_category" name="category">
-			<option value="please_select"><?php echo Select; ?></option>
+			<option value="please_select"><?php echo 'Select'; ?></option>
 			<option value="1"><?php echo "General Question"; ?></option>
 			<option value="2"><?php echo "I can't login"; ?></option>
 			<option value="3"><?php echo "I can't register"; ?></option>
@@ -124,10 +125,10 @@ Email: [b]".$_POST['email']."[/b]
 	<tbody>
     	<tr>
         <td class="form_table_label form_table_label_support_email">
-        	<label class="form_label" for="email"><?php echo Email; ?></label>
+        	<label class="form_label" for="email"><?php echo 'Email'; ?></label>
         </td>
         <td class="form_table_element form_table_element_support_email">
-        	<input type="text" id="support_email" name="email" label="<?php echo Email; ?>" value="<?php echo $_POST['email']; ?>">
+        	<input type="text" id="support_email" name="email" label="<?php echo 'Email'; ?>" value="<?php echo $_POST['email']; ?>">
                 <?php if($_POST && $_POST['email']==''){ echo '<span class="error">'.USRNM_EMPTY.'</span>';} ?>
         </td>
         </tr>
@@ -140,10 +141,10 @@ Email: [b]".$_POST['email']."[/b]
 	<tbody>
     	<tr>
         <td class="form_table_label form_table_label_support_message">
-        	<label class="form_label" for="message"><?php echo Message; ?></label>
+        	<label class="form_label" for="message"><?php echo 'Message'; ?></label>
         </td>
         <td class="form_table_element form_table_element_support_message">
-        	<textarea name="message" cols="43" rows="7" label="<?php echo Message; ?>" helper=""><?php echo $_POST['message']; ?></textarea>
+        	<textarea name="message" cols="43" rows="7" label="<?php echo 'Message'; ?>" helper=""><?php echo $_POST['message']; ?></textarea>
                 <?php if($_POST && $_POST['message']==''){ echo '<p class="error">'.USRNM_EMPTY.'</p>';} ?>
 		</td>
         </tr>
@@ -159,8 +160,8 @@ Email: [b]".$_POST['email']."[/b]
         	<label class="form_label" for="submit"></label>
 		</td>
         <td class="form_table_element form_table_element_support_submit">
-        	<button type="submit" value="<?php echo Send; ?>" name="submit" id="submit" submit="1">
-        	<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents"><?php echo Send; ?></div></div>
+        	<button type="submit" value="<?php echo 'Send'; ?>" name="submit" id="submit" submit="1">
+        	<div class="button-container"><div class="button-position"><div class="btl"><div class="btr"><div class="btc"></div></div></div><div class="bml"><div class="bmr"><div class="bmc"></div></div></div><div class="bbl"><div class="bbr"><div class="bbc"></div></div></div></div><div class="button-contents"><?php echo 'Send'; ?></div></div>
             </button>
 		</td>
         </tr>

@@ -67,7 +67,7 @@
 <table id="member" cellpadding="1" cellspacing="1">
     <thead>
     <tr>
-        <th colspan="6">Ban List</th>
+        <th colspan="6">Bannned Players (<?php echo count($bannedUsers); ?>)</th>
     </tr>                                       
     </thead><tbody>
     <tr>
