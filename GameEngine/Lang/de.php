@@ -94,9 +94,9 @@ define("LOGOUT_LINK","Cookie l&oumlschen");
 define("LOGIN_WELCOME","Willkommen auf der Welt 1");
 define("LOGIN_USERNAME","Accountname");
 define("LOGIN_PASSWORD","Passwort");
-define("LOGIN_LOWRES_DESC1_extra","Version f&uumlr Spieler ");
-define("LOGIN_LOWRES_DESC2","mit geringer Internetgeschwindigkeit");
-define("LOGIN_LOWRES_DESC3","(Anmerkung: Die Karte dieser Version besitzt nicht alle Optionen) ");
+define("LOGIN_LOWRES_DESC","Niedrige aufl&oumlsung");
+define("LOGIN_LOWRES_OPTION","");
+define("LOGIN_LOWRES_NOTICE","Version f&uumlr Spieler mit geringer Internetgeschwindigkeit<br> (Anmerkung: Die Karte dieser Version besitzt nicht alle Optionen) ");
 define("LOGIN_PW_FORGOTTEN","Passwort Vergessen");
 
 define("LOGIN_PW_REQUEST","Passwort anfordern");
