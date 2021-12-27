@@ -77,11 +77,17 @@ if(isset($id))
 					$result = mysql_query($sql);
 					while($row = mysql_fetch_assoc($result))
 					{
+						$timespan = '-';
+						$endTime = '-';
+						if (is_numeric($row['end'])) {
+							$timespan = round((($row['end'] - $row['time']) / 3600), 2).' minutes';
+							$endTime = date('d:m:Y H:i', $row['end']);
+						}
 						echo '
 							<tr>
 								<td class="hab">'.date('d:m:Y H:i', $row['time']).'</td>
-								<td class="hab">'.date('d:m:Y H:i', $row['end']).'</td>
-								<td class="hab">'.round((($row['end'] - $row['time']) / 3600), 2).' minutes</td>
+								<td class="hab">'.$endTime.'</td>
+								<td class="hab">'.$timespan.'</td>
 								<td class="on">'.$row['reason'].'</td>
 							</tr>';
 					}

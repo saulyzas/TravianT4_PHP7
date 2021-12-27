@@ -2662,7 +2662,7 @@
         			return false;
         		}
         	}
-        	function poulateOasisdata() {
+        	function populateOasisdata() {
         		$q2 = "SELECT * FROM " . TB_PREFIX . "wdata where oasistype != 0";
         		$result2 = mysqli_query($this->connection, $q2);
         		while($row = mysqli_fetch_array($result2)) {

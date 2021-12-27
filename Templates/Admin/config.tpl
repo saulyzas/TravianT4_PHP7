@@ -17,8 +17,6 @@
 ##                                                                             ##
 #################################################################################
 
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
 if ($_SESSON['access'] == MULTIHUNTER) die("<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><b><font color='Red'><center>Access Denied: You aren't Admin</b></font></center>");
 ?>
 <style>
@@ -43,7 +41,7 @@ if ($_SESSON['access'] == MULTIHUNTER) die("<br /><br /><br /><br /><br /><br />
 	</tr> 
 	<tr>
 		<td>Server Version</td>
-		<td><font color='Red'><?php include ("Templates/version.tpl"); ?></font></td>    
+		<td><font color='Red'><?php include ("../Templates/version.tpl"); ?></font></td>    
 	</tr> 
 	<tr>
 		<td>Server Started</td>
@@ -51,7 +49,7 @@ if ($_SESSON['access'] == MULTIHUNTER) die("<br /><br /><br /><br /><br /><br />
     </tr>  
     <tr>
         <td>Language</td>
-        <td><?php if(LANG == en){echo "English";} else if(LANG == es){echo "Spanish";} ?></td>  
+        <td><?php if(LANG == 'en') { echo "English"; } else if(LANG == 'de') { echo "Deutsch"; } else if(LANG == 'es') { echo "Spanish"; } ?></td>  
 	</tr>  
 	<tr>  
 		<td>Server Speed</td>
@@ -148,7 +146,7 @@ if ($_SESSON['access'] == MULTIHUNTER) die("<br /><br /><br /><br /><br /><br />
     </tr>    
     <tr>
 		<td>Log Gold</td>
-		<td><b><?php if(LOG_GOLD_FIN == true){echo "<font color='Green'>Enabled</font>";} else if(ALOG_GOLD_FIN == false){echo "<font color='Red'>Disabled</font>";} ?></b></td> 
+		<td><b><?php if(LOG_GOLD_FIN == true){echo "<font color='Green'>Enabled</font>";} else if(LOG_GOLD_FIN == false){echo "<font color='Red'>Disabled</font>";} ?></b></td> 
     </tr>    
     <tr>
         <td>Log Admin</td>

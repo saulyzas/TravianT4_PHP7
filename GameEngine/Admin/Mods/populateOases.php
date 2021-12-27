@@ -13,11 +13,13 @@ ini_set('max_execution_time', 300);
 
 include ("../../Database.php"); 
 include ("../../Admin/database.php"); 
-include ("../../config.php");
 
 $database->populateOasisdata();  
 $database->populateOasis();
-$database->populateOasisUnitsHigh();
+$database->populateOasisUnitsLow();
+
+// this function was not defined and I do not know what the idea was, thus we use the other one (high -> low)
+// $database->populateOasisUnitsHigh();
 
 header("Location: ../../../Admin/admin.php?p=server_info");
 ?>

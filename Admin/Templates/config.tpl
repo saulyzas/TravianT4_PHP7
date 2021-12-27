@@ -40,13 +40,7 @@ if ($_SESSON['access'] == MULTIHUNTER) die("<br /><br /><br /><br /><br /><br />
 	</tr>  
     <tr>
         <td>Language</td>
-        <td><?php 
-		if(LANG == 'en') { 
-			echo "English"; 
-		} else if(LANG == 'de') {
-			echo "Deutsch";
-		}
-		?></td>  
+        <td><?php if(LANG == 'en') { echo "English"; } else if(LANG == 'de') { echo "Deutsch"; } else if(LANG == 'es') { echo "Spanish"; } ?></td>  
     </tr>  
     <tr>  
         <td>Server Speed</td>

@@ -33,5 +33,10 @@ $q = "UPDATE ".TB_PREFIX."users SET gold = gold + ".$_POST['gold']." WHERE id !=
 mysql_query($q);
 mysql_query("Insert into ".TB_PREFIX."admin_log values (0,$id,'Added <b>$gold</b> gold to all users',".time().")");
 
-header("Location: ../../../Admin/admin.php?p=gold&g=$gold");
+// header("Location: ../../../Admin/admin.php?p=gold&g=$gold");
+
+$url = $_SERVER['HTTP_REFERER'];
+$data = parse_url($url);
+
+header('Location: '.$data['path'].'?p=gold&g='.$gold);
 ?>

@@ -167,10 +167,10 @@ if($deletion){
         <td>Remaining gold</td>
         <td><?php
 		if($user['gold'] == 0){ ?>
-		This user has no gold! (<img src='img/admin/gold_g.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>) <?php if($_SESSION['access'] == ADMIN){ ?><a href='admin.php?p=player&uid=<?php echo $id; ?>&g'>Give gold <?php } ?></a>
+		This user has no gold! (<img src='../img/admin/gold_g.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>) <?php if($_SESSION['access'] == ADMIN){ ?><a href='admin.php?p=player&uid=<?php echo $id; ?>&g'>Give gold <?php } ?></a>
 		<?php }
 		else if($user['gold'] > 0){ ?>
-		<img src='img/admin/gold.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>  <?php if($_SESSION['access'] == ADMIN){ ?><a href='admin.php?p=player&uid=<?php echo $id; ?>&g'><img src='img/admin/edit.gif' title='Give Gold'><?php } ?></a></td>
+		<img src='../img/admin/gold.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>  <?php if($_SESSION['access'] == ADMIN){ ?><a href='admin.php?p=player&uid=<?php echo $id; ?>&g'><img src='../img/admin/edit.gif' title='Give Gold'><?php } ?></a></td>
 		<?php }
 		?>
     </tr>
@@ -220,7 +220,7 @@ if($deletion){
 </tr>
   <tr>
         <td>Cultural Points</td>
-        <td><?php echo $user['cp'];?> <?php if($_SESSION['access'] == ADMIN){ ?><a href='admin.php?p=player&uid=<?php echo $id; ?>&cp'><img src='img/admin/edit.gif' title='Give Gold'><?php } ?>
+        <td><?php echo $user['cp'];?> <?php if($_SESSION['access'] == ADMIN){ ?><a href='admin.php?p=player&uid=<?php echo $id; ?>&cp'><img src='../img/admin/edit.gif' title='Edit Culture Points'><?php } ?>
 </tr>
 <?php if($_SESSION['access'] == ADMIN){
 	if($_GET['cp'] == 'ok'){
@@ -232,7 +232,7 @@ if($deletion){
 		<input type="hidden" name="id" value="<?php echo $id; ?>">
 		<tr>
 		<td>Insert number and press 'enter'</td>
-		<td><input class="give_gold" name="cp" value="0"> <a href="admin.php?p=player&uid=<?php echo $id; ?>"><img src="img/admin/del.gif" title="Cancel"></a></td>
+		<td><input class="give_gold" name="cp" value="0"> <a href="admin.php?p=player&uid=<?php echo $id; ?>"><img src="../img/admin/del.gif" title="Cancel"></a></td>
 		</tr></form>
 		<?php } } }?>
   <tr>
