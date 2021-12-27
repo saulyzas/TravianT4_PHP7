@@ -3910,15 +3910,11 @@ class Automation {
         $trainlist = $database->getTrainingList();
         if(count($trainlist) > 0) {
             foreach ($trainlist as $train) {
-                $timepast = $train['timestamp2'] - $time;
+                $timepast = $time - $train['timestamp2'];
                 $pop = $train['pop'];
-                if($timepast <= 0 && $train['amt'] > 0) {
-                    $timepast2 = $time - $train['timestamp2'];
-                    $trained = 1;
-                    while($timepast2 >= $train['eachtime']) {
-                        $timepast2 -= $train['eachtime'];
-                        $trained += 1;
-                    }
+                $trained = 0;
+                if($timepast >= 0 && $train['amt'] > 0) {
+                    $trained = floor($timepast / $train['eachtime']) + 1;
                     if($trained > $train['amt']) {
                         $trained = $train['amt'];
                     }
@@ -4725,6 +4721,12 @@ $lockName = "GameEngine/Prevention/automation_lock";
 
 while (file_exists($lockName))
 {
+    // remove lock after 2 minutes to make sure that server is not locked forever
+    // this might risk possible conflicts
+    if (time() - filectime($lockName) > 120)
+    {
+        unlink($lockName);
+    }
     sleep(1);
 }
 
