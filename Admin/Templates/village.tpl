@@ -76,11 +76,19 @@ if(isset($id))
 					<td>Village owner:</td>
 					<td><a href="admin.php?p=player&uid=<?php echo $village['owner']; ?>"><?php echo $user['username']; ?></a></td>
 					<td>
+						<?php
+							if (!$village['capital']) {
+						?>
 						<form action="../GameEngine/Admin/mods/editVillageOwner.php" method="POST" accept-charset="UTF-8">
 							<input type="hidden" name="did" value="<?php echo $_GET['did']; ?>">
 							<input type="hidden" name="admid" id="admid" value="<?php echo $_SESSION['id']; ?>">
-							Owner(uid): <input class="text" type="text" name="newowner" value="<?php echo $user['id']; ?>"><input type="image" value="submit" src="../img/admin/edit.gif">
+							Owner(uid): <input class="text" type="text" name="newowner" value="<?php echo $user['id']; ?>">&nbsp;<input type="image" value="submit" src="../img/admin/edit.gif">
 						</form>
+						<?php
+							} else {
+								echo 'Owner(uid): <input class="text" type="text" name="newowner" value="'.$user['id'].'" disabled>';
+							}
+						?>
 					</td>
 				<tr>
 					<td>Village name:</td>

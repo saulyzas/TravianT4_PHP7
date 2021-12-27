@@ -38,17 +38,17 @@
 					echo '
 					<tr>
 						<td>
-							<img src="../../gpack/travian_default/img/u/'.$i.'.gif" ><input class="fm" name="ww1u'.$i.'" value="'.$wwrnd1[$p].'" maxlength="6" style="width: 50%;">
+							<img src="../gpack/travian_default/img/u/'.$i.'.gif" ><input class="fm" name="ww1u'.$i.'" value="'.$wwrnd1[$p].'" maxlength="6" style="width: 50%;">
 						</td>
 						<td>
-							<input class="fm" name="ww2u'.$i.'" value="'.$wwrnd2[$p].'" maxlength="6" style="width: 50%;"> <img src="../../gpack/travian_default/img/u/'.$i.'.gif">
+							<input class="fm" name="ww2u'.$i.'" value="'.$wwrnd2[$p].'" maxlength="6" style="width: 50%;"> <img src="../gpack/travian_default/img/u/'.$i.'.gif">
 						</td>
 					</tr>';
 				}
 				echo '<td colspan="2">
 					<center>
 						WW Villages: <input class="fm" name="amount" value="13" maxlength="6"><br /><br />
-						<input type="image" value="submit" src="../../img/admin/b/ok1.gif">
+						<input type="image" value="submit" src="../img/admin/b/ok1.gif">
 					</center>
 				</td>';
 			?>

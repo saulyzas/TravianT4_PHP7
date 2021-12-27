@@ -128,6 +128,7 @@ define("ATAG_EMPTY","Tag empty");
 define("ANAME_EMPTY","Name empty");
 define("ATAG_EXIST","Tag taken");
 define("ANAME_EXIST","Name taken");
+define("NAME_NO_EXIST", "Player was not found");
 
 //COPYRIGHT
 define("TRAVIAN_COPYRIGHT","TravianX 100% Open Source Travian Clone.");

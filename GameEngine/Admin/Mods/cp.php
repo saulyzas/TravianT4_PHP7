@@ -17,10 +17,7 @@
 ##                                                                             ##
 #################################################################################
 
-include_once("../../Account.php");
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
-if ($session->access < ADMIN) die("Access Denied: You aren't Admin!");
+include_once("validateAdminSession.php"); 
 
 $id = $_POST['id'];
 $admid = $_POST['admid'];
@@ -29,5 +26,10 @@ mysql_query("UPDATE ".TB_PREFIX."users SET cp = cp + ".$_POST['cp']." WHERE id =
 $name = $database->getUserField($id,"username",0);
 mysql_query("Insert into ".TB_PREFIX."admin_log values (0,$admid,'Added ".$_POST['cp']." Culture Points to user <a href=\'admin.php?p=player&uid=$id\'>$name</a> ',".time().")");
 
-header("Location: ../../../admin.php?p=player&uid=".$id."&cp=ok");
+// header("Location: ../../../admin.php?p=player&uid=".$id."&cp=ok");
+
+$url = $_SERVER['HTTP_REFERER'];
+$data = parse_url($url);
+
+header('Location: '.$data['path'].'?p=player&uid='.$id.'&cp=ok');
 ?>

@@ -31,7 +31,8 @@
 	
 <br /><br /><br /><br />
 
-	Hello <b><?php echo $_SESSION['username']; ?></b>, You are logged in as: <b><font color="Red">Administrator</font></b></center>
+	Hello <b><?php echo $_SESSION['username']; ?></b>, You are logged in as: 
+	<b><?php if($_SESSION['access'] == MULTIHUNTER) { echo '<font color="Blue">Multihunter</font>'; } else if($_SESSION['access'] == ADMIN){ echo '<font color="Red">Administrator</font>'; } ?></b>
 	<br /><br /><br />
 	
 	<br /><br /><br /><br /><br />

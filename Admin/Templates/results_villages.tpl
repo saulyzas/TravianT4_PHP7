@@ -46,7 +46,11 @@ $result = $admin->search_village($_POST['s']);
 			{  
 				for ($i = 0; $i <= count($result)-1; $i++)
 				{
-					$delLink = '<a href="?action=delVil&did='.$result[$i]['wref'].'" onClick="return del(\'did\','.$result[$i]['wref'].');"><img src="../img/Admin/del.gif" class="del"></a>';
+					if ($result[$i]['capital']) {
+                        $delLink = '<a href="#"><img src="../img/admin/x.gif" class="del"></a>'; 
+                    } else {
+					    $delLink = '<a href="?action=delVil&did='.$result[$i]['wref'].'" onClick="return del(\'did\','.$result[$i]['wref'].');"><img src="../img/Admin/del.gif" class="del"></a>';
+					}
 					echo '
 					<tr>
 						<td>'.$result[$i]["wref"].'</td>

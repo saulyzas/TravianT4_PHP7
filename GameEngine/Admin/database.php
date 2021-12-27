@@ -170,7 +170,7 @@ class adm_DB {
 	   if($this->CheckPass($pass,$ID)){
 	     $villages = $database->getProfileVillages($uid);
           for ($i = 0; $i <= count($villages)-1; $i++) {
-            $this->DelVillage($villages[$i]['wref']);
+            $this->DelVillage($villages[$i]['wref'], $villages[$i]['capital']);
           }  
 		$name = $database->getUserField($uid,"username",0);
 		mysql_query("Insert into ".TB_PREFIX."admin_log values (0,$ID,'Deleted user <a>$name</a>',".time().")");
@@ -197,12 +197,12 @@ class adm_DB {
     }
   }
 	
-	function DelVillage($wref){
-	  $q = "SELECT * FROM ".TB_PREFIX."vdata WHERE `wref` = $wref and capital = 1;";
+	function DelVillage($wref, $capital){
+	  $q = "SELECT * FROM ".TB_PREFIX."vdata WHERE `wref` = $wref and capital = $capital;";
 	  $result = mysql_query($q, $this->connection);    	  
     if(mysql_num_rows($result) > 0){ 
 	mysql_query("Insert into ".TB_PREFIX."admin_log values (0,".$_SESSION['id'].",'Deleted village <b>$wref</b>',".time().")");
-    $q = "DELETE FROM ".TB_PREFIX."vdata WHERE `wref` = $wref and capital = 1;";
+    $q = "DELETE FROM ".TB_PREFIX."vdata WHERE `wref` = $wref and capital = $capital;";
 	  mysql_query($q, $this->connection);
     $q = "DELETE FROM ".TB_PREFIX."units WHERE `vref` = $wref;";
     mysql_query($q, $this->connection);  

@@ -9,16 +9,7 @@
 ##                                                                             ##
 #################################################################################
 
-include_once("../../config.php");
-include_once("../../Database.php"); 
-
-$session = $_POST['admid'];
-
-$sql = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id = ".$session."");
-$access = mysql_fetch_array($sql);
-$sessionaccess = $access['access'];
-
-if($sessionaccess != 9) die("<h1><font color=\"red\">Access Denied: You are not Admin!</font></h1>");
+include_once("validateAdminSession.php");
 
 $wood = $_POST['wood'] * 86400;
 $clay = $_POST['clay'] * 86400;
@@ -41,5 +32,10 @@ while($row = mysql_fetch_assoc($result))
 		WHERE id = '".$row['id']."'");
 }
 
-header("Location: ../../../Admin/admin.php?p=givePlusRes&g");
+// header("Location: ../../../Admin/admin.php?p=givePlusRes&g");
+
+$url = $_SERVER['HTTP_REFERER'];
+$data = parse_url($url);
+
+header('Location: '.$data['path'].'?p=givePlusRes&g');
 ?>

@@ -10,7 +10,14 @@
 #################################################################################
 
 if($_SESSION['access'] < ADMIN) die("Access Denied: You are not Admin!");
-$id = $_SESSION['id']; ?>
+$id = $_SESSION['id'];
+
+$inputValue = $_GET['g'];
+if ($inputValue == '' || !is_numeric($inputValue)) {
+    $inputValue = 20;
+}
+
+?>
 
 <form action="../GameEngine/Admin/Mods/gold.php" method="POST">
 	<input type="hidden" name="admid" id="admid" value="<?php echo $_SESSION['id']; ?>">
@@ -33,7 +40,7 @@ $id = $_SESSION['id']; ?>
 				</td>
 				<td>
 					<center>
-						<input class="give_gold" name="gold" value="20" maxlength="4">&nbsp;
+						<input class="give_gold" name="gold" value="<?php echo $inputValue; ?>" maxlength="4">&nbsp;
 						<img src="../img/admin/gold.gif" class="gold" alt="Gold" name="gold" title="Gold"/>
 					</center>
 				</td>

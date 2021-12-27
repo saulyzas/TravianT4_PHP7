@@ -14,7 +14,7 @@ $id = $_SESSION['id'];
 if(isset($_GET['uid']))
 {
 	$sql = mysql_query("SELECT access FROM ".TB_PREFIX."users WHERE id = ".$_GET['uid']."");
-	$curaccess = mysql_result($sql, 0);
+	$curaccess = mysql_fetch_array($sql)['access'];
 	$player = mysql_fetch_assoc(mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id = ".$id.""));
 	?>
 

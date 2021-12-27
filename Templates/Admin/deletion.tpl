@@ -72,7 +72,7 @@ foreach($varray as $vil) {
     </tr>
     <tr>
         <td>Password:</td>
-        <td><input type="text" name="pass"></td>
+        <td><input type="password" name="pass"></td>
         <td colspan="2"><input type="submit" class="c5" value="Delete player"></td>
     </tr>  
 </table>
@@ -89,10 +89,10 @@ for ($i = 0; $i <= count($varray)-1; $i++) {
 $coorproc = $database->getCoor($varray[$i]['wref']);
 if($varray[$i]['capital']){
 $capital = '<span class="c">(Capital)</span>';
-$delLink = '<a href="?action=delVil&did='.$varray[$i]['wref'].'" onClick="return del(\'did\','.$varray[$i]['wref'].');"><img src="img/admin/del.gif" class="del"></a>';
+$delLink = '<a href="#"><img src="../img/admin/x.gif" class="del"></a>';
 }else{
 $capital = '';
-$delLink = '<a href="?action=delVil&did='.$varray[$i]['wref'].'" onClick="return del(\'did\','.$varray[$i]['wref'].');"><img src="img/admin/del.gif" class="del"></a>';
+$delLink = '<a href="?action=delVil&did='.$varray[$i]['wref'].'" onClick="return del(\'did\','.$varray[$i]['wref'].');"><img src="../img/admin/del.gif" class="del"></a>';
   
 }
 

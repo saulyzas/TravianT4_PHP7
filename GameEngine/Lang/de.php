@@ -80,6 +80,7 @@ define("SIDEINFO_ADVENTURES","Abenteuer");
 define("SIDEINFO_AUCTIONS","Auktion");
 define("SIDEINFO_PROFILE","Profil");
 define("SIDEINFO_ALLIANCE","Allianz");
+define("SIDEINFO_ALLY_FORUM","Allianz Forum");
 define("SIDEINFO_CHANGE_TITLE","Hier Doppelklicken um den Dorfnamen zu &aumlndern");
 define("SIDEINFO_CHANGEVIL_TITLE","Dorfname &aumlndern");
 define("SIDEINFO_CHANGEVIL_LABEL","Neuer Dorfname");
@@ -157,6 +158,7 @@ define("ATAG_EMPTY","Tag leer");
 define("ANAME_EMPTY","Es wurde kein Name gew&aumlhlt");
 define("ATAG_EXIST","Tag wird bereits verwendet");
 define("ANAME_EXIST","Name wird bereits verwendet");
+define("NAME_NO_EXIST", "Spieler wurde nicht gefunden");
 
 //COPYRIGHT
 define("TRAVIAN_COPYRIGHT","");

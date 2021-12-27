@@ -74,7 +74,7 @@ if($_GET['uid'])
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><input type="text" name="pass"></td>
+						<td><input type="password" name="pass"></td>
 						<td colspan="2"><input type="submit" class="c5" value="Delete player"></td>
 					</tr>
 				</tbody>
@@ -96,7 +96,7 @@ if($_GET['uid'])
 							if($varray[$i]['capital'])
 							{
 								$capital = '<span class="c">(Capital)</span>';
-								$delLink = '<a href="?action=delVil&did='.$varray[$i]['wref'].'" onClick="return del(\'did\','.$varray[$i]['wref'].');"><img src="../img/Admin/del.gif" class="del"></a>';
+								$delLink = '<a href="#"><img src="../img/Admin/x.gif" class="del"></a>';
 							}
 							else
 							{

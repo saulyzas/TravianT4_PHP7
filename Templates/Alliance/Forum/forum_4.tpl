@@ -99,7 +99,7 @@ echo '<tr>
 </div><div class="button-contents">Post new thread</div></div></button>
 <?php
 	$opt = $database->getAlliPermissions($session->uid, $aid);
-	if($opt[opt5] == 1){
+	if($opt['opt5'] == 1){
 		echo "<button type=\"button\" value=\"???????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&fid=".$cat_id."&seite=1&admin=switch_admin'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>

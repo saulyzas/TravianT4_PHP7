@@ -22,6 +22,7 @@
 			</tr>
 		</tbody>
 	</table>
+	<input type="hidden" name="admid" id="admid" value="<?php echo $_SESSION['id']; ?>">
 </form>
 <?php
 if(isset($_GET['g']))

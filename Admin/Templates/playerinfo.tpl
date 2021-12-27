@@ -109,6 +109,7 @@
 										<input type="hidden" name="admid" id="admid" value="<?php echo $_SESSION['id']; ?>">
 										<input type="hidden" name="uid" id="uid" value="<?php echo $_GET['uid']; ?>">
 										<input type="text" style="width: 80%;" class="fm" name="username" value="<?php echo $user['username']; ?>"> <input type="image" value="submit" src="../img/admin/edit.gif" title="Edit Username"></a>
+									</form>
 								</td>
 							</tr>
 							

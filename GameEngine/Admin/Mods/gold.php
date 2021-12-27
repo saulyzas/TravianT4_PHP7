@@ -17,15 +17,7 @@
 ##                                                                             ##
 #################################################################################
 
-include_once("../../Database.php"); 
-
-$session = $_POST['admid'];
-
-$sql = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id = ".$session."");
-$access = mysql_fetch_array($sql);
-$sessionaccess = $access['access'];
-
-if($sessionaccess != 9) die("<h1><font color=\"red\">Access Denied: You are not Admin!</font></h1>");
+include_once("validateAdminSession.php"); 
 
 $id = $_POST['id'];
 $gold = $_POST['gold'];

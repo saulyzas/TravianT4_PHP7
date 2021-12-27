@@ -18,12 +18,7 @@
 ##                                                                             ##
 #################################################################################
 
-include_once("../../Account.php");
-
-mysql_connect(SQL_SERVER, SQL_USER, SQL_PASS);
-mysql_select_db(SQL_DB);
-
-if ($session->access < ADMIN) die("Access Denied: You are not Admin!");
+include_once("validateAdminSession.php"); 
 
 $id = $_POST['id'];
 $village = $database->getVillage($id);  
@@ -108,6 +103,10 @@ mysql_query($q);
 
 mysql_query("Insert into ".TB_PREFIX."admin_log values (0,".$_SESSION['id'].",'Changed troop anmount in village <a href=\'admin.php?p=village&did=$id\'>$id</a> ',".time().")");
 
-header("Location: ../../../admin.php?p=addTroops&did=".$id."&d");
+// header("Location: ../../../admin.php?p=addTroops&did=".$id."&d");
 
+$url = $_SERVER['HTTP_REFERER'];
+$data = parse_url($url);
+
+header('Location: '.$data['path'].'?p=addTroops&did='.$id.'&d');
 ?>

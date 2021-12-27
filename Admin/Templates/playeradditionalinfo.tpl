@@ -25,12 +25,24 @@
 							{
 								echo "<b>Administrator</b>";
 							}
-						?> <a href="admin.php?p=editAccess&uid=<?php echo $_GET['uid']; ?>"><img src="../img/admin/edit.gif" title="Give Gold"></a>
+							if($_SESSION['access'] == ADMIN)
+					        {
+						        echo '&nbsp;<a href="admin.php?p=editAccess&uid='.$_GET['uid'].'"><img src="../img/admin/edit.gif" title="Edit Access"></a>';
+					        }
+						?> 
 					</td>
 				</tr>
 				<tr>
 					<td>Gold</td>
-					<td><img src="../img/admin/gold.gif"> <?php echo $user['gold']; ?> <a href='admin.php?p=player&uid=<?php echo $id; ?>&g'><img src="../img/admin/edit.gif" title="Give Gold"></a>
+					<td><img src="../img/admin/gold.gif"> 
+					<?php 
+					  echo $user['gold']; 
+					  if($_SESSION['access'] == ADMIN)
+					  {
+						echo '&nbsp;<a href="admin.php?p=player&uid='.$id.'&g"><img src="../img/admin/edit.gif" title="Give Gold"></a>';
+					  }
+					?>
+					</td>
 				</tr>
 				<?php 	
 					if($_SESSION['access'] == ADMIN)
@@ -144,13 +156,13 @@
 				</tr>
 				<tr>
 					<td>Culture Points</td>
-					<td><a href='admin.php?p=player&uid=<?php echo $id; ?>&cp'><img src="../img/admin/edit.gif" title="Edit Culture Points"></a>
+					<td>
 						<?php 
-							echo round($user['cp'], 0);
 							if($_SESSION['access'] == ADMIN)
-							{ ?>
-								<a href='admin.php?p=player&uid=<?php echo $id; ?>&cp'><?php 
-							} 
+							{ 
+								echo '<a href="admin.php?p=player&uid='.$id.'&cp"><img src="../img/admin/edit.gif" title="Edit Culture Points"></a>&nbsp;';
+							}
+							echo round($user['cp'], 0);
 						?>
 					</td>
 				</tr>

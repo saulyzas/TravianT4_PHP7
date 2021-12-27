@@ -43,7 +43,7 @@ if (count($allianceInvitations) == 0) {
     echo "<tr><td class=noData>No Invites</td></tr>";
     } else {
  	foreach($allianceInvitations as $invit) {
-	$invited = $database->getUserField($invit['uid'],username,0);
+	$invited = $database->getUserField($invit['uid'],'username',0);
     echo "<tr><td class=\"abo\">";
     echo "<button type=\"button\" value=\"del\" class=\"icon\" onclick=\"window.location.href = '?o=4&s=5&d=".$invit['id']."'; return false;\"><img class=\"del\" src=\"img/x.gif\" alt=\"انصراف\" title=\"Cancel\" /></button></td><td>";    
 	echo "<a class=\"a arrow\" href=spieler.php?uid=".$invit['uid'].">Invite for ".$invited."";

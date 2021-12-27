@@ -12,7 +12,7 @@
 ?>
 <style>
 
-.del {width:12px; height:12px; background-image: url(img/admin/icon/del.gif);} 
+.del {width:12px; height:12px; background-image: url(../img/admin/icon/del.gif);} 
 
 </style>
 
@@ -876,7 +876,7 @@ echo '
 	}
 	?>
 </tbody></table>
-<?php if($_SESSION['access'] == ADMIN){ echo '<div align="right"><a href="admin.php?p=addTroops&did='.$id.'">Edit troops</div></a>'; 
+<?php if($_SESSION['access'] == ADMIN){ echo '<div align="right"><a href=".?p=addTroops&did='.$id.'">Edit troops</div></a>'; 
 	} else if($_SESSION['access'] == MULTIHUNTER){ echo '<a href="#"><b><div align="right"><font color="#bcbdbc">Edit troops</font></div></a></b>'; } 
 	?>
 

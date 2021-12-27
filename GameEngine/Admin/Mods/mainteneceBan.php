@@ -9,15 +9,7 @@
 ##                                                                             ##
 #################################################################################
 
-include_once("../../Database.php");
-
-$session = $_POST['admid'];
-
-$sql = mysql_query("SELECT * FROM ".TB_PREFIX."users WHERE id = ".$session."");
-$access = mysql_fetch_array($sql);
-$sessionaccess = $access['access'];
-
-if($sessionaccess != 9) die("<h1><font color=\"red\">Access Denied: You are not Admin!</font></h1>");
+include_once("validateAdminSession.php");
 
 $duration = $_POST['duration'] * 3600;
 $start = $_POST['start'];
@@ -36,5 +28,10 @@ while($row = mysql_fetch_assoc($result))
 	mysql_query("INSERT INTO ".TB_PREFIX."banlist (`uid`, `name`, `reason`, `time`, `end`, `admin`, `active`) VALUES (".$row['id'].", '".$row['username']."' , '$reason', '$startts', '$endts', '$admin', '$active')");
 }
 
-header("Location: ../../../Admin/admin.php?p=ban");
+// header("Location: ../../../Admin/admin.php?p=ban");
+
+$url = $_SERVER['HTTP_REFERER'];
+$data = parse_url($url);
+
+header('Location: '.$data['path'].'?p=ban');
 ?>

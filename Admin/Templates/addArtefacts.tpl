@@ -94,11 +94,11 @@
 						echo 
 						'
 							<tr>
-								<td><img src="../../gpack/travian_default/img/u/'.$i.'.gif"></td>
+								<td><img src="../gpack/travian_default/img/u/'.$i.'.gif"></td>
 								<td><input class="fm" name="small1u'.$i.'" value="'.$rndsmall1[$p].'" maxlength="6" style="width: 50%;"><input class="fm" name="small2u'.$i.'" value="'.$rndsmall2[$p].'" maxlength="6" style="width: 50%;"></td>
-								<td><img src="../../gpack/travian_default/img/u/'.$i.'.gif"></td>
+								<td><img src="../gpack/travian_default/img/u/'.$i.'.gif"></td>
 								<td><input class="fm" name="large1u'.$i.'" value="'.$rndlrg1[$p].'" maxlength="6" style="width: 50%;"><input class="fm" name="large2u'.$i.'" value="'.$rndlrg2[$p].'" maxlength="6" style="width: 50%;"></td>
-								<td><img src="../../gpack/travian_default/img/u/'.$i.'.gif"></td>
+								<td><img src="../gpack/travian_default/img/u/'.$i.'.gif"></td>
 								<td><input class="fm" name="unique1u'.$i.'" value="'.$rndunq1[$p].'" maxlength="6" style="width: 50%;"><input class="fm" name="unique2u'.$i.'" value="'.$rndunq2[$p].'" maxlength="6" style="width: 50%;"></td>
 							</tr>
 						';

@@ -103,13 +103,13 @@ echo '<div class="clear dotted"></div><div class="text">'.$bbcode_post.'</div></
 ?>
 	</tbody></table><div style="margin-top: 15px;">
 	<?php
-	if(empty($arr[close])){
+	if(empty($arr['close'])){
     	echo "<button type=\"button\" value=\"????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&pid=".$arr['alliance']."&tid=".$arr['id']."&ac=newpost'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
 </div><div class=\"button-contents\">Reply</div></div></button>";
     	}
-	if($opt[opt5] == 1){
+	if($opt['opt5'] == 1){
     	echo "<button type=\"button\" value=\"???????\" class=\"build\" onclick=\"window.location.href = 'allianz.php?s=2&pid=".$aid."&tid=".$arr['id']."&admin=switch_admin'; return false;\">
 <div class=\"button-container\"><div class=\"button-position\"><div class=\"btl\"><div class=\"btr\"><div class=\"btc\"></div></div></div>
 <div class=\"bml\"><div class=\"bmr\"><div class=\"bmc\"></div></div></div><div class=\"bbl\"><div class=\"bbr\"><div class=\"bbc\"></div></div></div>
