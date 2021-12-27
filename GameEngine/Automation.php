@@ -267,6 +267,8 @@ class Automation {
             unlink("GameEngine/Prevention/loyalty.txt");
         }
         global $database;
+        $ourFileHandle = fopen("GameEngine/Prevention/loyalty.txt", 'w');
+        fclose($ourFileHandle);
         $array = array();
         $q = "SELECT * FROM ".TB_PREFIX."vdata WHERE loyalty < 100";
         $array = $database->query_return($q);
@@ -943,6 +945,8 @@ class Automation {
         }
         global $database, $generator;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/market.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."send where ".TB_PREFIX."movement.ref = ".TB_PREFIX."send.id and ".TB_PREFIX."movement.proc = 0 and sort_type = 0 and endtime < $time";
         $dataarray = $database->query_return($q);
         foreach ($dataarray as $data) {
@@ -1028,6 +1032,8 @@ class Automation {
         }
         global $bid23, $database, $battle, $village, $technology, $logging, $session;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/sendunits.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = '0' and ".TB_PREFIX."movement.sort_type = '3' and ".TB_PREFIX."attacks.attack_type != '2' and endtime < $time ORDER BY endtime ASC";
         $dataarray = $database->query_return($q);
         $totalattackdead = 0;
@@ -2976,6 +2982,8 @@ class Automation {
         }
         global $bid23, $database, $battle;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/sendreinfunits.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = '0' and ".TB_PREFIX."movement.sort_type = '3' and ".TB_PREFIX."attacks.attack_type = '2' and endtime < $time";
         $dataarray = $database->query_return($q);
         
@@ -3076,6 +3084,8 @@ class Automation {
         }
         global $database;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/returnunits.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement, ".TB_PREFIX."attacks where ".TB_PREFIX."movement.ref = ".TB_PREFIX."attacks.id and ".TB_PREFIX."movement.proc = '0' and ".TB_PREFIX."movement.sort_type = '4' and endtime < $time";
         $dataarray = $database->query_return($q);
         
@@ -3142,6 +3152,8 @@ class Automation {
         }
         global $database, $building;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/settlers.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement where proc = 0 and sort_type = 5 and endtime < $time";
         $dataarray = $database->query_return($q);
         foreach ($dataarray as $data) {
@@ -3188,6 +3200,8 @@ class Automation {
         }
         global $database, $building, $session;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/adventures.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."movement where proc = 0 and sort_type = 9 and endtime <= $time";
         $dataarray = $database->query_return($q);
         foreach ($dataarray as $data) {
@@ -3465,6 +3479,8 @@ class Automation {
         }
         global $database;
         $time = time();
+        $ourFileHandle = @fopen("GameEngine/Prevention/research.txt", 'w');
+        @fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."research where timestamp < $time";
         $dataarray = $database->query_return($q);
         foreach ($dataarray as $data) {
@@ -4030,6 +4046,8 @@ class Automation {
             unlink("GameEngine/Prevention/celebration.txt");
         }
         global $database;
+        $ourFileHandle = fopen("GameEngine/Prevention/celebration.txt", 'w');
+        fclose($ourFileHandle);
         $varray = $database->getCel();
         foreach ($varray as $vil) {
             $id = $vil['wref'];
@@ -4053,6 +4071,8 @@ class Automation {
             unlink("GameEngine/Prevention/demolition.txt");
         }
         global $building, $database;
+        $ourFileHandle = fopen("GameEngine/Prevention/demolition.txt", 'w');
+        fclose($ourFileHandle);
         $varray = $database->getDemolition();
         foreach ($varray as $vil) {
             if($vil['timetofinish'] <= time()) {
@@ -4114,6 +4134,8 @@ class Automation {
         }
         global $database, $session;
         $time = time();
+        $ourFileHandle = fopen("GameEngine/Prevention/updatehero.txt", 'w');
+        fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."hero where dead = 0";
         $harray = $database->query_return($q);
         if(!empty($harray)) {
@@ -4172,6 +4194,8 @@ class Automation {
         }
         global $database;
         $time = time();
+        $ourFileHandle = fopen("GameEngine/Prevention/auction.txt", 'w');
+        fclose($ourFileHandle);
         $q = "SELECT * FROM ".TB_PREFIX."auction where finish = 0 and time < $time";
         $dataarray = $database->query_return($q);
         foreach ($dataarray as $data) {
@@ -4285,6 +4309,9 @@ class Automation {
     }
     
     private function starvation() {
+        if(file_exists("GameEngine/Prevention/starvation.txt")) {
+            unlink("GameEngine/Prevention/starvation.txt");
+        }
         global $database;
         $ourFileHandle = @fopen("GameEngine/Prevention/starvation.txt", 'w');
         @fclose($ourFileHandle);
@@ -4717,22 +4744,6 @@ class Automation {
     
 }
 
-$lockName = "GameEngine/Prevention/automation_lock";
-
-while (file_exists($lockName))
-{
-    // remove lock after 2 minutes to make sure that server is not locked forever
-    // this might risk possible conflicts
-    if (time() - filectime($lockName) > 120)
-    {
-        unlink($lockName);
-    }
-    sleep(1);
-}
-
-fopen($lockName, 'w');
-
 $automation = new Automation;
 
-unlink($lockName);
 ?>
