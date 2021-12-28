@@ -115,7 +115,7 @@ if(!$database->getSitee1($session->uid)){
 	echo '<span class="none">Not sitting</span>';
     }else{
     $getsit1 = $database->getSitee1($session->uid);
-    echo "<button type=\"button\" value=\"del\" class=\"icon\" onclick=\"window.location.href = 'spieler.php?s=3&e=3&id=".$session->uid."&owner=".$getsit1[id]."&a=".$session->checker."&type=3'; return false;\"><img src=\"img/x.gif\" class=\"del\" alt=\"helyettes\"></button>";
+    echo "<button type=\"button\" value=\"del\" class=\"icon\" onclick=\"window.location.href = 'spieler.php?s=3&e=3&id=".$session->uid."&owner=".$getsit1['id']."&a=".$session->checker."&type=3'; return false;\"><img src=\"img/x.gif\" class=\"del\" alt=\"helyettes\"></button>";
     echo "&nbsp;".$getsit1['username']."";
     }
 	
@@ -132,7 +132,7 @@ if(!$database->getSitee2($session->uid)){
 	echo '<span class="none">Not sitting</span>';
     }else{
     $getsit2 = $database->getSitee2($session->uid);
-    echo "<button type=\"button\" value=\"del\" class=\"icon\" onclick=\"window.location.href = 'spieler.php?s=3&e=3&id=".$session->uid."&owner=".$getsit2[id]."&a=".$session->checker."&type=3'; return false;\"><img src=\"img/x.gif\" class=\"del\" alt=\"helyettes\"></button>";
+    echo "<button type=\"button\" value=\"del\" class=\"icon\" onclick=\"window.location.href = 'spieler.php?s=3&e=3&id=".$session->uid."&owner=".$getsit2['id']."&a=".$session->checker."&type=3'; return false;\"><img src=\"img/x.gif\" class=\"del\" alt=\"helyettes\"></button>";
     echo "&nbsp;".$getsit2['username']."";
     }
 	

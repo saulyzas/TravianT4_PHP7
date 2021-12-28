@@ -977,22 +977,22 @@
         	function isAllianceOwner($id) {
         		$q = "SELECT * from " . TB_PREFIX . "alidata where leader = '$id'";
         		$result = mysql_query($q, $this->connection);
-        		if(mysql_num_rows($result)) {
-        			return true;
-        		} else {
-        			return false;
-        		}
+                return mysql_num_rows($result) > 0;
         	}
 
         	function aExist($ref, $type) {
-        		$q = "SELECT $type FROM " . TB_PREFIX . "alidata where $type = '$ref'";
+                $escaped = $this->RemoveXSS($ref);
+                $q = "SELECT 1 FROM " . TB_PREFIX . "alidata where $type = '$escaped'";
         		$result = mysql_query($q, $this->connection);
-        		if(mysql_num_rows($result)) {
-        			return true;
-        		} else {
-        			return false;
-        		}
+                return mysql_num_rows($result) > 0;
         	}
+
+            function aExist2($ref, $type, $aid) {
+                $escaped = $this->RemoveXSS($ref);
+                $q = "SELECT 1 FROM " . TB_PREFIX . "alidata where $type = '$escaped' and id != $aid";
+                $result = mysql_query($q, $this->connection);
+                return mysql_num_rows($result) > 0;
+            }
 
         	function modifyPoints($aid, $points, $amt) {
         		$q = "UPDATE " . TB_PREFIX . "users set $points = $points + $amt where id = $aid";

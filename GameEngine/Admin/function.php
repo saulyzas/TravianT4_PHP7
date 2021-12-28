@@ -86,11 +86,11 @@ class funct {
   
   function LogIN($username,$password){
     global $admin,$database;
-    if($admin->Login($username,$password)){       
-      //$_SESSION['username'] = $username; 
-      $_SESSION['access'] = $database->getUserField($username,'access',1);   
-      $_SESSION['id'] = $database->getUserField($username,'id',1); 
-      header("Location: ".$_SERVER['HTTP_REFERER']);     
+    if($admin->Login($username,$password)){
+      $_SESSION['access'] = $database->getUserField($username,'access',1);
+      $_SESSION['id'] = $database->getUserField($username,'id',1);
+      if ($_SESSION['username'] == '') { $_SESSION['username'] = $username; }
+      header("Location: ".$_SERVER['HTTP_REFERER']);
       //header("Location: admin.php");      
     }else{
       echo "Error";
@@ -98,8 +98,9 @@ class funct {
   }
   
   function LogOut(){      
-    $_SESSION['access'] = '';   
-    $_SESSION['id'] = '';   
+    $_SESSION['access'] = '';
+    $_SESSION['id'] = '';
+    $_SESSION['username'] = '';
   }
 
 	public function procResType($ref) {

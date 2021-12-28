@@ -245,31 +245,38 @@ class adm_DB {
   }
 
   function search_player($player){
-    $q = "SELECT id,username FROM ".TB_PREFIX."users WHERE `username` LIKE '%$player%' and username != 'support'";
+    $escaped = mysql_real_escape_string($player);
+    $q = "SELECT id,username FROM ".TB_PREFIX."users WHERE `username` LIKE '%$escaped%' and username != 'support'";
     $result = mysql_query($q, $this->connection);
     return $this->mysql_fetch_all($result);
   }	
   
   function search_email($email){
-    $q = "SELECT id,email FROM ".TB_PREFIX."users WHERE `email` LIKE '%$email%' and username != 'support'";
+    $escaped = mysql_real_escape_string($email);
+    $q = "SELECT id,email FROM ".TB_PREFIX."users WHERE `email` LIKE '%$escaped%' and username != 'support'";
     $result = mysql_query($q, $this->connection);
     return $this->mysql_fetch_all($result);
   }
   
   function search_village($village){
-    $q = "SELECT * FROM ".TB_PREFIX."vdata WHERE `name` LIKE '%$village%' or `wref` LIKE '%$village%'";
+    $escaped = mysql_real_escape_string($village);
+    $q = "SELECT * FROM ".TB_PREFIX."vdata WHERE `name` LIKE '%$escaped%' or `wref` LIKE '%$escaped%'";
     $result = mysql_query($q, $this->connection);
     return $this->mysql_fetch_all($result);
   }
   
   function search_alliance($alliance){
-    $q = "SELECT * FROM ".TB_PREFIX."alidata WHERE `name` LIKE '%$alliance%' or `tag` LIKE '%$alliance%' or `id` LIKE '%$alliance%'";
+    global $database;
+    $escaped = mysql_real_escape_string($alliance);
+    $escaped = $database->RemoveXSS($escaped);
+    $q = "SELECT * FROM ".TB_PREFIX."alidata WHERE `name` LIKE '%$escaped%' or `tag` LIKE '%$escaped%' or `id` LIKE '%$escaped%'";
     $result = mysql_query($q, $this->connection);
     return $this->mysql_fetch_all($result);
   }
   
   function search_ip($ip){
-    $q = "SELECT * FROM ".TB_PREFIX."login_log WHERE `ip` LIKE '%$ip%'";
+    $escaped = mysql_real_escape_string($ip);
+    $q = "SELECT * FROM ".TB_PREFIX."login_log WHERE `ip` LIKE '%$escaped%'";
     $result = mysql_query($q, $this->connection);
     return $this->mysql_fetch_all($result);
   }

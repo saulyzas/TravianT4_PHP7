@@ -253,10 +253,10 @@
 			if(!isset($get['ally2']) || $get['ally2'] == "") {
 				$form->addError("ally2", ANAME_EMPTY);
 			}
-			if($database->aExist($get['ally1'], "tag")) {
+			if($database->aExist2($get['ally1'], "tag", $session->alliance)) {
 				$form->addError("tag", ATAG_EXIST);
 			}
-			if($database->aExist($get['ally2'], "name")) {
+			if($database->aExist2($get['ally2'], "name", $session->alliance)) {
 				$form->addError("name", ANAME_EXIST);
 			}
 			if($this->userPermArray['opt3'] == 0) {

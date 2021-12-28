@@ -196,25 +196,25 @@ if($_GET['aid'])
 						if ((time()-600) < $user['timestamp'])
 						{
 							// 0 Min - 10 Min
-							echo "<td class=on><img class=online1 src=img/x.gif title=now online alt=now online /></td>";
+							echo '<td class=on><img class="online1" src="../img/x.gif" title=now online alt="now online" /></td>';
 						}
 						elseif ((time()-86400) < $user['timestamp'] && (time()-600) > $user['timestamp'])
 						{
 							// 10 Min - 1 Days
-							echo "<td class=on><img class=online2 src=img/x.gif title=now online alt=now online /></td>";              
+							echo '<td class=on><img class="online2" src="../img/x.gif" title=now online alt="now online" /></td>';              
 						}
 						elseif ((time()-259200) < $user['timestamp'] && (time()-86400) > $user['timestamp'])
 						{ 
 							// 1-3 Days
-							echo "<td class=on><img class=online3 src=img/x.gif title=now online alt=now online /></td>";    
+							echo '<td class=on><img class="online3" src="../img/x.gif" title=now online alt="now online" /></td>';    
 						}
 						elseif ((time()-604800) < $user['timestamp'] && (time()-259200) > $user['timestamp'])
 						{
-							echo "<td class=on><img class=online4 src=img/x.gif title=now online alt=now online /></td>";    
+							echo '<td class=on><img class="online4" src="../img/x.gif" title=now online alt="now online" /></td>';    
 						}
 						else
 						{
-							echo "<td class=on><img class=online5 src=img/x.gif title=now online alt=now online /></td>";   
+							echo '<td class=on><img class="online5" src="../img/x.gif" title=now online alt="now online" /></td>';   
 						}
 					}
 					echo "	</tr>";    
@@ -271,13 +271,13 @@ if($_GET['aid'])
 						if($row['type'] == 1) { $type = 'Confederation Pact'; }
 						if($row['type'] == 2) { $type = 'Non Agression Pact'; }
 						if($row['type'] == 3) { $type = 'Declaration of War'; }
-						if($row['accepted'] == 0) { $accepted = "<img src=\"../../gpack/travian_default/img/a/del.gif\">"; }
-						if($row['accepted'] ==1) { $accepted = "<img src=\"../../gpack/travian_default/img/a/acc.gif\">"; }
+						if($row['accepted'] == 0) { $accepted = "<img src=\"../gpack/travian_default/img/a/del.gif\">"; }
+						if($row['accepted'] == 1) { $accepted = "<img src=\"../gpack/travian_default/img/a/acc.gif\">"; }
 					
 						$ally = mysql_fetch_assoc(mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = ".$row['alli2'].""));
 						echo '
 						<tr>
-							<td><a href="admin.php?p=alliance&aid='.$row['alli1'].'">'.$ally['tag'].'</a></td>
+							<td><a href="admin.php?p=alliance&aid='.$row['alli2'].'">'.$ally['tag'].'</a></td>
 							<td>'.$type.'</td>
 							<td>'.$accepted.'</td>
 						</tr>';
@@ -306,13 +306,13 @@ if($_GET['aid'])
 						if($row['type'] == 1) { $type = 'Confederation Pact'; }
 						if($row['type'] == 2) { $type = 'Non Agression Pact'; }
 						if($row['type'] == 3) { $type = 'Declaration of War'; }
-						if($row['accepted'] == 0) { $accepted = "<img src=\"../../gpack/travian_default/img/a/del.gif\">"; }
-						if($row['accepted'] ==1) { $accepted = "<img src=\"../../gpack/travian_default/img/a/acc.gif\">"; }
+						if($row['accepted'] == 0) { $accepted = "<img src=\"../gpack/travian_default/img/a/del.gif\">"; }
+						if($row['accepted'] == 1) { $accepted = "<img src=\"../gpack/travian_default/img/a/acc.gif\">"; }
 					
 						$ally = mysql_fetch_assoc(mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = ".$row['alli1'].""));
 						echo '
 						<tr>
-							<td><a href="admin.php?p=alliance&aid='.$row['alli2'].'">'.$ally['tag'].'</a></td>
+							<td><a href="admin.php?p=alliance&aid='.$row['alli1'].'">'.$ally['tag'].'</a></td>
 							<td>'.$type.'</td>
 							<td>'.$accepted.'</td>
 						</tr>';
@@ -335,15 +335,15 @@ if($_GET['aid'])
 				</tr>
 			</thead>
 				<?php
-					$sql = "SELECT * FROM ".TB_PREFIX."diplomacy WHERE alli1 = ".$_GET['aid']." OR alli2 = ".$_GET['aid']." AND accepted = 1";
+					$sql = "SELECT * FROM ".TB_PREFIX."diplomacy WHERE (alli1 = ".$_GET['aid']." OR alli2 = ".$_GET['aid'].") AND accepted = 1";
 					$result = mysql_query($sql);
 					while($row = mysql_fetch_assoc($result))
 					{
 						if($row['type'] == 1) { $type = 'Confederation Pact'; }
 						if($row['type'] == 2) { $type = 'Non Agression Pact'; }
 						if($row['type'] == 3) { $type = 'Declaration of War'; }
-						if($row['accepted'] == 0) { $accepted = "<img src=\"../../gpack/travian_default/img/a/del.gif\">"; }
-						if($row['accepted'] == 1) { $accepted = "<img src=\"../../gpack/travian_default/img/a/acc.gif\">"; }
+						if($row['accepted'] == 0) { $accepted = "<img src=\"../gpack/travian_default/img/a/del.gif\">"; }
+						if($row['accepted'] == 1) { $accepted = "<img src=\"../gpack/travian_default/img/a/acc.gif\">"; }
 					
 						$ally1 = mysql_fetch_assoc(mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = ".$row['alli1'].""));
 						$ally2 = mysql_fetch_assoc(mysql_query("SELECT * FROM ".TB_PREFIX."alidata WHERE id = ".$row['alli2'].""));
@@ -351,7 +351,7 @@ if($_GET['aid'])
 						<tr>
 							<td><a href="admin.php?p=alliance&aid='.$row['alli1'].'">'.$ally1['tag'].'</a> & <a href="admin.php?p=alliance&aid='.$row['alli2'].'">'.$ally2['tag'].'</a></td>
 							<td>'.$type.'</td>
-							<td><img src="../../gpack/travian_default/img/a/acc.gif"></td>
+							<td>'.$accepted.'</td>
 						</tr>';
 					}
 				?>
