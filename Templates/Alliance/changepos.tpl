@@ -40,7 +40,7 @@ include("alli_menu.tpl");
 						
 						<td class="right"><input class="check" type="checkbox" name="e3" value="1" <?php if ($playerData['opt3']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e6" value="1" <?php if ($playerData['opt4']) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e6" value="1" <?php if ($playerData['opt6']) { echo "checked=checked"; } ?> ></td>
 						
 						<td class="right"><input class="check" type="checkbox" name="e7" value="1" <?php if ($playerData['opt7']) { echo "checked=checked"; } ?> ></td>
 						
