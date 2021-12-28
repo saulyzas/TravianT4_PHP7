@@ -34,22 +34,22 @@ include("alli_menu.tpl");
 					<tr>
 						<td class="name"><?php echo $playername; ?></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e1" value="1" <?php if ($playerData[opt1]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e1" value="1" <?php if ($playerData['opt1']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e2" value="1" <?php if ($playerData[opt2]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e2" value="1" <?php if ($playerData['opt2']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e3" value="1" <?php if ($playerData[opt3]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e3" value="1" <?php if ($playerData['opt3']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e6" value="1" <?php if ($playerData[opt4]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e6" value="1" <?php if ($playerData['opt4']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e7" value="1" <?php if ($playerData[opt7]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e7" value="1" <?php if ($playerData['opt7']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e4" value="1" <?php if ($playerData[opt4]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e4" value="1" <?php if ($playerData['opt4']) { echo "checked=checked"; } ?> ></td>
 						
-						<td class="right"><input class="check" type="checkbox" name="e5" value="1" <?php if ($playerData[opt5]) { echo "checked=checked"; } ?> ></td>
+						<td class="right"><input class="check" type="checkbox" name="e5" value="1" <?php if ($playerData['opt5']) { echo "checked=checked"; } ?> ></td>
 						
 						
-						<td class="title"><input class="text" type="text" name="a_titel" value="<?php echo $playerData[rank]; ?>" maxlength="20" /></td>
+						<td class="title"><input class="text" type="text" name="a_titel" value="<?php echo $playerData['rank']; ?>" maxlength="20" /></td>
 					</tr>
 			
 				</tbody>

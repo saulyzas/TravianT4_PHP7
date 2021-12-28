@@ -39,7 +39,7 @@ if($deletion){
 <table id="profile" cellpadding="1" cellspacing="1" >
     <thead>
     <tr>
-        <th colspan="2">Player <a href="admin.php?p=player&uid=<?php echo $user['id'];?>"><?php echo $user['username'];?></a></th>
+        <th colspan="2">Player <a href="?p=player&uid=<?php echo $user['id'];?>"><?php echo $user['username'];?></a></th>
     </tr>                                       
     <tr>
         <td>Details</td>
@@ -167,10 +167,10 @@ if($deletion){
         <td>Remaining gold</td>
         <td><?php
 		if($user['gold'] == 0){ ?>
-		This user has no gold! (<img src='../img/admin/gold_g.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>) <?php if($_SESSION['access'] == ADMIN){ ?><a href='.?p=player&uid=<?php echo $id; ?>&g'>Give gold <?php } ?></a>
+		This user has no gold! (<img src='../img/admin/gold_g.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>) <?php if($_SESSION['access'] == ADMIN){ ?><a href='?p=player&uid=<?php echo $id; ?>&g'>Give gold <?php } ?></a>
 		<?php }
 		else if($user['gold'] > 0){ ?>
-		<img src='../img/admin/gold.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>  <?php if($_SESSION['access'] == ADMIN){ ?><a href='.?p=player&uid=<?php echo $id; ?>&g'><img src='../img/admin/edit.gif' title='Give Gold'><?php } ?></a></td>
+		<img src='../img/admin/gold.gif' class='gold' alt='Gold' title='This user has: <?php echo $user['gold']; ?> gold'/> <?php echo $user['gold']; ?>  <?php if($_SESSION['access'] == ADMIN){ ?><a href='?p=player&uid=<?php echo $id; ?>&g'><img src='../img/admin/edit.gif' title='Give Gold'><?php } ?></a></td>
 		<?php }
 		?>
     </tr>
@@ -185,7 +185,7 @@ if($deletion){
 		<input type="hidden" name="admid" id="admid" value="<?php echo $_SESSION['id']; ?>">
 		<tr>
 		<td>Insert number and press 'enter'</td>
-		<td><input class="give_gold" name="gold" value="0"> <a href=".?p=player&uid=<?php echo $id; ?>"><img src="../img/admin/del.gif" title="Cancel"></a></td>
+		<td><input class="give_gold" name="gold" value="0"> <a href="?p=player&uid=<?php echo $id; ?>"><img src="../img/admin/del.gif" title="Cancel"></a></td>
 		</tr></form>
 		<?php } } }?>
 	<tr><td></td><td></td></tr>
@@ -193,7 +193,7 @@ if($deletion){
         <td>Sitter 1</td>
         <td><?php
 		if($user['sit1'] >= 1){
-		echo '<a href="admin.php?p=player&uid='.$user['sit1'].'">'.$database->getUserField($user['sit1'],"username",0).'</a>';
+		echo '<a href="?p=player&uid='.$user['sit1'].'">'.$database->getUserField($user['sit1'],"username",0).'</a>';
 		} 
 		else if($user['sit1'] == 0){
 		echo 'No sitter';
@@ -204,7 +204,7 @@ if($deletion){
         <td>Sitter 2</td>
         <td><?php
 		if($user['sit2'] >= 1){
-		echo '<a href="admin.php?p=player&uid='.$user['sit2'].'">'.$database->getUserField($user['sit2'],"username",0).'</a>';
+		echo '<a href="?p=player&uid='.$user['sit2'].'">'.$database->getUserField($user['sit2'],"username",0).'</a>';
 		} 
 		else if($user['sit2'] == 0){
 		echo 'No sitter';
@@ -220,7 +220,7 @@ if($deletion){
 </tr>
   <tr>
         <td>Cultural Points</td>
-        <td><?php echo $user['cp'];?> <?php if($_SESSION['access'] == ADMIN){ ?><a href='.?p=player&uid=<?php echo $id; ?>&cp'><img src='../img/admin/edit.gif' title='Edit Culture Points'><?php } ?>
+        <td><?php echo $user['cp'];?> <?php if($_SESSION['access'] == ADMIN){ ?><a href='?p=player&uid=<?php echo $id; ?>&cp'><img src='../img/admin/edit.gif' title='Edit Culture Points'><?php } ?>
 </tr>
 <?php if($_SESSION['access'] == ADMIN){
 	if($_GET['cp'] == 'ok'){
@@ -232,7 +232,7 @@ if($deletion){
 		<input type="hidden" name="id" value="<?php echo $id; ?>">
 		<tr>
 		<td>Insert number and press 'enter'</td>
-		<td><input class="give_gold" name="cp" value="0"> <a href=".?p=player&uid=<?php echo $id; ?>"><img src="../img/admin/del.gif" title="Cancel"></a></td>
+		<td><input class="give_gold" name="cp" value="0"> <a href="?p=player&uid=<?php echo $id; ?>"><img src="../img/admin/del.gif" title="Cancel"></a></td>
 		</tr></form>
 		<?php } } }?>
   <tr>

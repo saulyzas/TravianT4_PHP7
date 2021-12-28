@@ -1048,9 +1048,9 @@
         		$num_rows = mysqli_num_rows($result);
         		if($num_rows == 0) {
         			$q = "DELETE FROM " . TB_PREFIX . "alidata WHERE id = $aid";
+                    mysqli_query($this->connection,$q);
+                    return mysqli_insert_id($this->connection);
         		}
-        		mysqli_query($this->connection,$q);
-        		return mysqli_insert_id($this->connection);
         	}
 
         	/*****************************************

@@ -188,7 +188,7 @@ if($_GET['aid'])
 					$TotalVillages = $database->getProfileVillages($user['id']);
 					echo "<tr>";
 					echo "<td class=ra>".$rank.".</td>";
-					echo "<td class=pla><a href=spieler.php?uid=".$user['id'].">".$user['username']."</a></td>"; 
+					echo "<td class=pla><a href=\"?p=player&uid=".$user['id']."\">".$user['username']."</a></td>"; 
 					echo "<td class=hab>".$TotalUserPop."</td>"; 
 					echo "<td class=vil>".count($TotalVillages)."</td>";
 					if($aid == $session->alliance)
@@ -196,25 +196,25 @@ if($_GET['aid'])
 						if ((time()-600) < $user['timestamp'])
 						{
 							// 0 Min - 10 Min
-							echo '<td class=on><img class="online1" src="../img/x.gif" title=now online alt="now online" /></td>';
+							echo '<td class=on><img class="online1" src="../img/x.gif" title="now online" alt="now online" /></td>';
 						}
 						elseif ((time()-86400) < $user['timestamp'] && (time()-600) > $user['timestamp'])
 						{
 							// 10 Min - 1 Days
-							echo '<td class=on><img class="online2" src="../img/x.gif" title=now online alt="now online" /></td>';              
+							echo '<td class=on><img class="online2" src="../img/x.gif" title="now online" alt="now online" /></td>';              
 						}
 						elseif ((time()-259200) < $user['timestamp'] && (time()-86400) > $user['timestamp'])
 						{ 
 							// 1-3 Days
-							echo '<td class=on><img class="online3" src="../img/x.gif" title=now online alt="now online" /></td>';    
+							echo '<td class=on><img class="online3" src="../img/x.gif" title="now online" alt="now online" /></td>';    
 						}
 						elseif ((time()-604800) < $user['timestamp'] && (time()-259200) > $user['timestamp'])
 						{
-							echo '<td class=on><img class="online4" src="../img/x.gif" title=now online alt="now online" /></td>';    
+							echo '<td class=on><img class="online4" src="../img/x.gif" title="now online" alt="now online" /></td>';    
 						}
 						else
 						{
-							echo '<td class=on><img class="online5" src="../img/x.gif" title=now online alt="now online" /></td>';   
+							echo '<td class=on><img class="online5" src="../img/x.gif" title="now online" alt="now online" /></td>';   
 						}
 					}
 					echo "	</tr>";    
